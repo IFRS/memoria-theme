@@ -1,0 +1,20 @@
+# dotenv
+.env
+
+# NPM
+/node_modules/
+
+# SASS
+.sass-cache/
+
+# CSS
+/css/
+
+# JS
+/js/
+
+# Fonts
+/fonts/
+
+# Build
+/dist/
