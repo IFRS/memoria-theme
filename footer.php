@@ -6,8 +6,8 @@
         </div> <!-- /.row -->
     </div> <!-- /.container-fluid -->
 
-    <footer>
-    <div class="container">
+    <footer class="footer">
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <p>
