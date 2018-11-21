@@ -15,39 +15,37 @@
 </head>
 
 <body>
-    <a href="#main" class="sr-only">Pular para o conte&uacute;do</a>
+    <a href="#inicio-conteudo" class="sr-only">Pular para o conte&uacute;do</a>
 
     <?php echo get_template_part('partials/barrabrasil'); ?>
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-lg-4 coluna-nav collapse show">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <header class="header">
-                            <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
-                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" alt="" class="img-fluid header__logo" aria-hidden="true"/>
-                                <span class="sr-only">Ir para a P&aacute;gina Inicial</span>
-                            </a>
-                        </header>
+        <div class="row no-gutters">
+            <div class="col-lg-3 collapse show">
+                <div class="sticky-top coluna-nav">
+                    <header class="header">
+                        <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" alt="" class="img-fluid header__logo" aria-hidden="true"/>
+                            <span class="sr-only">Ir para a P&aacute;gina Inicial</span>
+                        </a>
+                    </header>
 
-                        <hr class="coluna-nav__separator">
+                    <hr class="coluna-nav__separator">
 
-                        <?php echo get_template_part('partials/menu'); ?>
+                    <?php echo get_template_part('partials/menu'); ?>
 
-                        <a href="https://ifrs.edu.br/" class="coluna-nav__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
-                    </div>
+                    <a href="https://ifrs.edu.br/" class="coluna-nav__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
                 </div>
             </div>
-            <div class="col">
+            <div class="sticky-top coluna-collapse">
+                <div class="coluna-collapse__logo">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse-logo.png" alt="" aria-hidden="true" class="img-fluid">
+                </div>
+                <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
+            </div>
+            <div class="col coluna-main">
                 <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
-                <div class="row">
-                    <div class="col-lg-1 coluna-collapse">
-                        <div class="coluna-collapse__logo">
-                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse-logo.png" alt="" aria-hidden="true" class="img-fluid">
-                        </div>
-                        <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
-                    </div>
-                    <main class="col-12 col-lg-11">
+                <div class="row no-gutters">
+                    <main class="col">
                         <?php memoria_breadcrumb(); ?>
