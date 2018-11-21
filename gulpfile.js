@@ -45,6 +45,11 @@ const dist = [
     '!package.json'
 ];
 
+const webpackMode = argv.production ? 'production' : 'development';
+
+var webpackPlugins = [];
+argv.bundleanalyzer ? webpackPlugins.push(new BundleAnalyzerPlugin()) : null;
+
 gulp.task('clean', function() {
     return del(['css/', 'js/', 'fonts/', 'dist/']);
 });
@@ -76,27 +81,25 @@ gulp.task('styles', gulp.series('sass', function css() {
 
 gulp.task('webpack', function(done) {
     webpack({
+        mode: webpackMode,
         entry: {
             ie: './src/ie.js',
-            ps: './src/ps.js',
-            cursos: './src/cursos.js'
+            memoria: './src/memoria.js'
         },
         output: {
             path: path.resolve(__dirname, 'js'),
-            filename: '[name].js'
+            filename: '[name].js',
         },
         resolve: {
             alias: {
                 jquery: 'jquery/src/jquery',
-                bootstrap: 'bootstrap/dist/js/bootstrap.bundle'
+                popper: 'popper.js'
             }
         },
-        plugins: [
-            new webpack.ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery'
-            })
-        ],
+        optimization: {
+            minimize: false
+        },
+        plugins: webpackPlugins,
     }, function(err, stats) {
         if (err) throw new PluginError('webpack', {
             message: stats.toString({
