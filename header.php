@@ -44,8 +44,9 @@
                 </div>
                 <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
             </div>
-            <div class="col coluna-main">
+            <div class="col">
                 <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
                 <div class="row no-gutters">
-                    <main class="col">
-                        <?php memoria_breadcrumb(); ?>
+                    <div class="col-8">
+                        <main class="content">
+                            <?php memoria_breadcrumb(); ?>
