@@ -21,7 +21,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-4 coluna-nav">
+            <div class="col-12 col-lg-4 coluna-nav collapse show">
                 <div class="row">
                     <div class="col-lg-10">
                         <header class="header">
@@ -38,16 +38,16 @@
 
                         <a href="https://ifrs.edu.br/" class="coluna-nav__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
                     </div>
-                    <div class="col-lg-2 coluna-collapse">
+                </div>
+            </div>
+            <div class="col">
+                <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
+                <div class="row">
+                    <div class="col-lg-1 coluna-collapse">
                         <div class="coluna-collapse__logo">
                             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse-logo.png" alt="" aria-hidden="true" class="img-fluid">
                         </div>
                         <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
                     </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-8">
-                <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
-
-                <main>
-                    <?php memoria_breadcrumb(); ?>
+                    <main class="col-12 col-lg-11">
+                        <?php memoria_breadcrumb(); ?>

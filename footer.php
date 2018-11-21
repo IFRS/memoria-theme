@@ -1,7 +1,7 @@
-                </main>
+                    </main>
 
-                <a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
-
+                    <a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
+                </div> <!-- /.row -->
             </div> <!-- /.col -->
         </div> <!-- /.row -->
     </div> <!-- /.container-fluid -->
