@@ -21,14 +21,20 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-3">
-                <header>
+            <div class="col-12 col-lg-3 navigation">
+                <header class="header">
                     <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/header.png" alt="" class="img-fluid header__marca" aria-hidden="true"/>
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" alt="" class="img-fluid header__logo" aria-hidden="true"/>
                         <span class="sr-only">Ir para a P&aacute;gina Inicial</span>
                     </a>
                 </header>
+
+                <hr class="navigation__separator">
+
+                <?php echo get_template_part('partials/menu'); ?>
+
+                <a href="https://ifrs.edu.br/" class="navigation__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
             </div>
             <div class="col-lg-1">
 
