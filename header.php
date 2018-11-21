@@ -21,23 +21,30 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-lg-3 navigation">
-                <header class="header">
-                    <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" alt="" class="img-fluid header__logo" aria-hidden="true"/>
-                        <span class="sr-only">Ir para a P&aacute;gina Inicial</span>
-                    </a>
-                </header>
+            <div class="col-12 col-lg-4 coluna-nav">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <header class="header">
+                            <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
+                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
+                                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" alt="" class="img-fluid header__logo" aria-hidden="true"/>
+                                <span class="sr-only">Ir para a P&aacute;gina Inicial</span>
+                            </a>
+                        </header>
 
-                <hr class="navigation__separator">
+                        <hr class="coluna-nav__separator">
 
-                <?php echo get_template_part('partials/menu'); ?>
+                        <?php echo get_template_part('partials/menu'); ?>
 
-                <a href="https://ifrs.edu.br/" class="navigation__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
-            </div>
-            <div class="col-lg-1">
-
+                        <a href="https://ifrs.edu.br/" class="coluna-nav__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
+                    </div>
+                    <div class="col-lg-2 coluna-collapse">
+                        <div class="coluna-collapse__logo">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse-logo.png" alt="" aria-hidden="true" class="img-fluid">
+                        </div>
+                        <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
+                    </div>
+                </div>
             </div>
             <div class="col-12 col-lg-8">
                 <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>

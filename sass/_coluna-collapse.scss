@@ -1,0 +1,12 @@
+.coluna-collapse {
+    background: #6f6f6f;
+    opacity: 0.5;
+    text-align: center;
+
+    &__logo {
+        background: #4d4d4d;
+        opacity: 0.5;
+        padding: 10px 0;
+        margin: 0 -15px;
+    }
+}
