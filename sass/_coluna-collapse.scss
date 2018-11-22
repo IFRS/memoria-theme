@@ -1,12 +1,11 @@
 .coluna-collapse {
-    background: $cinza-claro;
-    opacity: 0.5;
+    background: $cor-collapse-bar;
     text-align: center;
     height: 100vh;
     width: 60px;
 
     &__logo {
-        background: $cinza-escuro;
+        background: $cor-collapse-btn-bg;
         height: 50px;
         opacity: 0.5;
         padding: 10px 0;
