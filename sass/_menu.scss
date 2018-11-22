@@ -2,3 +2,14 @@
     text-align: center;
     flex-grow: 1;
 }
+
+.menu-item {
+    @extend .nav-item;
+
+    a {
+        @extend .nav-link;
+        color: $body-color;
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+}
