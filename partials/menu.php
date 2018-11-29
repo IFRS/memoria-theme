@@ -7,7 +7,7 @@
         'container'         => 'nav',
         'container_class'   => 'menu',
         'container_id'      => false,
-        'menu_class'        => 'nav flex-column',
+        'menu_class'        => 'nav flex-column menu-collapse',
     ));
 ?>
 

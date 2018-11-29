@@ -6,10 +6,33 @@
 .menu-item {
     @extend .nav-item;
 
-    a {
+    > a {
         @extend .nav-link;
         color: $body-color;
         font-size: 0.95rem;
         font-weight: 600;
+    }
+
+    &.current-menu-item {
+        > a {
+            color: $link-color;
+        }
+    }
+}
+
+.sub-menu {
+    @extend .nav;
+
+    .menu-item {
+        > a {
+            color: $cor-sub-menu;
+            font-size: 0.8rem;
+        }
+
+        &.current-menu-item {
+            > a {
+                color: $cor-sub-menu-active;
+            }
+        }
     }
 }
