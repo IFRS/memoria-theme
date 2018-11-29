@@ -24,9 +24,14 @@
     @extend .nav;
 
     .menu-item {
+        @extend .nav-item;
+        flex-grow: 1;
+
         > a {
+            @extend .nav-link;
             color: $cor-sub-menu;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: normal;
         }
 
         &.current-menu-item {
