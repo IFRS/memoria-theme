@@ -57,7 +57,7 @@
                 </div>
                 <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
             </div>
-            <div class="col">
+            <div class="col coluna-content">
                 <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
                 <div class="row no-gutters">
                     <div class="col">
