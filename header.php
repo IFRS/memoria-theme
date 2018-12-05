@@ -19,7 +19,7 @@
 
     <?php echo get_template_part('partials/barrabrasil'); ?>
 
-    <div class="container-fluid">
+    <div class="container-fluid main-wrapper">
         <div class="row no-gutters">
             <div class="col-lg-3 collapse show">
                 <div class="sticky-top coluna-nav">
