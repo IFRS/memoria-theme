@@ -16,10 +16,7 @@
                 </div> <!-- /.row -->
             </div> <!-- /.col -->
         </div> <!-- /.row -->
-
     </div> <!-- /.container-fluid -->
-
-
 
     <?php wp_footer(); ?>
 
