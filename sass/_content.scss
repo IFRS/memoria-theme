@@ -1,5 +1,6 @@
 .content {
     background: $cor-content-bg;
-    padding: 30px 30px 15px 30px;
+    padding: 15px 30px 15px 30px;
     margin-top: 50px;
+    min-height: calc(100vh - 50px);
 }
