@@ -1,6 +1,7 @@
 .menu {
     text-align: center;
     flex-grow: 1;
+    overflow-y: scroll;
 }
 
 .menu-item {
@@ -22,10 +23,10 @@
 
 .sub-menu {
     @extend .nav;
+    @extend .flex-column;
 
     .menu-item {
         @extend .nav-item;
-        flex-grow: 1;
 
         > a {
             @extend .nav-link;
