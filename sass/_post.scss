@@ -1,0 +1,8 @@
+.post {
+    &__thumb {
+        @extend .img-fluid;
+    }
+    img {
+        @extend .img-fluid;
+    }
+}
