@@ -59,7 +59,6 @@
             </div>
             <div class="col coluna-content">
                 <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
-                <div class="row no-gutters">
-                    <div class="col">
-                        <main class="content">
-                            <?php memoria_breadcrumb(); ?>
+
+                <main class="content">
+                    <?php //memoria_breadcrumb(); ?>
