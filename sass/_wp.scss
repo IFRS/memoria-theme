@@ -1,0 +1,146 @@
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+    @extend .clearfix;
+}
+
+.aligncenter,
+div.aligncenter {
+    @extend .mx-auto;
+}
+
+.alignright {
+    @extend .float-right;
+}
+
+.alignleft {
+    @extend .float-left;
+}
+
+img {
+    &.alignright {
+        @extend .float-right;
+        margin: 5px 0 20px 20px;
+    }
+
+    &.alignnone {
+        @extend .clearfix;
+    }
+
+    &.alignleft {
+        @extend .float-left;
+        margin: 5px 20px 20px 0;
+    }
+
+    &.aligncenter {
+        @extend .mx-auto;
+    }
+}
+
+.wp-caption {
+    max-width: 96%;
+    padding: 5px 3px 10px;
+    text-align: center;
+
+    &.alignnone {
+        margin: 5px 20px 20px 0;
+    }
+
+    &.alignleft {
+        margin: 5px 20px 20px 0;
+    }
+
+    &.alignright {
+        margin: 5px 0 20px 20px;
+    }
+
+    img {
+        border: 0 none;
+        height: auto;
+        margin: 0;
+        max-width: 98.5%;
+        padding: 0;
+        width: auto;
+    }
+
+    p {
+        &.wp-caption-text {
+            font-size: 0.85rem;
+            font-style: italic;
+            margin: 0;
+            padding: 0 4px 5px;
+        }
+    }
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+    word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+
+    &:focus {
+        background-color: #eee;
+        clip: auto !important;
+        clip-path: none;
+        color: #444;
+        display: block;
+        font-size: 1rem;
+        height: auto;
+        left: 5px;
+        line-height: normal;
+        padding: 15px 23px 14px;
+        text-decoration: none;
+        top: 5px;
+        width: auto;
+        z-index: 100000;
+        /* Above WP toolbar. */
+    }
+}
+
+/* Content gallery */
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.gallery-item {
+    margin-bottom: 5px;
+    text-align: center;
+
+    a {
+        display: block;
+    }
+
+    .widget-area & {
+		margin-bottom: 5px;
+    }
+}
+
+.gallery-icon {
+    img {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.gallery-caption {
+    color: #666;
+    font-size: 0.7rem;
+}
+
+@for $i from 1 through 9 {
+	.gallery-columns-#{$i} {
+		.gallery-item {
+			flex-basis: calc(#{percentage(1/$i)} - 5px);
+		}
+	}
+}
