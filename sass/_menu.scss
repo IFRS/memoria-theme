@@ -2,19 +2,20 @@
     text-align: center;
     flex-grow: 1;
     overflow-y: scroll;
+    width: 70%;
 }
 
 .menu-item {
-    @extend .nav-item;
+    margin-bottom: 5px;
 
     > a {
-        @extend .nav-link;
         color: $body-color;
         font-size: 0.95rem;
         font-weight: 600;
     }
 
-    &.current-menu-item {
+    &.current-menu-item,
+    &.current-menu-ancestor {
         > a {
             color: $link-color;
         }
@@ -22,14 +23,10 @@
 }
 
 .sub-menu {
-    @extend .nav;
-    @extend .flex-column;
+    @extend .list-unstyled;
 
     .menu-item {
-        @extend .nav-item;
-
         > a {
-            @extend .nav-link;
             color: $cor-sub-menu;
             font-size: 0.75rem;
             font-weight: normal;
