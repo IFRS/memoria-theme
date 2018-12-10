@@ -38,8 +38,9 @@ $(function() {
             $(".collapse").collapse('show');
         }
     });
+
     $('.btn-menu-toggle').on('click', function(e) {
-        $(".collapse").collapse('toggle');
+        $(".coluna-collapse").collapse('toggle');
         e.preventDefault();
     });
 });

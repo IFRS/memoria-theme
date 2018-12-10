@@ -21,7 +21,7 @@
 
     <div class="container-fluid main-wrapper">
         <div class="row no-gutters">
-            <div class="col-lg-3 collapse show">
+            <div class="col-lg-3 coluna-collapse show">
                 <div class="sticky-top coluna-nav">
                     <header class="header">
                         <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
@@ -51,8 +51,8 @@
                     </footer>
                 </div>
             </div>
-            <div class="sticky-top coluna-collapse">
-                <div class="coluna-collapse__logo">
+            <div class="sticky-top coluna-separator">
+                <div class="coluna-separator__logo">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse-logo.png" alt="" aria-hidden="true" class="img-fluid">
                 </div>
                 <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
