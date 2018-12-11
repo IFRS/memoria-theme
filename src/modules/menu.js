@@ -29,13 +29,13 @@ $(function() {
 
     // Controla a exibição do menu em viewports pequenos.
     if ($(window).width() < 992) {
-        $(".collapse").collapse('hide');
+        $(".coluna-collapse").collapse('hide');
     }
     $(window).resize(function() {
         if ($(window).width() < 992) {
-            $(".collapse").collapse('hide');
+            $(".coluna-collapse").collapse('hide');
         } else {
-            $(".collapse").collapse('show');
+            $(".coluna-collapse").collapse('show');
         }
     });
 
