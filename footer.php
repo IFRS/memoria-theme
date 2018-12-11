@@ -4,7 +4,7 @@
             </div> <!-- /.col -->
             <div class="col-12 col-md-1 col-lg-2">
                 <div class="h-100 d-flex flex-wrap">
-                    <hr class="align-self-start back-top__bar">
+                    <hr class="align-self-start d-none d-md-block back-top__bar">
                     <a href="#inicio-conteudo" class="align-self-end back-top__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8">
                             <path d="M4 0l-4 4 1.5 1.5 2.5-2.5 2.5 2.5 1.5-1.5-4-4z" transform="translate(0 1)" />
