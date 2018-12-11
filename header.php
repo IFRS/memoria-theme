@@ -53,7 +53,7 @@
             </div>
             <div class="sticky-top coluna-separator">
                 <div class="coluna-separator__logo">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse-logo.png" alt="" aria-hidden="true" class="img-fluid">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/separator-logo.png" alt="" aria-hidden="true" class="img-fluid">
                 </div>
                 <button class="btn-menu-toggle d-block mx-auto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/collapse.png" alt="Esconder/Mostrar navegação" class="img-fluid"></button>
             </div>
