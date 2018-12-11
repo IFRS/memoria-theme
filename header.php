@@ -31,7 +31,7 @@
                         </a>
                     </header>
 
-                    <hr class="coluna-nav__separator">
+                    <hr class="d-none d-lg-block coluna-nav__separator">
 
                     <?php echo get_template_part('partials/menu'); ?>
 
