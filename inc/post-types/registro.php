@@ -28,32 +28,32 @@ function registro_post_type() {
 		'items_list'            => __( 'Lista de Registros', 'ifrs-memoria-theme' ),
 		'items_list_navigation' => __( 'Lista de navegação de Registros', 'ifrs-memoria-theme' ),
 		'filter_items_list'     => __( 'Filtrar lista de Registros', 'ifrs-memoria-theme' ),
-    );
+	);
 
-    $capabilities = array(
-        // meta caps (don't assign these to roles)
-        'edit_post'              => 'edit_registro',
-        'read_post'              => 'read_registro',
-        'delete_post'            => 'delete_registro',
+	$capabilities = array(
+		// meta caps (don't assign these to roles)
+		'edit_post'              => 'edit_registro',
+		'read_post'              => 'read_registro',
+		'delete_post'            => 'delete_registro',
 
-        // primitive/meta caps
-        'create_posts'           => 'create_registros',
+		// primitive/meta caps
+		'create_posts'           => 'create_registros',
 
-        // primitive caps used outside of map_meta_cap()
-        'edit_posts'             => 'edit_registros',
-        'edit_others_posts'      => 'manage_registros',
-        'publish_posts'          => 'create_registros',
-        'read_private_posts'     => 'read',
+		// primitive caps used outside of map_meta_cap()
+		'edit_posts'             => 'edit_registros',
+		'edit_others_posts'      => 'manage_registros',
+		'publish_posts'          => 'create_registros',
+		'read_private_posts'     => 'read',
 
-        // primitive caps used inside of map_meta_cap()
-        'read'                   => 'read',
-        'delete_posts'           => 'manage_registros',
-        'delete_private_posts'   => 'manage_registros',
-        'delete_published_posts' => 'manage_registros',
-        'delete_others_posts'    => 'manage_registros',
-        'edit_private_posts'     => 'edit_registros',
-        'edit_published_posts'   => 'edit_registros',
-    );
+		// primitive caps used inside of map_meta_cap()
+		'read'                   => 'read',
+		'delete_posts'           => 'manage_registros',
+		'delete_private_posts'   => 'manage_registros',
+		'delete_published_posts' => 'manage_registros',
+		'delete_others_posts'    => 'manage_registros',
+		'edit_private_posts'     => 'edit_registros',
+		'edit_published_posts'   => 'edit_registros',
+	);
 
 	$args = array(
 		'label'                 => __( 'Registro', 'ifrs-memoria-theme' ),
@@ -72,12 +72,13 @@ function registro_post_type() {
 		'can_export'            => true,
 		'has_archive'           => true,
 		'exclude_from_search'   => false,
-        'publicly_queryable'    => true,
-        'capability_type'       => array('chamada', 'chamadas'),
-        'map_meta_cap'          => true,
+		'publicly_queryable'    => true,
+		'capability_type'       => array('chamada', 'chamadas'),
+		'map_meta_cap'          => true,
 		'capabilities'          => $capabilities,
 		'show_in_rest'          => false,
-    );
+		'rewrite'               => array('slug' => 'timeline','with_front' => false),
+	);
 
 	register_post_type( 'registro', $args );
 }
@@ -86,7 +87,6 @@ add_action( 'init', 'registro_post_type', 0 );
 
 add_action( 'cmb2_admin_init', 'registro_metaboxes' );
 function registro_metaboxes() {
-
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_registro_';
 
