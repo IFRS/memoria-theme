@@ -93,7 +93,8 @@ gulp.task('webpack', function(done) {
         resolve: {
             alias: {
                 jquery: 'jquery/src/jquery',
-                popper: 'popper.js'
+                popper: 'popper.js',
+                swiper: 'swiper/dist/js/swiper',
             }
         },
         optimization: {
