@@ -2,8 +2,8 @@
 
 <?php the_post(); ?>
 
-<section>
+<main class="content">
     <?php the_content(); ?>
-</section>
+</main>
 
 <?php get_footer(); ?>
