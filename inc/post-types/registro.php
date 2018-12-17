@@ -59,7 +59,7 @@ function registro_post_type() {
 		'label'                 => __( 'Registro', 'ifrs-memoria-theme' ),
 		'description'           => __( 'Registro Temporal', 'ifrs-memoria-theme' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 		'taxonomies'            => array( 'unidade' ),
 		'hierarchical'          => false,
 		'public'                => true,
