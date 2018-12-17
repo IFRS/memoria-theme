@@ -83,7 +83,7 @@ function registro_post_type() {
 	register_post_type( 'registro', $args );
 }
 
-add_action( 'init', 'registro_post_type', 0 );
+add_action( 'init', 'registro_post_type', 2 );
 
 add_action( 'cmb2_admin_init', 'registro_metaboxes' );
 function registro_metaboxes() {

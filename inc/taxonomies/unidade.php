@@ -40,9 +40,10 @@ function unidade_taxonomy() {
 		'show_tagcloud'              => true,
 		'capabilities'               => $capabilities,
 		'show_in_rest'               => false,
+		'rewrite'                    => array('slug' => 'timeline/unidade', 'with_front' => false),
     );
 
 	register_taxonomy( 'unidade', array( 'registro' ), $args );
 }
 
-add_action( 'init', 'unidade_taxonomy', 0 );
+add_action( 'init', 'unidade_taxonomy', 1 );

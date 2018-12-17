@@ -19,5 +19,5 @@ require_once('inc/script_conditional.php');
 require_once('inc/assets.php');
 
 // Linha do Tempo
-require_once('inc/post-types/registro.php');
 require_once('inc/taxonomies/unidade.php');
+require_once('inc/post-types/registro.php');
