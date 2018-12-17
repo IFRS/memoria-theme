@@ -86,6 +86,9 @@ function registro_post_type() {
 add_action( 'init', 'registro_post_type', 2 );
 
 add_action( 'cmb2_admin_init', 'registro_metaboxes' );
+/**
+ * Define the metabox and field configurations.
+ */
 function registro_metaboxes() {
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_registro_';
@@ -94,33 +97,26 @@ function registro_metaboxes() {
 	 * Initiate the metabox
 	 */
 	$cmb = new_cmb2_box( array(
-		'id'            => 'metabox_data',
-		'title'         => __( 'Data do Registro', 'ifrs-memoria-theme' ),
-		'object_types'  => array( 'registro' ),
+		'id'            => 'unidade_metabox',
+		'title'         => __( 'Unidades', 'ifrs-memoria-theme' ),
+		'object_types'  => array( 'registro', ), // Post type
 		'context'       => 'side',
-		'priority'      => 'default',
+		'priority'      => 'low',
 		'show_names'    => false, // Show field names on the left
 		// 'cmb_styles' => false, // false to disable the CMB stylesheet
 		// 'closed'     => true, // Keep the metabox closed by default
 	) );
 
-	// Regular text field
 	$cmb->add_field( array(
-		'name'       => __( 'Data', 'ifrs-memoria-theme' ),
-		'desc'       => __( 'Selecione a data do registro temporal', 'ifrs-memoria-theme' ),
-		'id'         => $prefix . 'data',
-		'type'       => 'text_date',
-		'show_on_cb' => 'cmb2_hide_if_no_cats', // function should return a bool value
-		// 'sanitization_cb' => 'my_custom_sanitization', // custom sanitization callback parameter
-		// 'escape_cb'       => 'my_custom_escaping',  // custom escaping callback parameter
-		// 'on_front'        => false, // Optionally designate a field to wp-admin only
-        // 'repeatable'      => true,
-        'date_format' => 'd/m/Y',
-        'attributes' => array(
-            'required' => 'required',
-            'data-datepicker' => json_encode( array(
-                'yearRange' => '-100:+0',
-            ) ),
-        ),
+		'name'           => 'Unidades',
+		'desc'           => 'Escolha a unidade desse registro temporal.',
+		'id'             => $prefix . 'unidade',
+		'taxonomy'       => 'unidade',
+		'type'           => 'taxonomy_radio',
+		// Optional :
+		'text'           => array(
+			'no_terms_text' => 'Ops. Não foi encontrada nenhuma Unidade.'
+		),
+		'remove_default' => 'true'
 	) );
 }
