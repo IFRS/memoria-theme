@@ -14,7 +14,7 @@
             <hr>
             <div class="row post__meta">
                 <div class="col col-md-6">
-                    <p class="post__date">Publicado em <?php the_date('d/m/Y'); ?></p>
+                    <p class="post__date"><small>Publicado em <?php the_date('d/m/Y'); ?></small></p>
                 </div>
                 <div class="col col-md-6">
                     <?php $cats = get_the_category(); ?>
