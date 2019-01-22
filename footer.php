@@ -1,7 +1,7 @@
                 <a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
             </div> <!-- /.col -->
 
-            <?php if (!is_post_type_archive( 'registro' ) && !is_tax('unidade')) : ?>
+            <?php if (!is_post_type_archive( 'registro' ) && !is_tax('unidade') && !is_front_page() && !is_home()) : ?>
                 <div class="col-12 col-md-1 col-lg-2">
                     <div class="h-100 d-flex flex-wrap">
                         <hr class="align-self-start d-none d-md-block back-top__bar">
