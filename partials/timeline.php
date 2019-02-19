@@ -1,7 +1,7 @@
 <?php
     $posts_by_year = array();
     if (have_posts()) {
-        while(have_posts()) {
+        while (have_posts()) {
             the_post();
             $year = get_the_date('Y');
             if (!isset($posts_by_year[$year])) $posts_by_year[$year] = array();
@@ -30,7 +30,7 @@
                             </div>
                             <?php add_action('wp_footer', function() use ($post) { ?>
                                 <div class="modal fade" id="modal-<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $post->ID; ?>-title" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h5>
