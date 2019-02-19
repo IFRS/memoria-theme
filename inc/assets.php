@@ -2,6 +2,7 @@
 function memoria_load_styles() {
     /* wp_enqueue_style( $handle, $src, $deps, $ver, $media ); */
 
+    wp_enqueue_style('css-vendor', get_stylesheet_directory_uri().(WP_DEBUG ? '/css/vendor.css' : '/css/vendor.min.css'), array(), false, 'all');
     wp_enqueue_style('css-memoria', get_stylesheet_directory_uri().(WP_DEBUG ? '/css/memoria.css' : '/css/memoria.min.css'), array(), false, 'all');
 }
 

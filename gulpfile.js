@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const babel        = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
 const cssmin       = require('gulp-cssmin');
+const concat       = require('gulp-concat');
 const del          = require('del');
 const gulp         = require('gulp');
 const imagemin     = require('gulp-imagemin');
@@ -45,6 +46,11 @@ const dist = [
     '!package.json'
 ];
 
+const postCSSplugins = [
+    pixrem(),
+    autoprefixer({browsers: browserslist})
+];
+
 const webpackMode = argv.production ? 'production' : 'development';
 
 var webpackPlugins = [];
@@ -55,10 +61,6 @@ gulp.task('clean', function() {
 });
 
 gulp.task('sass', function() {
-    var postCSSplugins = [
-        pixrem(),
-        autoprefixer({browsers: browserslist})
-    ];
     return gulp.src('sass/*.scss')
     .pipe(sass({
         includePaths: 'sass',
@@ -70,7 +72,16 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('styles', gulp.series('sass', function css() {
+gulp.task('vendor-css', function() {
+    return gulp.src('node_modules/swiper/dist/css/swiper.css')
+    .pipe(concat('vendor.css'))
+    .pipe(postcss(postCSSplugins))
+    .pipe((argv.debug) ? debug({title: 'CSS:'}) : through2.obj())
+    .pipe(gulp.dest('css/'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('styles', gulp.series('sass', 'vendor-css', function css() {
     return gulp.src(['css/*.css', '!css/*.min.css'])
     .pipe(cssmin())
     .pipe(rename({suffix: '.min'}))
@@ -150,7 +161,7 @@ gulp.task('dist', function() {
 if (argv.production) {
     gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'assets', 'images'), 'dist'));
 } else {
-    gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'webpack', 'assets')));
+    gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'vendor-css', 'webpack', 'assets')));
 }
 
 gulp.task('default', gulp.series('build', function watch() {
