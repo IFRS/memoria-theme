@@ -1,12 +1,12 @@
 .menu {
     text-align: center;
     flex-grow: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 70%;
 }
 
 .menu-item {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 
     > a {
         color: $body-color;
