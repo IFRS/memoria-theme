@@ -2,5 +2,5 @@
     background: $cor-content-bg;
     padding: 15px 30px 15px 30px;
     margin-top: 50px;
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 50px - #{$barra-brasil-altura});
 }

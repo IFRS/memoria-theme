@@ -6,7 +6,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f4f4f4",endColorstr="#dedede",GradientType=1);
     background-position: left bottom;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: calc(100vh - #{$barra-brasil-altura});
     display: flex;
     flex-direction: column;
     align-items: center;
