@@ -65,6 +65,7 @@ img {
 
     p {
         &.wp-caption-text {
+            color: $link-color;
             font-size: 0.85rem;
             font-style: italic;
             margin: 0;
