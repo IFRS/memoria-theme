@@ -25,10 +25,13 @@
                                     }
                                 ?>
                                 <h4 class="timeline-title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h4>
-                                <div class="timeline-text"><?php echo $post->post_excerpt; ?></div>
-                                <a class="timeline-link" href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>">Saiba mais</a>
+                                <div class="timeline-text"><?php echo get_the_excerpt($post->ID); ?></div>
+                                <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
+                                <?php foreach ($unidades as $unidade) : ?>
+                                    <a class="timeline-link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                <?php endforeach; ?>
                             </div>
-                            <?php add_action('wp_footer', function() use ($post) { ?>
+                            <?php add_action('wp_footer', function() use ($post, $unidades) { ?>
                                 <div class="modal fade" id="modal-<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $post->ID; ?>-title" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                         <div class="modal-content">
@@ -40,6 +43,11 @@
                                             </div>
                                             <div class="modal-body">
                                                 <p><strong><?php echo get_the_date('', $post->ID); ?></strong></p>
+                                                <p>
+                                                    <?php foreach ($unidades as $unidade) : ?>
+                                                        <a class="timeline-link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                                    <?php endforeach; ?>
+                                                </p>
                                                 <?php
                                                     if (has_post_thumbnail($post->ID)) {
                                                         echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'mb-3 img-fluid timeline-image'));
