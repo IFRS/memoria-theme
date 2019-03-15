@@ -25,6 +25,8 @@
 .sub-menu {
     @extend .list-unstyled;
 
+    margin-top: 5px;
+
     .menu-item {
         > a {
             color: $cor-sub-menu;
