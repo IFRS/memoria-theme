@@ -42,12 +42,16 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p><strong><?php echo get_the_date('', $post->ID); ?></strong></p>
-                                                <p>
-                                                    <?php foreach ($unidades as $unidade) : ?>
-                                                        <a class="timeline-link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                                                    <?php endforeach; ?>
-                                                </p>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <p>
+                                                        <?php foreach ($unidades as $unidade) : ?>
+                                                            <a class="timeline-link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                                        <?php endforeach; ?>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo get_the_date('', $post->ID); ?></strong></p></div>
+                                                </div>
                                                 <?php
                                                     if (has_post_thumbnail($post->ID)) {
                                                         echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'mb-3 img-fluid timeline-image'));
