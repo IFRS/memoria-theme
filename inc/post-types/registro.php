@@ -113,7 +113,6 @@ function registro_metaboxes() {
 		'id'             => $prefix . 'unidade',
 		'taxonomy'       => 'unidade',
 		'type'           => 'taxonomy_radio',
-		// Optional :
 		'text'           => array(
 			'no_terms_text' => 'Ops. Não foi encontrada nenhuma Unidade.'
 		),
