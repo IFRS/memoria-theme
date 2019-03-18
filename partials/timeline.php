@@ -11,6 +11,7 @@
 ?>
 
 <main class="timeline">
+    <h2 class="sr-only">Linha do Tempo</h2>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <?php foreach ($posts_by_year as $year => $posts) : ?>
@@ -24,7 +25,7 @@
                                         echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid timeline-image'));
                                     }
                                 ?>
-                                <h4 class="timeline-title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h4>
+                                <h3 class="timeline-title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
                                 <div class="timeline-text"><?php echo get_the_excerpt($post->ID); ?></div>
                                 <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
                                 <?php foreach ($unidades as $unidade) : ?>
@@ -36,7 +37,7 @@
                                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h5>
+                                                <h4 class="modal-title" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
