@@ -5,7 +5,7 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@fancyapps/fancybox": "^3.5.7",
-    "autoprefixer": "^9.4.10",
+    "autoprefixer": "^9.5.0",
     "bootstrap": "^4.3.1",
     "browser-sync": "^2.24.7",
     "del": "^4.0.0",
