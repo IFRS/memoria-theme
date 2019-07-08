@@ -17,20 +17,6 @@ const through2     = require('through2');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
 
-const browserslist = [
-    'last 3 versions',
-    '>= 1%',
-    'Chrome >= 45',
-    'Firefox >= 38',
-    'Edge >= 12',
-    'Explorer >= 10',
-    'iOS >= 9',
-    'Safari >= 9',
-    'Android >= 4.4',
-    'Opera >= 30',
-    'not ie <= 7'
-];
-
 const dist = [
     '**',
     '!dist{,/**}',
@@ -48,7 +34,7 @@ const dist = [
 
 const postCSSplugins = [
     pixrem(),
-    autoprefixer({browsers: browserslist})
+    autoprefixer()
 ];
 
 const webpackMode = argv.production ? 'production' : 'development';
