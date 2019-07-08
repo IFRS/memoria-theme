@@ -16,7 +16,8 @@
     @extend .text-left;
 }
 
-img {
+img,
+.wp-caption {
     &.alignnone {
         @extend .clearfix;
         min-width: calc(100% + 60px);
@@ -24,8 +25,9 @@ img {
     }
 
     &.aligncenter {
-        min-width: calc(100% + 60px);
-        margin: 10px -60px 10px -30px;
+        @extend .mx-auto;
+        margin-bottom: 20px;
+        margin-top: 5px;
     }
 
     &.alignright {
@@ -42,27 +44,6 @@ img {
 .wp-caption {
     max-width: 96%;
     text-align: center;
-
-    &.alignnone {
-        @extend .clearfix;
-        min-width: calc(100% + 60px);
-        margin: 10px -60px 10px -30px;
-    }
-
-    &.aligncenter {
-        min-width: calc(100% + 60px);
-        margin: 10px -60px 10px -30px;
-    }
-
-    &.alignleft {
-        @extend .float-left;
-        margin: 5px 20px 20px 0;
-    }
-
-    &.alignright {
-        @extend .float-right;
-        margin: 5px 0 20px 20px;
-    }
 
     img {
         border: 0 none;
