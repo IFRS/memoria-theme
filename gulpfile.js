@@ -137,14 +137,6 @@ gulp.task('scripts', gulp.series('webpack', function js() {
     .pipe(browserSync.stream());
 }));
 
-gulp.task('assets_opensans', function() {
-    return gulp.src('node_modules/npm-font-open-sans/fonts/**/*')
-    .pipe((argv.debug) ? debug({title: 'Assets OpenSans:'}) : through2.obj())
-    .pipe(gulp.dest('fonts/'));
-});
-
-gulp.task('assets', gulp.parallel('assets_opensans'));
-
 gulp.task('images', function() {
     return gulp.src('img/*.{png,jpg,gif}')
     .pipe(imagemin())
@@ -159,9 +151,9 @@ gulp.task('dist', function() {
 });
 
 if (argv.production) {
-    gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'assets', 'images'), 'dist'));
+    gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'images'), 'dist'));
 } else {
-    gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'vendor-css', 'webpack', 'assets')));
+    gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'vendor-css', 'webpack')));
 }
 
 gulp.task('default', gulp.series('build', function watch() {
