@@ -43,7 +43,7 @@ var webpackPlugins = [];
 argv.bundleanalyzer ? webpackPlugins.push(new BundleAnalyzerPlugin()) : null;
 
 gulp.task('clean', function() {
-    return del(['css/', 'js/', 'fonts/', 'dist/']);
+    return del(['css/', 'js/', 'dist/']);
 });
 
 gulp.task('sass', function() {
