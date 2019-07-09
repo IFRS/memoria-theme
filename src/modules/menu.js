@@ -1,10 +1,16 @@
 $(function() {
     $('.menu-collapse .sub-menu').addClass('collapse');
-    $('.menu-collapse .sub-menu').prev('a').addClass('collapsed');
-    $('.menu-collapse .sub-menu').prev('a').attr('aria-expanded', 'false');
-    $('.menu-collapse .sub-menu').prev('a').append('<span class="sr-only"> (Expandir submenus)</span>');
 
-    $('.menu-collapse > .menu-item-has-children > a').on('click', function(e) {
+    $('.menu-collapse .menu-item-has-children .sub-menu').before(`
+        <button class="btn btn-sm" aria-expanded="false">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#424241" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs">
+                <path d="M6 9l6 6 6-6"/>
+            </svg>
+            <span class="sr-only">Expandir submenus</span>
+        </button>
+    `);
+
+    $('.menu-collapse > .menu-item-has-children > button').on('click', function(e) {
         $('.menu-collapse .collapse').collapse('hide');
         $(this).nextAll('.collapse').collapse('toggle');
         e.preventDefault();
@@ -12,20 +18,21 @@ $(function() {
 
     $('.menu-collapse .collapse').on('show.bs.collapse', function(e) {
         var collapse = $(e.target);
-        collapse.prev('a').removeClass('collapsed');
-        collapse.prev('a').attr('aria-expanded', 'true');
-        collapse.prev('a').children('span.sr-only').first().text(' (Ocultar submenus)');
+        collapse.prev('button').attr('aria-expanded', 'true');
+        collapse.prev('button').children('svg').first().html('<path d="M18 15l-6-6-6 6"/>');
+        collapse.prev('button').children('span.sr-only').first().text('Ocultar submenus');
     });
 
     $('.menu-collapse .collapse').on('hide.bs.collapse', function(e) {
         var collapse = $(e.target);
-        collapse.prev('a').addClass('collapsed');
-        collapse.prev('a').attr('aria-expanded', 'false');
-        collapse.prev('a').children('span.sr-only').first().text(' (Expandir submenus)');
+        collapse.prev('button').attr('aria-expanded', 'false');
+        collapse.prev('button').children('svg').first().html('<path d="M6 9l6 6 6-6"/>');
+        collapse.prev('button').children('span.sr-only').first().text('Expandir submenus');
     });
 
-    // Abre todos os collapse até o item atual.
+    // Abre todos os collapse anteriores e posteriores ao item atual.
     $('.current-menu-item, .current-menu-parent').parents('.collapse').collapse('show');
+    $('.current-menu-item, .current-menu-parent').children('.collapse').collapse('show');
 
     // Controla a exibição do menu em viewports pequenos.
     if ($(window).width() < 992) {
