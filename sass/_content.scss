@@ -18,11 +18,11 @@
     }
 
     img {
-        filter: grayscale(100%);
+        filter: none;
         transition: all .2s ease-in-out;
 
         &:hover {
-            filter: none;
+            filter: grayscale(100%);
         }
     }
 }
