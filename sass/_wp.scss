@@ -1,9 +1,5 @@
 /* =WordPress Core
 -------------------------------------------------------------- */
-.alignnone {
-    @extend .clearfix;
-}
-
 .aligncenter {
     @extend .text-center;
 }
@@ -19,7 +15,6 @@
 img,
 .wp-caption {
     &.alignnone {
-        @extend .clearfix;
         min-width: calc(100% + 60px);
         margin: 10px -60px 10px -30px;
     }
@@ -43,7 +38,7 @@ img,
 
 .wp-caption {
     max-width: 96%;
-    text-align: center;
+    text-align: center !important;
 
     img {
         border: 0 none;
