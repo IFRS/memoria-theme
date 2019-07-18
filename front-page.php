@@ -2,7 +2,7 @@
 
 <?php the_post(); ?>
 
-<main class="content">
+<main class="content home">
     <?php the_content(); ?>
 </main>
 
