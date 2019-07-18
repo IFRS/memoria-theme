@@ -11,7 +11,7 @@ $(function() {
     `);
 
     $('.menu-collapse > .menu-item-has-children > button').on('click', function(e) {
-        $('.menu-collapse .collapse').collapse('hide');
+        /* $('.menu-collapse .collapse').collapse('hide'); */
         $(this).nextAll('.collapse').collapse('toggle');
         e.preventDefault();
     });
