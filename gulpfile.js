@@ -11,7 +11,6 @@ const path         = require('path');
 const pixrem       = require('pixrem');
 const PluginError  = require('plugin-error');
 const postcss      = require('gulp-postcss');
-const rename       = require('gulp-rename');
 const sass         = require('gulp-sass');
 const through2     = require('through2');
 const uglify       = require('gulp-uglify');
@@ -68,9 +67,8 @@ gulp.task('vendor-css', function() {
 });
 
 gulp.task('styles', gulp.series('sass', 'vendor-css', function css() {
-    return gulp.src(['css/*.css', '!css/*.min.css'])
+    return gulp.src(['css/*.css'])
     .pipe(cssmin())
-    .pipe(rename({suffix: '.min'}))
     .pipe((argv.debug) ? debug({title: 'CSS:'}) : through2.obj())
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
@@ -115,15 +113,13 @@ gulp.task('webpack', function(done) {
 });
 
 gulp.task('scripts', gulp.series('webpack', function js() {
-    return gulp.src(['js/*.js', '!js/*.min.js'])
+    return gulp.src(['js/*.js'])
     .pipe(babel({
         presets: ['@babel/env']
     }))
     .pipe(uglify({
-        ie8: true,
-        mangle: false,
+        ie8: true
     }))
-    .pipe(rename({suffix: '.min'}))
     .pipe((argv.debug) ? debug({title: 'JS:'}) : through2.obj())
     .pipe(gulp.dest('js/'))
     .pipe(browserSync.stream());
