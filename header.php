@@ -35,7 +35,7 @@
 
                     <?php echo get_template_part('partials/menu'); ?>
 
-                    <a href="https://ifrs.edu.br/" class="coluna-nav__ifrs"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
+                    <a href="https://ifrs.edu.br/" class="coluna-nav__ifrs" data-toggle="tooltip" data-placement="top" title="Portal do IFRS"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Portal do IFRS" class="img-fluid"></a>
 
                     <footer class="footer">
                         <p>
