@@ -21,7 +21,7 @@
 
     <div class="container-fluid main-wrapper">
         <div class="row no-gutters">
-            <div class="col-lg-3 coluna-collapse show">
+            <div class="col-lg-3 collapse show coluna-collapse">
                 <div class="sticky-top coluna-nav">
                     <header class="header">
                         <h1 class="sr-only"><?php bloginfo('name'); ?></h1>

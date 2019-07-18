@@ -1,9 +1,10 @@
 .coluna-collapse {
+    @include transition(all 0.5s linear);
     &.collapsing {
         @include media-breakpoint-up(lg) {
             height: auto;
             width: 0;
-            @include transition(width .35s ease);
+            flex-basis: 0;
         }
     }
 }
