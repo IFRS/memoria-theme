@@ -1,7 +1,8 @@
 .home {
-    display: flex;
+    /* display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: center; */
+    padding-top: 225px;
 
     &__link {
         color: $cor-sub-menu-active;
