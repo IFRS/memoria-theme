@@ -2,6 +2,11 @@
 function memoria_load_styles() {
     /* wp_enqueue_style( $handle, $src, $deps, $ver, $media ); */
 
+    if (!is_admin()) {
+        wp_dequeue_style( 'wp-block-library' );
+        wp_deregister_style( 'wp-block-library' );
+    }
+
     wp_enqueue_style('css-vendor', get_stylesheet_directory_uri() . '/css/vendor.css', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/vendor.css'), 'all');
     wp_enqueue_style('css-memoria', get_stylesheet_directory_uri() . '/css/memoria.css', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/memoria.css'), 'all');
 }
