@@ -1,8 +1,12 @@
+.coluna-content {
+    min-height: 100vh;
+}
+
 .content {
     background: $cor-content-bg;
     padding: 15px 30px 15px 30px;
     margin-top: 50px;
-    min-height: calc(100vh - 50px);
+    height: calc(100% - 50px);
 
     ul {
         list-style: none;
