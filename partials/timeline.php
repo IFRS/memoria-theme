@@ -28,9 +28,11 @@
                                 <h3 class="timeline-title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
                                 <div class="timeline-text"><?php echo get_the_excerpt($post->ID); ?></div>
                                 <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
-                                <?php foreach ($unidades as $unidade) : ?>
-                                    <a class="timeline-link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                                <?php endforeach; ?>
+                                <?php if (!empty($unidades)) : ?>
+                                    <?php foreach ($unidades as $unidade) : ?>
+                                        <a class="timeline-link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
                             <?php add_action('wp_footer', function() use ($post, $unidades) { ?>
                                 <div class="modal fade" id="modal-<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $post->ID; ?>-title" aria-hidden="true">
