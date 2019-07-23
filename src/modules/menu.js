@@ -38,7 +38,13 @@ $(function() {
     if ($(window).width() < 992) {
         $(".coluna-collapse").collapse('hide');
     }
+
+    var width_control = $(window).width();
     $(window).resize(function() {
+        if ($(window).width() === width_control) {
+            return;
+        }
+
         if ($(window).width() < 992) {
             $(".coluna-collapse").collapse('hide');
         } else {
@@ -47,7 +53,7 @@ $(function() {
     });
 
     $('.btn-menu-toggle').on('click', function(e) {
-        $(".coluna-collapse").collapse('toggle');
         e.preventDefault();
+        $(".coluna-collapse").collapse('toggle');
     });
 });
