@@ -25,3 +25,6 @@ require_once('inc/remove_inline_styles.php');
 require_once('inc/taxonomies/unidade.php');
 require_once('inc/post-types/registro.php');
 require_once('inc/roles.php');
+
+// Custom Queries
+require_once('inc/queries.php');
