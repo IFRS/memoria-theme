@@ -41,6 +41,6 @@
     "respond.js": "^1.4.2",
     "swiper": "^4.5.0",
     "through2": "^3.0.1",
-    "webpack": "^4.36.1"
+    "webpack": "^4.37.0"
   }
 }
