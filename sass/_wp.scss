@@ -23,16 +23,19 @@ img,
         @extend .mx-auto;
         margin-bottom: 20px;
         margin-top: 5px;
+        max-width: 90%;
     }
 
     &.alignright {
         @extend .float-right;
         margin: 5px 0 20px 20px;
+        max-width: 40%;
     }
 
     &.alignleft {
         @extend .float-left;
         margin: 5px 20px 20px 0;
+        max-width: 40%;
     }
 }
 
@@ -121,8 +124,8 @@ img,
 }
 
 .gallery-caption {
-    color: #666;
-    font-size: 0.7rem;
+    color: $link-color;
+    font-size: 0.8rem;
 }
 
 @for $i from 1 through 9 {
