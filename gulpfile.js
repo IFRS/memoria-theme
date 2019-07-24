@@ -58,7 +58,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('vendor-css', function() {
-    return gulp.src('node_modules/swiper/dist/css/swiper.css')
+    return gulp.src(['node_modules/swiper/dist/css/swiper.css', 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css'])
     .pipe(concat('vendor.css'))
     .pipe(postcss(postCSSplugins))
     .pipe((argv.debug) ? debug({title: 'CSS:'}) : through2.obj())
