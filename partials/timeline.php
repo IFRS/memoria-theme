@@ -12,6 +12,7 @@
 
 <main class="timeline">
     <h2 class="sr-only">Linha do Tempo</h2>
+    <ul class="swiper-pagination"></ul>
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <?php foreach ($posts_by_year as $year => $posts) : ?>
@@ -74,7 +75,5 @@
                 </div>
             <?php endforeach; ?>
         </div>
-
-        <div class="swiper-pagination"></div>
     </div>
 </main>

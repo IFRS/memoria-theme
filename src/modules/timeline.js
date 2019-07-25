@@ -11,11 +11,17 @@ $(function() {
 
         pagination: {
             el: '.swiper-pagination',
+            type: 'bullets',
             clickable: true,
             renderBullet: function (index, className) {
                 var year = document.querySelectorAll('.swiper-slide')[index].getAttribute('data-year');
-                return '<span class="' + className + '">' + year + '</span>';
+                return '<li class="' + className + '">' + year + '</li>';
             }
         }
+    });
+
+    $('.swiper-container').first().height($(window).outerHeight() - $('.swiper-pagination').first().outerHeight() - 35);
+    $(window).resize(function() {
+        $('.swiper-container').first().height($(window).outerHeight() - $('.swiper-pagination').first().outerHeight() - 35);
     });
 });
