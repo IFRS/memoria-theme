@@ -9,15 +9,17 @@
         position: relative;
 
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+
+        padding: 10px 30px;
     }
 
     &__ano-link {
         color: $cor-sub-menu-active;
         text-align: center;
         opacity: 1;
-        padding: 0.1rem 0.3rem;
-        margin: 0.3rem 0.5rem;
+        padding: 0 0.1rem;
+        margin: 0 0.8rem 0.3rem 0;
 
         &.active {
             color: #ffffff;
