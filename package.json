@@ -39,7 +39,6 @@
     "plugin-error": "^1.0.1",
     "popper.js": "^1.15.0",
     "respond.js": "^1.4.2",
-    "swiper": "^4.5.0",
     "through2": "^3.0.1",
     "webpack": "^4.37.0"
   }
