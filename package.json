@@ -40,6 +40,6 @@
     "popper.js": "^1.15.0",
     "respond.js": "^1.4.2",
     "through2": "^3.0.1",
-    "webpack": "^4.37.0"
+    "webpack": "^4.38.0"
   }
 }
