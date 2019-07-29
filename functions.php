@@ -18,8 +18,11 @@ require_once('inc/script_conditional.php');
 // Scripts & Styles
 require_once('inc/assets.php');
 
-// Remove inline styles do conteúdo.
+// Remove inline styles do conteúdo
 require_once('inc/remove_inline_styles.php');
+
+// Limita o resumo
+require_once('inc/excerpt-limit.php');
 
 // Linha do Tempo
 require_once('inc/taxonomies/unidade.php');
