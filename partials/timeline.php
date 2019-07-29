@@ -14,27 +14,27 @@
     <h2 class="sr-only">Linha do Tempo</h2>
     <ul class="timeline__ano-list nav" role="tablist">
         <?php foreach ($posts_by_year as $year => $posts) : ?>
-            <li class="timeline__ano-item nav-item"><a class="timeline__ano-link nav-link<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#collapse-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab"><?php echo $year; ?></a></li>
+            <li class="timeline__ano-item nav-item"><a class="timeline__ano-link nav-link<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#tab-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab"><?php echo $year; ?></a></li>
         <?php endforeach; ?>
     </ul>
     <div class="tab-content">
         <?php foreach ($posts_by_year as $year => $posts) : ?>
-            <div class="tab-pane fade<?php echo (reset($posts_by_year) === $posts) ? ' active show' : ''; ?>" id="collapse-<?php echo $year; ?>" role="tabpanel">
+            <div class="tab-pane animated<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
                 <div class="timeline__ano-content">
                     <?php foreach ($posts as $post) : ?>
                         <div class="registro">
-                            <span class="registro__date"><?php echo get_the_date('d \d\e F', $post->ID); ?></span>
+                            <span class="registro__date animated slideInRight fast"><?php echo get_the_date('d \d\e F', $post->ID); ?></span>
                             <?php
                                 if (has_post_thumbnail($post->ID)) {
-                                    echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image'));
+                                    echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animated zoomIn delay-1s'));
                                 }
                             ?>
-                            <h3 class="registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
-                            <div class="registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
+                            <h3 class="registro__title animated slideInRight"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
+                            <div class="registro__text animated slideInRight"><?php echo get_the_excerpt($post->ID); ?></div>
                             <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
                             <?php if (!empty($unidades)) : ?>
                                 <?php foreach ($unidades as $unidade) : ?>
-                                    <a class="registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                    <a class="registro__link animated slideInRight fast" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
