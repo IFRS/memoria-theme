@@ -34,7 +34,7 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.2",
     "html5shiv": "^3.7.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "minimist": "^1.2.3",
     "pixrem": "^5.0.0",
     "plugin-error": "^1.0.1",
