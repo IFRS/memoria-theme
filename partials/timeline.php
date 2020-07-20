@@ -7,6 +7,7 @@
             $year = ($date['year']) ? $date['year'] : get_the_date('Y');
             if (!isset($posts_by_year[$year])) $posts_by_year[$year] = array();
             $posts_by_year[$year][] = get_post();
+            ksort($posts_by_year);
         }
     }
 ?>
