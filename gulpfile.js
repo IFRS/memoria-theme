@@ -2,7 +2,7 @@ const argv         = require('minimist')(process.argv.slice(2));
 const autoprefixer = require('autoprefixer');
 const babel        = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
-const cssmin       = require('gulp-cssmin');
+const csso         = require('gulp-csso');
 const concat       = require('gulp-concat');
 const del          = require('del');
 const gulp         = require('gulp');
@@ -12,24 +12,9 @@ const pixrem       = require('pixrem');
 const PluginError  = require('plugin-error');
 const postcss      = require('gulp-postcss');
 const sass         = require('gulp-sass');
-const through2     = require('through2');
+const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
-
-const dist = [
-    '**',
-    '!dist{,/**}',
-    '!node_modules{,/**}',
-    '!sass{,/**}',
-    '!src{,/**}',
-    '!.**',
-    '!docker-compose.override.yml',
-    '!docker-compose.yml',
-    '!Dockerfile',
-    '!gulpfile.js',
-    '!package-lock.json',
-    '!package.json'
-];
 
 const postCSSplugins = [
     pixrem(),
@@ -41,8 +26,8 @@ const webpackMode = argv.production ? 'production' : 'development';
 var webpackPlugins = [];
 argv.bundleanalyzer ? webpackPlugins.push(new BundleAnalyzerPlugin()) : null;
 
-gulp.task('clean', function() {
-    return del(['css/', 'js/', 'dist/']);
+gulp.task('clean', async function() {
+    return await del(['css/', 'js/', 'dist/']);
 });
 
 gulp.task('sass', function() {
@@ -52,7 +37,6 @@ gulp.task('sass', function() {
         outputStyle: 'expanded'
     }).on('error', sass.logError))
     .pipe(postcss(postCSSplugins))
-    .pipe((argv.debug) ? debug({title: 'SASS:'}) : through2.obj())
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 });
@@ -61,15 +45,15 @@ gulp.task('vendor-css', function() {
     return gulp.src(['node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css', 'node_modules/animate.css/animate.css'])
     .pipe(concat('vendor.css'))
     .pipe(postcss(postCSSplugins))
-    .pipe((argv.debug) ? debug({title: 'CSS:'}) : through2.obj())
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('styles', gulp.series('sass', 'vendor-css', function css() {
     return gulp.src(['css/*.css'])
-    .pipe(cssmin())
-    .pipe((argv.debug) ? debug({title: 'CSS:'}) : through2.obj())
+    .pipe(sourcemaps.init())
+    .pipe(csso())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 }));
@@ -120,7 +104,6 @@ gulp.task('scripts', gulp.series('webpack', function js() {
     .pipe(uglify({
         ie8: true
     }))
-    .pipe((argv.debug) ? debug({title: 'JS:'}) : through2.obj())
     .pipe(gulp.dest('js/'))
     .pipe(browserSync.stream());
 }));
@@ -128,13 +111,22 @@ gulp.task('scripts', gulp.series('webpack', function js() {
 gulp.task('images', function() {
     return gulp.src('img/*.{png,jpg,gif}')
     .pipe(imagemin())
-    .pipe((argv.debug) ? debug({title: 'Images:'}) : through2.obj())
     .pipe(gulp.dest('img/'));
 });
 
 gulp.task('dist', function() {
-    return gulp.src(dist)
-    .pipe((argv.debug) ? debug({title: 'Dist:'}) : through2.obj())
+    return gulp.src([
+        '**',
+        '!dist{,/**}',
+        '!node_modules{,/**}',
+        '!sass{,/**}',
+        '!src{,/**}',
+        '!.**',
+        '!gulpfile.js',
+        '!package-lock.json',
+        '!package.json',
+        '!README.md',
+    ])
     .pipe(gulp.dest('dist/'));
 });
 
