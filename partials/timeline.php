@@ -3,7 +3,8 @@
     if (have_posts()) {
         while (have_posts()) {
             the_post();
-            $year = get_the_date('Y');
+            $date = get_post_meta( get_the_ID(), '_registro_data', true );
+            $year = ($date['year']) ? $date['year'] : get_the_date('Y');
             if (!isset($posts_by_year[$year])) $posts_by_year[$year] = array();
             $posts_by_year[$year][] = get_post();
         }
@@ -23,7 +24,8 @@
                 <div class="timeline__ano-content">
                     <?php foreach ($posts as $post) : ?>
                         <div class="registro">
-                            <span class="registro__date animated slideInRight fast"><?php echo get_the_date('d \d\e F', $post->ID); ?></span>
+                            <?php $data = get_post_meta( get_the_ID(), '_registro_data', true ); ?>
+                            <span class="registro__date animated slideInRight fast"><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???'; ?></span>
                             <?php
                                 if (has_post_thumbnail($post->ID)) {
                                     echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animated zoomIn delay-1s'));

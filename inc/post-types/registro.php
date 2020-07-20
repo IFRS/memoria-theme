@@ -87,24 +87,34 @@ add_action( 'init', function() {
  * Define the metabox and field configurations.
  */
 add_action( 'cmb2_admin_init', function() {
-	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_registro_';
 
-	/**
-	 * Initiate the metabox
-	 */
-	$cmb = new_cmb2_box( array(
-		'id'            => 'unidade_metabox',
-		'title'         => __( 'Unidades', 'ifrs-memoria-theme' ),
-		'object_types'  => array( 'registro', ), // Post type
-		'context'       => 'side',
+	$data = new_cmb2_box( array(
+		'id'            => 'data_metabox',
+		'title'         => __( 'Data do Registro', 'ifrs-memoria-theme' ),
+		'object_types'  => array( 'registro' ),
+		'context'       => 'normal',
 		'priority'      => 'low',
-		'show_names'    => false, // Show field names on the left
-		// 'cmb_styles' => false, // false to disable the CMB stylesheet
-		// 'closed'     => true, // Keep the metabox closed by default
+		'show_names'    => false,
 	) );
 
-	$cmb->add_field( array(
+	$data->add_field( array(
+		'name'           => 'Data',
+		'desc'           => __( 'Escolha a data desse registro temporal. Dia e mês são opcionais, selecione a opção "---" para deixar em branco.', 'ifrs-memoria-theme' ),
+		'id'             => $prefix . 'data',
+		'type'           => 'customdate',
+	) );
+
+	$unidade = new_cmb2_box( array(
+		'id'            => 'unidade_metabox',
+		'title'         => __( 'Unidades', 'ifrs-memoria-theme' ),
+		'object_types'  => array( 'registro' ),
+		'context'       => 'side',
+		'priority'      => 'low',
+		'show_names'    => false,
+	) );
+
+	$unidade->add_field( array(
 		'name'           => 'Unidades',
 		'desc'           => 'Escolha a unidade desse registro temporal.',
 		'id'             => $prefix . 'unidade',
@@ -116,3 +126,83 @@ add_action( 'cmb2_admin_init', function() {
 		'remove_default' => 'true'
 	) );
 }, 2 );
+
+/**
+ * Render Custom Date Field
+ */
+function cmb2_get_year_options( $value = false ) {
+	$current_year = date('Y');
+	$range_years = range(1900, $current_year);
+	$years = array_combine($range_years, $range_years);
+
+	$years_options = '';
+	foreach ( $years as $year_number => $year_text ) {
+		$years_options .= '<option value="'. $year_number .'" '. selected( $value, $year_number, false ) .'>'. $year_text .'</option>';
+	}
+
+	return $years_options;
+}
+
+function cmb2_get_month_options( $value = false ) {
+	$months = array_reduce(range(1,12), function($rslt, $m) { $rslt[$m] = date_i18n('F', mktime(0,0,0,$m,1)); return $rslt; });
+
+	$months_options = '<option value="">---</option>';
+	foreach ( $months as $month_number => $month_text ) {
+		$months_options .= '<option value="'. $month_number .'" '. selected( $value, $month_number, false ) .'>'. $month_text .'</option>';
+	}
+
+	return $months_options;
+}
+
+function cmb2_get_day_options( $value = false ) {
+	$days = array();
+	for ($i = 1; $i <= 31; $i++) {
+		$days[$i] = ($i <= 9) ? '0'.$i : $i;
+	}
+
+	$days_options = '<option value="">---</option>';
+	foreach ( $days as $day_number => $day_text ) {
+		$days_options .= '<option value="'. $day_number .'" '. selected( $value, $day_number, false ) .'>'. $day_text .'</option>';
+	}
+
+	return $days_options;
+}
+
+add_filter( 'cmb2_render_customdate', function( $field, $value, $object_id, $object_type, $field_type ) {
+	// make sure we specify each part of the value we need.
+	$value = wp_parse_args( $value, array(
+		'year'  => '',
+		'month' => '',
+		'day'   => '',
+	) );
+?>
+	<label class="screen-reader-text" for="<?php echo $field_type->_id( '_day' ); ?>'">Day</label>
+	<?php echo $field_type->select( array(
+		'name'    => $field_type->_name( '[day]' ),
+		'id'      => $field_type->_id( '_day' ),
+		'value'   => $value['day'],
+		'options' => cmb2_get_day_options( $value['day'] ),
+		'desc'    => '',
+	) ); ?>
+	/
+	<label class="screen-reader-text" for="<?php echo $field_type->_id( '_month' ); ?>'">Mês</label>
+	<?php echo $field_type->select( array(
+		'name'    => $field_type->_name( '[month]' ),
+		'id'      => $field_type->_id( '_month' ),
+		'value'   => $value['month'],
+		'options' => cmb2_get_month_options( $value['month'] ),
+		'desc'    => '',
+	) ); ?>
+	/
+	<label class="screen-reader-text" for="<?php echo $field_type->_id( '_year' ); ?>">Ano</label>
+	<?php echo $field_type->select( array(
+		'name'    => $field_type->_name( '[year]' ),
+		'id'      => $field_type->_id( '_year' ),
+		'value'   => $value['year'],
+		'options' => cmb2_get_year_options( $value['year'] ),
+		'desc'    => '',
+	) ); ?>
+	<br class="clear">
+<?php
+	echo $field_type->_desc( true );
+}, 10, 5 );
