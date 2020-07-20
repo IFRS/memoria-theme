@@ -1,5 +1,5 @@
 <?php
-function unidade_taxonomy() {
+add_action( 'init', function() {
 	$labels = array(
 		'name'                       => _x( 'Unidades', 'Taxonomy General Name', 'ifrs-memoria-theme' ),
 		'singular_name'              => _x( 'Unidade', 'Taxonomy Singular Name', 'ifrs-memoria-theme' ),
@@ -44,6 +44,4 @@ function unidade_taxonomy() {
     );
 
 	register_taxonomy( 'unidade', array( 'registro' ), $args );
-}
-
-add_action( 'init', 'unidade_taxonomy', 1 );
+}, 1 );

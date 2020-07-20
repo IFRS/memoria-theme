@@ -1,5 +1,5 @@
 <?php
-function registro_post_type() {
+add_action( 'init', function() {
 	$labels = array(
 		'name'                  => _x( 'Registros', 'Post Type General Name', 'ifrs-memoria-theme' ),
 		'singular_name'         => _x( 'Registro', 'Post Type Singular Name', 'ifrs-memoria-theme' ),
@@ -81,15 +81,12 @@ function registro_post_type() {
 	);
 
 	register_post_type( 'registro', $args );
-}
+}, 2 );
 
-add_action( 'init', 'registro_post_type', 2 );
-
-add_action( 'cmb2_admin_init', 'registro_metaboxes' );
 /**
  * Define the metabox and field configurations.
  */
-function registro_metaboxes() {
+add_action( 'cmb2_admin_init', function() {
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_registro_';
 
@@ -118,4 +115,4 @@ function registro_metaboxes() {
 		),
 		'remove_default' => 'true'
 	) );
-}
+}, 2 );

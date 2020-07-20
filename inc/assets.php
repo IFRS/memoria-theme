@@ -1,5 +1,5 @@
 <?php
-function memoria_load_styles() {
+add_action( 'wp_enqueue_scripts', function() {
     /* wp_enqueue_style( $handle, $src, $deps, $ver, $media ); */
 
     if (!is_admin()) {
@@ -9,9 +9,9 @@ function memoria_load_styles() {
 
     wp_enqueue_style('css-vendor', get_stylesheet_directory_uri() . '/css/vendor.css', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/vendor.css'), 'all');
     wp_enqueue_style('css-memoria', get_stylesheet_directory_uri() . '/css/memoria.css', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/memoria.css'), 'all');
-}
+}, 1 );
 
-function memoria_load_scripts() {
+add_action( 'wp_enqueue_scripts', function() {
     /* wp_register_script( $handle, $src, $deps, $ver, $in_footer ); */
     /* wp_enqueue_script( $handle[, $src, $deps, $ver, $in_footer] ); */
 
@@ -27,7 +27,4 @@ function memoria_load_scripts() {
     if (!WP_DEBUG) {
         wp_enqueue_script( 'js-barra-brasil', 'https://barra.brasil.gov.br/barra.js', array(), null, true );
     }
-}
-
-add_action( 'wp_enqueue_scripts', 'memoria_load_styles', 1 );
-add_action( 'wp_enqueue_scripts', 'memoria_load_scripts', 1 );
+}, 1 );
