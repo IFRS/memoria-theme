@@ -68,7 +68,7 @@
                                                         echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'mb-3 img-fluid registro__image'));
                                                     }
                                                 ?>
-                                                <?php echo do_shortcode($post->post_content); ?>
+                                                <?php echo apply_filters('the_content', $post->post_content); ?>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
