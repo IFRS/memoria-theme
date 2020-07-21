@@ -64,6 +64,37 @@ img,
     }
 }
 
+.wp-block-quote {
+    background: $gray-100;
+    border-left: 10px solid $link-color;
+    margin: 1rem 0;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+
+    &::before {
+        color: $gray-400;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.1em;
+        vertical-align: -0.4em;
+    }
+
+    &::after {
+        color: $gray-400;
+        content: close-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-left: 0.1em;
+        text-align: right;
+        vertical-align: -0.5em;
+    }
+
+    p {
+        display: inline;
+    }
+}
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	border: 0;
