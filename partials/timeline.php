@@ -41,7 +41,7 @@
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
-                        <?php add_action('wp_footer', function() use ($post, $unidades) { ?>
+                        <?php add_action('wp_footer', function() use ($post, $unidades, $data) { ?>
                             <div class="modal fade" id="modal-<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $post->ID; ?>-title" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
@@ -52,22 +52,24 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-12 col-md-6">
-                                                    <p>
-                                                    <?php foreach ($unidades as $unidade) : ?>
-                                                        <a class="registro__link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                                                    <?php endforeach; ?>
-                                                    </p>
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-6">
+                                                        <p>
+                                                        <?php foreach ($unidades as $unidade) : ?>
+                                                            <a class="registro__link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                                        <?php endforeach; ?>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???', ($data['month']) ? ' de ' : '', $data['year']; ?></strong></p></div>
                                                 </div>
-                                                <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo get_the_date('', $post->ID); ?></strong></p></div>
+                                                <?php
+                                                    if (has_post_thumbnail($post->ID)) {
+                                                        echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'mb-3 img-fluid registro__image'));
+                                                    }
+                                                ?>
+                                                <?php echo do_shortcode($post->post_content); ?>
                                             </div>
-                                            <?php
-                                                if (has_post_thumbnail($post->ID)) {
-                                                    echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'mb-3 img-fluid registro__image'));
-                                                }
-                                            ?>
-                                            <?php echo $post->post_content; ?>
                                         </div>
                                         <div class="modal-footer">
                                             <small><strong>Atualizado em: </strong><?php echo get_the_modified_date('', $post->ID); ?> &agrave;s <?php echo get_the_modified_time('', $post->ID); ?></small>
