@@ -21,23 +21,23 @@
     </ul>
     <div class="tab-content">
         <?php foreach ($posts_by_year as $year => $posts) : ?>
-            <div class="tab-pane animated<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
+            <div class="tab-pane animate__animated<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
                 <div class="timeline__ano-content">
                     <?php foreach ($posts as $post) : ?>
                         <div class="registro">
                             <?php $data = get_post_meta( get_the_ID(), '_registro_data', true ); ?>
-                            <span class="registro__date animated slideInRight fast"><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???'; ?></span>
+                            <span class="registro__date animate__animated animate__fadeInRight fast"><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???'; ?></span>
                             <?php
                                 if (has_post_thumbnail($post->ID)) {
-                                    echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animated zoomIn delay-1s'));
+                                    echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animate__animated animate__zoomIn animate__delay-1s'));
                                 }
                             ?>
-                            <h3 class="registro__title animated slideInRight"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
-                            <div class="registro__text animated slideInRight"><?php echo get_the_excerpt($post->ID); ?></div>
+                            <h3 class="registro__title animate__animated animate__fadeInRight"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
+                            <div class="registro__text animate__animated animate__fadeInRight"><?php echo get_the_excerpt($post->ID); ?></div>
                             <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
                             <?php if (!empty($unidades)) : ?>
                                 <?php foreach ($unidades as $unidade) : ?>
-                                    <a class="registro__link animated slideInRight fast" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                    <a class="registro__link animate__animated animate__fadeInRight animate__fast" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
