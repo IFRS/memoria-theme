@@ -91,6 +91,7 @@
     }
 
     &__link {
+        display: inline-block;
         line-height: 1.5;
         font-weight: bold;
     }
@@ -99,5 +100,21 @@
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
         margin-bottom: 20px;
         max-width: 80%;
+    }
+}
+
+.registro-detalhe {
+    &__image {
+        float: left;
+        margin-right: 15px;
+        width: 40%;
+    }
+
+    &__caption {
+        color: $gray-600;
+        font-size: 0.85rem;
+        font-style: italic;
+        margin: 0;
+        padding: 5px 0;
     }
 }

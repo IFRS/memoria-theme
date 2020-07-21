@@ -63,11 +63,12 @@
                                                     </div>
                                                     <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???', ($data['month']) ? ' de ' : '', $data['year']; ?></strong></p></div>
                                                 </div>
-                                                <?php
-                                                    if (has_post_thumbnail($post->ID)) {
-                                                        echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'mb-3 img-fluid registro__image'));
-                                                    }
-                                                ?>
+                                                <?php if (has_post_thumbnail($post->ID)) : ?>
+                                                    <div class="registro-detalhe__image">
+                                                        <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid')); ?>
+                                                        <p class="registro-detalhe__caption"><?php echo get_the_post_thumbnail_caption($post->ID); ?></p>
+                                                    </div>
+                                                <?php endif; ?>
                                                 <?php echo apply_filters('the_content', $post->post_content); ?>
                                             </div>
                                         </div>
