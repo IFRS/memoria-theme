@@ -42,8 +42,12 @@
                     ?>
                     <?php foreach ($posts as $post) : ?>
                         <div class="registro">
-                            <?php $data = get_post_meta( get_the_ID(), '_registro_data', true ); ?>
-                            <span class="registro__date animate__animated animate__fadeInRight fast"><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???'; ?></span>
+                            <?php
+                                $data = get_post_meta( $post->ID, '_registro_data', true );
+                                $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
+                                $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
+                            ?>
+                            <span class="registro__date animate__animated animate__fadeInRight fast"><?php echo $diames; ?></span>
                             <?php
                                 if (has_post_thumbnail($post->ID)) {
                                     echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animate__animated animate__zoomIn animate__delay-1s'));
@@ -58,7 +62,8 @@
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
-                        <?php add_action('wp_footer', function() use ($post, $unidades, $data) { ?>
+                        <?php add_action('wp_footer', function() use ($post, $unidades, $diamesano) { ?>
+                            <!-- Modal -->
                             <div class="modal fade" id="modal-<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $post->ID; ?>-title" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
@@ -78,7 +83,7 @@
                                                         <?php endforeach; ?>
                                                         </p>
                                                     </div>
-                                                    <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo $data['day'], ($data['day']) ? ' de ' : '', ($data['month']) ? date_i18n('F', mktime(0, 0, 0, $data['month'])) : '???', ($data['month']) ? ' de ' : '', $data['year']; ?></strong></p></div>
+                                                    <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo $diamesano; ?></strong></p></div>
                                                 </div>
                                                 <?php if (has_post_thumbnail($post->ID)) : ?>
                                                     <div class="registro-detalhe__image">
