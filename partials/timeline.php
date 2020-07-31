@@ -23,6 +23,23 @@
         <?php foreach ($posts_by_year as $year => $posts) : ?>
             <div class="tab-pane animate__animated<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
                 <div class="timeline__ano-content">
+                    <?php
+                        uasort($posts, function ($a, $b) {
+                            $a_meta = get_post_meta( $a->ID, '_registro_data', true );
+                            $b_meta = get_post_meta( $b->ID, '_registro_data', true );
+
+                            $a_date = new DateTime();
+                            $a_date->setDate(($a_meta['year']) ? $a_meta['year'] : 0, ($a_meta['month']) ? $a_meta['month'] : 0, ($a_meta['day']) ? $a_meta['day'] : 0);
+
+                            $b_date = new DateTime();
+                            $b_date->setDate(($b_meta['year']) ? $b_meta['year'] : 0, ($b_meta['month']) ? $b_meta['month'] : 0, ($b_meta['day']) ? $b_meta['day'] : 0);
+
+                            if ($a_date == $b_date) {
+                                return 0;
+                            }
+                            return ($a_date < $b_date) ? -1 : 1;
+                        });
+                    ?>
                     <?php foreach ($posts as $post) : ?>
                         <div class="registro">
                             <?php $data = get_post_meta( get_the_ID(), '_registro_data', true ); ?>
