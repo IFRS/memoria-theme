@@ -48,7 +48,6 @@ img,
         height: auto;
         margin: 0;
         max-width: 100%;
-        min-width: 100%;
         padding: 0;
         width: auto;
     }
@@ -64,6 +63,7 @@ img,
     }
 }
 
+blockquote,
 .wp-block-quote {
     background: $gray-100;
     border-left: 10px solid $link-color;
@@ -74,8 +74,8 @@ img,
     &::before {
         color: $gray-400;
         content: open-quote;
-        font-size: 4em;
-        line-height: 0.1em;
+        font-size: 3em;
+        line-height: 0.05em;
         margin-right: 0.1em;
         vertical-align: -0.4em;
     }
@@ -83,15 +83,16 @@ img,
     &::after {
         color: $gray-400;
         content: close-quote;
-        font-size: 4em;
-        line-height: 0.1em;
+        font-size: 3em;
+        line-height: 0.05em;
         margin-left: 0.1em;
         text-align: right;
-        vertical-align: -0.5em;
+        vertical-align: -0.4em;
     }
 
     p {
         display: inline;
+        margin: 0;
     }
 }
 
