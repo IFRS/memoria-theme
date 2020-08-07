@@ -6,7 +6,6 @@ const csso         = require('gulp-csso');
 const concat       = require('gulp-concat');
 const del          = require('del');
 const gulp         = require('gulp');
-const imagemin     = require('gulp-imagemin');
 const path         = require('path');
 const pixrem       = require('pixrem');
 const PluginError  = require('plugin-error');
@@ -108,12 +107,6 @@ gulp.task('scripts', gulp.series('webpack', function js() {
     .pipe(browserSync.stream());
 }));
 
-gulp.task('images', function() {
-    return gulp.src('img/*.{png,jpg,gif}')
-    .pipe(imagemin())
-    .pipe(gulp.dest('img/'));
-});
-
 gulp.task('dist', function() {
     return gulp.src([
         '**',
@@ -131,7 +124,7 @@ gulp.task('dist', function() {
 });
 
 if (argv.production) {
-    gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'images'), 'dist'));
+    gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts'), 'dist'));
 } else {
     gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'vendor-css', 'webpack')));
 }
