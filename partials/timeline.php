@@ -87,7 +87,7 @@
                                                 </div>
                                                 <?php if (has_post_thumbnail($post->ID)) : ?>
                                                     <div class="registro-detalhe__image">
-                                                        <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid')); ?>
+                                                        <a href="<?php echo get_the_post_thumbnail_url($post->ID, 'full') ?>"><?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid')); ?></a>
                                                         <p class="registro-detalhe__caption"><?php echo get_the_post_thumbnail_caption($post->ID); ?></p>
                                                     </div>
                                                 <?php endif; ?>
