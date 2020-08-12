@@ -7,4 +7,9 @@
 .search-result {
     border-bottom: 1px solid $gray-500;
     margin-bottom: 30px;
+
+    &__link {
+        font-size: 0.75rem;
+        color: $gray-600;
+    }
 }
