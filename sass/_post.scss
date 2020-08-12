@@ -1,7 +1,12 @@
 .post {
     &__thumb {
         @extend .img-fluid;
+
+        float: left;
+        margin-right: 15px;
+        width: 40%;
     }
+
     img {
         @extend .img-fluid;
     }
