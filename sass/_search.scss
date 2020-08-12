@@ -1,0 +1,10 @@
+.search {
+    &__title {
+        margin-bottom: 30px;
+    }
+}
+
+.search-result {
+    border-bottom: 1px solid $gray-500;
+    margin-bottom: 30px;
+}
