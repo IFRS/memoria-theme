@@ -27,9 +27,9 @@
             $attachment = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             $og_image = $attachment[0];
         } elseif (get_header_image())  {
-            $og_image = header_image();
+            $og_image = get_header_image();
         } else {
-            $og_image = esc_url( get_stylesheet_directory_uri() ) . '/img/ifrs.png';
+            $og_image = esc_url( get_stylesheet_directory_uri() ) . '/img/marca-numem.png';
         }
     ?>
     <meta property="og:image" content="<?php echo esc_attr( $og_image ); ?>">
