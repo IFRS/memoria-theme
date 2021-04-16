@@ -5,17 +5,18 @@ function memoria_breadcrumb() {
     $after     = '</li>';
 
     if (!is_front_page() || is_paged()) {
-        echo '<div class="container" id="breadcrumb">';
-        echo '<nav aria-label="breadcrumb">';
-		echo '<ol class="breadcrumb">';
-		echo 'Voc&ecirc; est&aacute; em:&nbsp;';
+        echo '<nav class="breadcrumb-nav" aria-label="Breadcrumb">';
+		echo '<ol class="breadcrumb container">';
+		//echo 'Voc&ecirc; est&aacute; em:&nbsp;';
 
         global $post;
         $homeLink = home_url();
 		$siteprincipal = get_home_url('1','/');
         $nomesite = get_bloginfo('name');
 
-        echo '<li class="breadcrumb-item"><a href="' . $homeLink . '">' . $nomesite . '</a> ' . $sep . '</li> ';
+        echo '<li class="breadcrumb-item">';
+        echo '<a href="' . $homeLink . '">' . $nomesite . '</a> ' . $sep;
+        echo '</li>';
 
         if (is_home()) {
             echo $before . get_the_title(get_option( 'page_for_posts' )) . $after;
@@ -98,6 +99,6 @@ function memoria_breadcrumb() {
         }
 
         echo '</ol>';
-		echo '</div></div></div>';
+		echo '</nav>';
     }
 }
