@@ -51,11 +51,18 @@ add_action( 'after_setup_theme', function() {
     ) );
 
     // Default Headers
-    // register_default_headers( array(
-    //     'padrao' => array(
-    //         'url'           => '%s/img/fundos/padrao.jpg',
-    //         'thumbnail_url' => '%s/img/fundos/padrao.thumb.jpg',
-    //         'description'   => __( 'Imagem de Cabeçalho Padrão', 'ifrs-memoria-theme' ),
-    //     ),
-    // ) );
+    register_default_headers( array(
+        'fundo1' => array(
+            'url'           => '%s/img/fundos/fundo1.jpg',
+            'thumbnail_url' => '%s/img/fundos/fundo1.thumb.jpg',
+            'description'   => __( 'Imagem de Cabeçalho Padrão 1', 'ifrs-memoria-theme' ),
+        ),
+    ) );
+    register_default_headers( array(
+        'fundo2' => array(
+            'url'           => '%s/img/fundos/fundo2.jpg',
+            'thumbnail_url' => '%s/img/fundos/fundo2.thumb.jpg',
+            'description'   => __( 'Imagem de Cabeçalho Padrão 2', 'ifrs-memoria-theme' ),
+        ),
+    ) );
 } );
