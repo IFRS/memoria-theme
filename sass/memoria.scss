@@ -1,3 +1,4 @@
+/* Config */
 @import 'util/vars';
 @import 'util/bootstrap-override';
 
@@ -37,12 +38,15 @@
 @import 'bootstrap/scss/utilities';
 @import 'bootstrap/scss/print';
 
+/* Base */
 @import 'base/focus-fix';
 
+/* Layout */
 @import 'layout/wp';
 @import 'layout/headings';
 @import 'layout/table';
 
+/* Blocks */
 @import 'components/header';
 @import 'components/menu';
 @import 'components/searchform';
