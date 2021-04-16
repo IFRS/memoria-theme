@@ -57,5 +57,5 @@
 
     <?php memoria_breadcrumb(); ?>
 
-    <main>
+    <main class="container">
         <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
