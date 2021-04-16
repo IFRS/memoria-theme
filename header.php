@@ -1,21 +1,46 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="utf-8">
+    <!-- Meta -->
+    <meta charset="<?php echo esc_attr( get_bloginfo( 'charset' ) ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
     <meta name="author" content="Diretoria de Comunicação do IFRS">
-    <meta name="keywords" content="ifrs, memória, história">
-    <meta property="creator.productor" content="http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/100918">
-    <link rel="alternate" type="application/rss+xml" title="<?php echo esc_attr( get_bloginfo('name') ); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
-    <?php echo get_template_part('partials/title'); ?>
+    <meta name="keywords" content="ifrs, memória, história, acervo">
     <?php echo get_template_part('partials/favicons'); ?>
+    <!-- Contexto Barra Brasil -->
+    <meta property="creator.productor" content="http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/100918">
+    <!-- OpenGraph -->
+    <meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+    <meta property="og:url" content="<?php echo esc_attr( wp_get_canonical_url() ); ?>">
+    <meta property="og:locale" content="<?php echo esc_attr( get_locale() ); ?>">
+    <meta property="og:type" content="<?php echo ( !is_front_page() && !is_home() ) ? 'article' : 'website' ?>">
+    <meta property="og:title" content="<?php echo esc_attr( wp_get_document_title() ); ?>">
+    <?php
+        $og_image = '';
+
+        if (has_post_thumbnail()) {
+            $og_image = get_the_post_thumbnail_url(get_the_ID(), 'full');
+        } elseif (has_custom_logo()) {
+            $custom_logo_id = get_theme_mod( 'custom_logo' );
+            $attachment = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+            $og_image = $attachment[0];
+        } elseif (get_header_image())  {
+            $og_image = header_image();
+        } else {
+            $og_image = esc_url( get_stylesheet_directory_uri() ) . '/img/ifrs.png';
+        }
+    ?>
+    <meta property="og:image" content="<?php echo esc_attr( $og_image ); ?>">
+    <!-- WP -->
     <?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
     <a href="#inicio-conteudo" class="sr-only">Pular para o conte&uacute;do</a>
+
+    <?php wp_body_open(); ?>
 
     <?php echo get_template_part('partials/barrabrasil'); ?>
 
