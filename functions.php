@@ -1,11 +1,4 @@
 <?php
-// Registra os menus
-register_nav_menus(
-    array(
-        'main' => 'Menu Principal',
-    )
-);
-
 // Post Thumbnail
 require_once('inc/theme-support.php');
 
@@ -17,6 +10,9 @@ require_once('inc/fonts.php');
 
 // Scripts & Styles
 require_once('inc/assets.php');
+
+// Menus
+require_once('inc/menus.php');
 
 // Breadcrumb
 require_once('inc/breadcrumb.php');
