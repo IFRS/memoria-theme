@@ -9,8 +9,9 @@ register_nav_menus(
 // Post Thumbnail
 require_once('inc/theme-support.php');
 
-// Breadcrumb
-require_once('inc/breadcrumb.php');
+
+// Fonts
+require_once('inc/fonts.php');
 
 // Scripts & Styles
 require_once('inc/assets.php');
