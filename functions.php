@@ -12,9 +12,6 @@ require_once('inc/post-thumbnails.php');
 // Breadcrumb
 require_once('inc/breadcrumb.php');
 
-// Script Condicional
-require_once('inc/script_conditional.php');
-
 // Scripts & Styles
 require_once('inc/assets.php');
 
