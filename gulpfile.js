@@ -15,22 +15,20 @@ const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
 
+gulp.task('clean', async function() {
+    return await del(['css/', 'js/', 'dist/']);
+});
+
 const postCSSplugins = [
     pixrem(),
     autoprefixer()
 ];
 
-
-
-gulp.task('clean', async function() {
-    return await del(['css/', 'js/', 'dist/']);
-});
-
 gulp.task('sass', function() {
     return gulp.src('sass/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
-        includePaths: 'sass',
+        includePaths: ['sass', 'node_modules'],
         outputStyle: 'expanded'
     }).on('error', sass.logError))
     .pipe(postcss(postCSSplugins))
