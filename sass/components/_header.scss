@@ -6,6 +6,13 @@
 
     &__link {
         display: block;
+        margin-bottom: 15px;
+
+        &::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
     }
 
     &__marca-numem {
