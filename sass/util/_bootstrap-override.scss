@@ -1,0 +1,11 @@
+/* Bootstrap Override */
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+$font-family-base: "Signika", #{$font-family-sans-serif};
+
+$body-bg: #b9b8b7;
+$body-color: #424241;
+
+$link-color: #b34d22;
