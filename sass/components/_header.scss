@@ -1,9 +1,0 @@
-.header {
-    @include media-breakpoint-down(md) {
-        margin-bottom: 30px;
-    }
-
-    &__link {
-        display: block;
-    }
-}
