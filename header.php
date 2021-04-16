@@ -44,7 +44,7 @@
 
     <?php echo get_template_part('partials/barrabrasil'); ?>
 
-    <header class="header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?>" style="<?php echo get_header_image() ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
+    <header class="header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?>" style="<?php echo (is_front_page() && get_header_image()) ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
         <div class="container">
             <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
