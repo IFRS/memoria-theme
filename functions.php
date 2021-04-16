@@ -7,7 +7,7 @@ register_nav_menus(
 );
 
 // Post Thumbnail
-require_once('inc/post-thumbnails.php');
+require_once('inc/theme-support.php');
 
 // Breadcrumb
 require_once('inc/breadcrumb.php');
