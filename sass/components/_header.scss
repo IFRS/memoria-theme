@@ -16,15 +16,31 @@
         }
     }
 
-    &__marca-numem {
-        max-width: 25%;
+    &__marca {
+        max-width: 100%;
         height: auto;
-    }
 
-    &__marca-ifrs {
-        float: right;
-        max-width: 25%;
-        height: auto;
+        @include media-breakpoint-up(sm) {
+            max-width: 48%;
+        }
+
+        @include media-breakpoint-up(md) {
+            max-width: 40%;
+        }
+
+        @include media-breakpoint-up(lg) {
+            max-width: 30%;
+        }
+
+        @include media-breakpoint-up(xl) {
+            max-width: 25%;
+        }
+
+        &--ifrs {
+            @include media-breakpoint-up(sm) {
+                float: right;
+            }
+        }
     }
 
     &--front-page {
