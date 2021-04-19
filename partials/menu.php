@@ -10,7 +10,7 @@
             'theme_location'  => 'main',
             'depth'           => 2,
             'container'       => 'div',
-            'container_class' => 'collapse navbar-collapse',
+            'container_class' => 'navbar-collapse collapse',
             'container_id'    => $navbar_id,
             'menu_class'      => 'navbar-nav mr-auto',
             'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
