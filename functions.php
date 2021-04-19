@@ -20,6 +20,9 @@ require_once('inc/breadcrumb.php');
 // Remove inline styles do conteúdo
 require_once('inc/remove_inline_styles.php');
 
+// Widgets
+require_once('inc/widgets.php');
+
 // Linha do Tempo
 require_once('inc/taxonomies/unidade.php');
 require_once('inc/post-types/registro.php');
