@@ -13,15 +13,21 @@
 ?>
 
 <h2 class="sr-only">Linha do Tempo</h2>
-<ul class="timeline__ano-list nav" role="tablist">
+<ul class="ano-list nav" role="tablist">
+    <?php $delay = 0; ?>
     <?php foreach ($posts_by_year as $year => $posts) : ?>
-        <li class="timeline__ano-item nav-item"><a class="timeline__ano-link nav-link<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#tab-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab"><?php echo $year; ?></a></li>
+        <li class="ano-list__item nav-item animate__animated animate__backInDown" style="animation-delay: <?php echo $delay; ?>ms">
+            <a class="ano-list__link nav-link<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#tab-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab">
+                <?php echo $year; ?>
+            </a>
+        </li>
+        <?php $delay += 50; ?>
     <?php endforeach; ?>
 </ul>
 <div class="tab-content">
     <?php foreach ($posts_by_year as $year => $posts) : ?>
-        <div class="tab-pane animate__animated<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
-            <div class="timeline__ano-content">
+        <div class="tab-pane <?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
+            <div class="timeline">
                 <?php
                     uasort($posts, function ($a, $b) {
                         $a_meta = get_post_meta( $a->ID, '_registro_data', true );
@@ -39,27 +45,32 @@
                         return ($a_date < $b_date) ? -1 : 1;
                     });
                 ?>
-                <?php foreach ($posts as $post) : ?>
+                <?php foreach ($posts as $i => $post) : ?>
+                    <?php $class = ($i % 2 == 0) ? 'animate__fadeInLeft' : 'animate__fadeInRight'; ?>
                     <div class="registro">
-                        <?php
-                            $data = get_post_meta( $post->ID, '_registro_data', true );
-                            $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
-                            $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
-                        ?>
-                        <span class="registro__date animate__animated animate__fadeInRight fast"><?php echo $diames; ?></span>
-                        <?php
-                            if (has_post_thumbnail($post->ID)) {
-                                echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animate__animated animate__zoomIn animate__delay-1s'));
-                            }
-                        ?>
-                        <h3 class="registro__title animate__animated animate__fadeInRight"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
-                        <div class="registro__text animate__animated animate__fadeInRight"><?php echo get_the_excerpt($post->ID); ?></div>
-                        <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
-                        <?php if (!empty($unidades)) : ?>
-                            <?php foreach ($unidades as $unidade) : ?>
-                                <a class="registro__link animate__animated animate__fadeInRight animate__fast" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <div class="card animate__animated <?php echo $class; ?>">
+                            <div class="card-body">
+                                <?php
+                                    $data = get_post_meta( $post->ID, '_registro_data', true );
+                                    $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
+                                    $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
+                                ?>
+                                <span class="registro__date"><?php echo $diames; ?></span>
+                                <?php
+                                    if (has_post_thumbnail($post->ID)) {
+                                        echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid registro__image animate__animated animate__zoomIn animate__delay-1s'));
+                                    }
+                                ?>
+                                <h3 class="registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
+                                <div class="registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
+                                <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
+                                <?php if (!empty($unidades)) : ?>
+                                    <?php foreach ($unidades as $unidade) : ?>
+                                        <a class="registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                     <?php add_action('wp_footer', function() use ($post, $unidades, $diamesano) { ?>
                         <!-- Modal -->
