@@ -1,6 +1,6 @@
 /* Config */
 @import 'util/vars';
-@import 'util/bootstrap-override';
+@import 'util/bootstrap-config';
 
 /* Bootstrap */
 @import 'bootstrap/scss/root';
@@ -37,6 +37,8 @@
 // @import 'bootstrap/scss/spinners';
 @import 'bootstrap/scss/utilities';
 @import 'bootstrap/scss/print';
+
+@import 'util/bootstrap-override';
 
 /* Base */
 @import 'base/focus-fix';
