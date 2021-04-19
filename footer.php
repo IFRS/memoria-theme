@@ -4,12 +4,15 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col">
-
+            <div class="row align-items-center mb-3">
+                <div class="col-12 col-sm-6 col-lg-8">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-numem.png" alt="<?php bloginfo('name'); ?>" class="img-fluid footer__numem"/>
+                    <a href="https://ifrs.edu.br/" class="footer__ifrs-link" data-toggle="tooltip" data-placement="right" title="Portal do IFRS">
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-ifrs.png" alt="Portal do IFRS" class="img-fluid"/>
+                    </a>
                 </div>
                 <?php if (is_active_sidebar('sidebar-rodape')) : ?>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <?php dynamic_sidebar('sidebar-rodape'); ?>
                 </div>
                 <?php endif; ?>
