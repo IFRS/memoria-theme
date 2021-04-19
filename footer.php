@@ -18,7 +18,7 @@
                 <?php endif; ?>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 creditos">
                     <!-- Wordpress -->
                     <a href="http://br.wordpress.org/" target="_blank" rel="noopener">Desenvolvido com Wordpress<span class="sr-only">&nbsp;(abre uma nova p&aacute;gina)</span></a> <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><path d="M0 0v8h8v-2h-1v1h-6v-6h1v-1h-2zm4 0l1.5 1.5-2.5 2.5 1 1 2.5-2.5 1.5 1.5v-4h-4z" /></svg>
                     &mdash;
