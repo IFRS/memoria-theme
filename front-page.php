@@ -2,8 +2,6 @@
 
 <?php the_post(); ?>
 
-<main class="content home">
-    <?php the_content(); ?>
-</main>
+<?php the_content(); ?>
 
 <?php get_footer(); ?>

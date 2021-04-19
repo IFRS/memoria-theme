@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<main class="content">
 <?php if (!have_posts()) : ?>
     <div class="row">
         <div class="col-12">
@@ -32,7 +31,6 @@
     </article>
     <?php endwhile; ?>
 <?php endif; ?>
-</main>
 
 <?php the_posts_navigation(array('next_text' => 'Resultados anteriores', 'prev_text' => 'Mais resultados', 'screen_reader_text' => ' ')); ?>
 
