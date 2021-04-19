@@ -1,6 +1,6 @@
 .footer {
     background-color: #ffffff;
-    padding: 25px 0;
+    padding: 25px 0 10px 0;
 
     &__numem {
         display: inline-block;
@@ -33,6 +33,10 @@
 
         @include media-breakpoint-up(sm) {
             text-align: right;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
         }
     }
 }
