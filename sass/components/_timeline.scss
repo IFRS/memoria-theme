@@ -66,6 +66,8 @@
     width: 100%;
     margin-bottom: 30px;
 
+    @include clearfix;
+
     &::before {
         content: '';
         width: 30px;
@@ -183,12 +185,6 @@
             right: auto;
             left: 0;
         }
-    }
-
-    &::after {
-        content: '';
-        display: block;
-        clear: both;
     }
 
     @include media-breakpoint-down(sm) {
