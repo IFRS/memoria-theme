@@ -2,6 +2,9 @@
 
 $primary: $cor-marrom-escuro;
 
+$link-color: $cor-marrom-claro;
+$link-hover-color: $cor-marrom-escuro;
+
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 
@@ -19,6 +22,8 @@ $body-bg: #F9F3F2;
 
 $navbar-dark-color: #ffffff;
 $navbar-dark-hover-color: #F0E9E6;
+
+$dropdown-link-active-bg: $cor-marrom-claro;
 
 $breadcrumb-bg: #ffffff;
 $breadcrumb-active-color: $gray-600;
