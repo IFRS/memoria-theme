@@ -1,6 +1,10 @@
 .post-type-archive-registro,
 .tax-unidade {
     overflow-x: hidden;
+
+    .modal-title {
+        color: $cor-marrom-claro;
+    }
 }
 
 .ano-list {
