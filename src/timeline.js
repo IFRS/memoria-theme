@@ -27,7 +27,8 @@ let observer = new IntersectionObserver((entries) => {
     });
 }, options);
 
-// Get all the `.box` from DOM and attach the observer to these
-document.querySelectorAll('.timeline .registro')
-    .forEach(registro => { observer.observe(registro) }
-);
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.timeline .registro')
+        .forEach(registro => { observer.observe(registro) }
+    );
+});
