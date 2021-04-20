@@ -21,7 +21,7 @@
                 <?php echo $year; ?>
             </a>
         </li>
-        <?php $delay += 50; ?>
+        <?php $delay += 20; ?>
     <?php endforeach; ?>
 </ul>
 <div class="tab-content">
