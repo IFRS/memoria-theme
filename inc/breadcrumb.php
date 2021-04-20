@@ -59,7 +59,7 @@ function memoria_breadcrumb() {
             }
         } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
             if (is_tax('unidade')) {
-                echo '<li class="breadcrumb-item"><a href="' . get_post_type_archive_link( 'registro' ) . '">' . __('Timeline', 'ifrs-memoria-theme') . '</a></li>';
+                echo '<li class="breadcrumb-item"><a href="' . get_post_type_archive_link( 'registro' ) . '">' . __('Linha do Tempo', 'ifrs-memoria-theme') . '</a></li>';
                 echo $before . single_term_title('', false) . $after;
             } else {
                 echo $before . post_type_archive_title('', false) . $after;

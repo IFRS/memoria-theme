@@ -1,7 +1,7 @@
 <?php
 add_action( 'init', function() {
 	$labels = array(
-		'name'                  => _x( 'Registros', 'Post Type General Name', 'ifrs-memoria-theme' ),
+		'name'                  => _x( 'Linha do Tempo', 'Post Type General Name', 'ifrs-memoria-theme' ),
 		'singular_name'         => _x( 'Registro', 'Post Type Singular Name', 'ifrs-memoria-theme' ),
 		'menu_name'             => __( 'Linha do Tempo', 'ifrs-memoria-theme' ),
 		'name_admin_bar'        => __( 'Linha do Tempo', 'ifrs-memoria-theme' ),
