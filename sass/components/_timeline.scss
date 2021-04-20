@@ -8,6 +8,7 @@
     font-weight: 600;
     font-size: 1.2rem;
 
+    margin-bottom: 30px;
     padding: 10px 30px;
 
     &__link {
@@ -34,7 +35,8 @@
         content: '';
         background: $cor-marrom-claro;
         width: 5px;
-        height: 95%;
+        height: 98%;
+        height: calc(100% - 50px);
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -75,8 +77,8 @@
             margin-left: 70px;
         }
 
-        .card-body {
-            padding-top: 35px;
+        > .card-body {
+            padding-top: 40px;
         }
 
         &::after {
@@ -92,10 +94,17 @@
         }
     }
 
+    &__image {
+        & + .card-body {
+            padding-top: 1.25rem !important;
+        }
+    }
+
     &__date {
         background: $cor-marrom-escuro;
         display: inline-block;
         color: #ffffff;
+        font-size: 0.9rem;
         padding: 3px 10px;
         position: absolute;
         text-transform: uppercase;
@@ -110,6 +119,20 @@
         &:empty {
             display: none;
         }
+    }
+
+    &__title {
+        color: $cor-marrom-claro;
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    &__text {
+        margin-bottom: 10px;
+    }
+
+    &__link {
+        font-weight: 400;
     }
 
     &:nth-child(even) {
