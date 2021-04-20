@@ -3,7 +3,7 @@
 require_once('inc/theme-support.php');
 
 // Limita o tamanho do resumo
-require_once('inc/excerpt-limit.php');
+require_once('inc/excerpt.php');
 
 // Fonts
 require_once('inc/fonts.php');
