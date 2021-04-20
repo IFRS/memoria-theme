@@ -65,7 +65,8 @@ gulp.task('webpack', function(done) {
         devtool: 'source-map',
         entry: {
             ie: './src/ie.js',
-            memoria: './src/memoria.js'
+            memoria: './src/memoria.js',
+            timeline: './src/timeline.js',
         },
         output: {
             path: path.resolve(__dirname, 'js'),

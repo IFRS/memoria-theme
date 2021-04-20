@@ -45,10 +45,9 @@
                         return ($a_date < $b_date) ? -1 : 1;
                     });
                 ?>
-                <?php foreach ($posts as $i => $post) : ?>
-                    <?php $class = ($i % 2 == 0) ? 'animate__fadeInLeft' : 'animate__fadeInRight'; ?>
+                <?php foreach ($posts as $post) : ?>
                     <div class="registro">
-                        <div class="card animate__animated <?php echo $class; ?>">
+                        <div class="card">
                             <div class="card-body">
                                 <?php
                                     $data = get_post_meta( $post->ID, '_registro_data', true );

@@ -21,6 +21,10 @@ add_action( 'wp_enqueue_scripts', function() {
 
     wp_enqueue_script('memoria', get_stylesheet_directory_uri() . '/js/memoria.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/memoria.js'), true);
 
+    if (is_post_type_archive('registro') || is_tax('unidade')) {
+        wp_enqueue_script('timeline', get_stylesheet_directory_uri() . '/js/timeline.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/timeline.js'), true);
+    }
+
     if (!WP_DEBUG) {
         wp_enqueue_script( 'barra-brasil', '//barra.brasil.gov.br/barra_2.0.js', array(), null, true );
     }
