@@ -48,8 +48,8 @@
         <div class="container">
             <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-numem.png" alt="" class="header__marca" aria-hidden="true"/>
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-ifrs.png" alt="" class="d-none d-sm-block header__marca header__marca--ifrs" aria-hidden="true"/>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-numem.png" alt="" class="header__marca" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-numem.png')[3]; ?>/>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-ifrs.png" alt="" class="header__marca header__marca--ifrs" width="570" height="150" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-ifrs.png')[3]; ?>/>
                 <span class="sr-only">Página Inicial - <?php bloginfo('name'); ?></span>
             </a>
             <?php echo get_template_part('partials/menu'); ?>
