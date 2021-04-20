@@ -21,17 +21,19 @@
     padding: 10px 30px;
 
     &__link {
+        border-radius: 4px;
         color: $primary;
         text-align: center;
-        padding: 0 0.1rem;
-        margin: 0 0.8rem 0.3rem 0;
+        padding: 0 5px;
+        margin: 0 10px 5px 0;
 
         &:hover {
             color: $cor-marrom-claro;
         }
 
         &.active {
-            border-bottom: 2px solid $cor-marrom-claro;
+            background-color: $cor-marrom-escuro;
+            color: #ffffff;
         }
     }
 }
@@ -90,6 +92,15 @@
             padding-top: 40px;
         }
 
+        .embed-responsive + .card-body {
+            padding: 1.25rem;
+        }
+
+        > .card-img-overlay {
+            background-color: rgba(#ffffff, 0.8);
+            text-shadow: 0 0 1px rgba(#000000, 0.5);
+        }
+
         &::after {
             content: '';
             position: absolute;
@@ -100,12 +111,14 @@
             right: -15px;
             border-width: 10px 0 10px 15px;
             border-color: transparent transparent transparent #ffffff;
+            box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
         }
     }
 
     &__image {
-        & + .card-body {
-            padding-top: 1.25rem !important;
+        @supports (object-fit: cover) {
+            object-fit: cover;
+            object-position: center;
         }
     }
 
@@ -162,6 +175,7 @@
                 left: -15px;
                 border-width: 10px 15px 10px 0;
                 border-color: transparent #ffffff transparent transparent;
+                box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
             }
         }
 

@@ -48,18 +48,20 @@
                 <?php foreach ($posts as $post) : ?>
                     <div class="registro">
                         <div class="card">
-                            <?php
-                                if (has_post_thumbnail($post->ID)) {
-                                    echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'registro__image img-fluid card-img-top animate__animated animate__zoomIn animate__delay-1s'));
-                                }
-                            ?>
+                            <?php if (has_post_thumbnail($post->ID)) : ?>
+                                <div class="embed-responsive embed-responsive-21by9">
+                                    <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'registro__image img-fluid card-img-top embed-responsive-item animate__animated animate__fadeIn animate__delay-1s')); ?>
+                                </div>
+                            <?php endif; ?>
                             <div class="card-body">
                                 <?php
                                     $data = get_post_meta( $post->ID, '_registro_data', true );
                                     $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
                                     $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
                                 ?>
-                                <span class="registro__date"><?php echo $diames; ?></span>
+                                <?php if (!empty($diames)) : ?>
+                                    <span class="registro__date"><?php echo $diames; ?></span>
+                                <?php endif; ?>
                                 <h3 class="registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
                                 <div class="registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
                                 <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
