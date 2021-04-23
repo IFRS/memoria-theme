@@ -51,6 +51,8 @@ function ifrs_memoria_breadcrumb() {
                 echo $before_item . get_category_parents($cat, true, '') . $after;
                 echo $before_active . get_the_title() . $after;
             }
+        } elseif (get_query_var('tainacan_repository_archive', false)) {
+            echo $before_active . __('Acervo', 'ifrs-memoria-theme') . $after;
         } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
             if (is_tax('unidade')) {
                 echo $before_item . '<a href="' . get_post_type_archive_link( 'registro' ) . '">' . __('Linha do Tempo', 'ifrs-memoria-theme') . '</a>' . $after;

@@ -57,5 +57,5 @@
 
     <?php ifrs_memoria_breadcrumb(); ?>
 
-    <main class="container">
+    <main class="<?php echo (get_query_var('tainacan_repository_archive', false)) ? 'container-fluid' : 'container'; ?>">
         <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>

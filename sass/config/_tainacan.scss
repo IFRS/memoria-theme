@@ -1,7 +1,7 @@
 .theme-items-list {
-    --tainacan-input-color: #1d1d1d;
-    --tainacan-input-background-color: var(--tainacan-white);
-    --tainacan-input-border-color: var(--tainacan-gray2);
+    --tainacan-input-color: #{$input-color};
+    --tainacan-input-background-color: #{$input-bg};
+    --tainacan-input-border-color: #{$input-border-color};
     --tainacan-label-color: var(--tainacan-gray5);
     --tainacan-info-color: var(--tainacan-gray4);
     --tainacan-heading-color: var(--tainacan-black);
