@@ -2,6 +2,9 @@
 // Post Thumbnail
 require_once('inc/theme-support.php');
 
+// Largura do conteúdo
+require_once('inc/content.php');
+
 // Limita o tamanho do resumo
 require_once('inc/excerpt.php');
 
