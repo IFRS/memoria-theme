@@ -4,3 +4,12 @@
     font-size: 0.9rem;
     font-weight: 400;
 }
+
+.breadcrumb-icon {
+    margin-right: 5px;
+    vertical-align: text-top;
+
+    @include media-breakpoint-only(xs) {
+        display: none;
+    }
+}
