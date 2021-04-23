@@ -1,6 +1,7 @@
 /* Config */
-@import 'util/vars';
-@import 'util/bootstrap-config';
+@import 'config/vars';
+@import 'config/bootstrap';
+@import 'config/tainacan';
 
 /* Bootstrap */
 @import 'bootstrap/scss/root';
@@ -38,12 +39,10 @@
 @import 'bootstrap/scss/utilities';
 @import 'bootstrap/scss/print';
 
-@import 'util/bootstrap-override';
-
-/* Base */
-@import 'base/focus-fix';
+@import 'vendor/bootstrap-override';
 
 /* Layout */
+@import 'layout/focus-fix';
 @import 'layout/wp';
 @import 'layout/headings';
 @import 'layout/table';
