@@ -33,3 +33,6 @@ require_once('inc/roles.php');
 
 // Custom Queries
 require_once('inc/queries.php');
+
+// Tainacan Config
+require_once('inc/tainacan.php');
