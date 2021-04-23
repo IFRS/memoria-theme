@@ -2,6 +2,8 @@
 
     </main>
 
+    <?php if (is_front_page()) get_template_part('partials/home-dados'); ?>
+
     <footer class="footer">
         <div class="container">
             <div class="row align-items-center mb-3">
