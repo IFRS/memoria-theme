@@ -1,5 +1,5 @@
 <?php
-function memoria_breadcrumb() {
+function ifrs_memoria_breadcrumb() {
     $before_item   = '<li class="breadcrumb-item">';
     $before_active = '<li class="breadcrumb-item active" aria-current="page">';
     $after         = '</li>';

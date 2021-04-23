@@ -55,7 +55,7 @@
             <?php echo get_template_part('partials/menu'); ?>
     </header>
 
-    <?php memoria_breadcrumb(); ?>
+    <?php ifrs_memoria_breadcrumb(); ?>
 
     <main class="container">
         <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
