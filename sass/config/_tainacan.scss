@@ -9,15 +9,15 @@
     --tainacan-item-background-color: var(--tainacan-background-color);
     --tainacan-item-hover-background-color: var(--tainacan-gray1);
     --tainacan-item-heading-hover-background-color: var(--tainacan-gray2);
-    --tainacan-primary: var(--tainacan-turquoise2);
-    --tainacan-secondary: var(--tainacan-turquoise5);
-    --tainacan-success: var(--tainacan-green2);
-    --tainacan-danger: var(--tainacan-red2);
-    --tainacan-warning: var(--tainacan-yellow2);
-    --tainacan-background-color: var(--tainacan-white);
-    --tainacan-font-family: Roboto, Source Sans, Helvetica, sans-serif;
-    --tainacan-base-font-size: 1em;
+    --tainacan-primary: #{lighten($cor-marrom-claro, 30%)};
+    --tainacan-secondary: #{$primary};
+    --tainacan-success: var(--success);
+    --tainacan-danger: var(--danger);
+    --tainacan-warning: var(--warning);
+    --tainacan-background-color: #{$body-bg};
+    --tainacan-font-family: #{$font-family-base};
+    --tainacan-base-font-size: 1rem;
     --tainacan-filter-menu-width-theme: 20%;
     --tainacan-one-column: 4.16667%;
-    --tainacan-container-padding: 25px;
+    --tainacan-container-padding: 15px;
 }
