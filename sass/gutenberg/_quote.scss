@@ -1,0 +1,37 @@
+.wp-block-quote {
+    background: #ffffff;
+    border-left: 10px solid $link-color;
+    margin: 1rem 0;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+
+    &::before {
+        color: $gray-400;
+        content: open-quote;
+        font-size: 3em;
+        line-height: 0.05em;
+        margin-right: 0.1em;
+        vertical-align: -0.4em;
+    }
+
+    &::after {
+        color: $gray-400;
+        content: close-quote;
+        font-size: 3em;
+        line-height: 0.05em;
+        margin-left: 0.1em;
+        text-align: right;
+        vertical-align: -0.4em;
+    }
+
+    p {
+        display: inline;
+        margin: 0;
+    }
+
+    cite {
+        &::before {
+            content: '\00a0\2014';
+        }
+    }
+}

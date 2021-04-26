@@ -1,17 +1,5 @@
 /* =WordPress Core
 -------------------------------------------------------------- */
-.aligncenter {
-    @extend .text-center;
-}
-
-.alignright {
-    @extend .text-right;
-}
-
-.alignleft {
-    @extend .text-left;
-}
-
 img,
 .wp-caption {
     &.alignnone {
@@ -63,69 +51,9 @@ img,
     }
 }
 
-blockquote,
-.wp-block-quote {
-    background: $gray-100;
-    border-left: 10px solid $link-color;
-    margin: 1rem 0;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
-
-    &::before {
-        color: $gray-400;
-        content: open-quote;
-        font-size: 3em;
-        line-height: 0.05em;
-        margin-right: 0.1em;
-        vertical-align: -0.4em;
-    }
-
-    &::after {
-        color: $gray-400;
-        content: close-quote;
-        font-size: 3em;
-        line-height: 0.05em;
-        margin-left: 0.1em;
-        text-align: right;
-        vertical-align: -0.4em;
-    }
-
-    p {
-        display: inline;
-        margin: 0;
-    }
-}
-
 /* Text meant only for screen readers. */
 .screen-reader-text {
-	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute !important;
-	width: 1px;
-    word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
-
-    &:focus {
-        background-color: #eee;
-        clip: auto !important;
-        clip-path: none;
-        color: #444;
-        display: block;
-        font-size: 1rem;
-        height: auto;
-        left: 5px;
-        line-height: normal;
-        padding: 15px 23px 14px;
-        text-decoration: none;
-        top: 5px;
-        width: auto;
-        z-index: 100000;
-        /* Above WP toolbar. */
-    }
+    @include sr-only;
 }
 
 /* Content gallery */
