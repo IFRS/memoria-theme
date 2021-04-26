@@ -23,6 +23,9 @@ require_once('inc/breadcrumb.php');
 // Remove inline styles do conteúdo
 require_once('inc/remove_inline_styles.php');
 
+// Personalização do Gutenberg
+require_once('inc/gutenberg-custom.php');
+
 // Widgets
 require_once('inc/widgets.php');
 

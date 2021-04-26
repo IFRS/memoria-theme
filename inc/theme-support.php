@@ -7,6 +7,7 @@ add_action( 'after_setup_theme', function() {
     add_theme_support( 'disable-custom-gradients' );
     add_theme_support( 'disable-custom-font-sizes' );
     add_theme_support( 'custom-units', array() );
+    add_theme_support( 'editor-font-sizes', array() );
 
     // Add theme support for Automatic Feed Links
     add_theme_support( 'automatic-feed-links' );

@@ -4,11 +4,6 @@ add_action( 'wp_enqueue_scripts', function() {
     /* wp_register_style( $handle, $src, $deps, $ver, $media ); */
     /* wp_enqueue_style( $handle[, $src, $deps, $ver, $media] ); */
 
-    if (!is_admin()) {
-        wp_dequeue_style( 'wp-block-library' );
-        wp_deregister_style( 'wp-block-library' );
-    }
-
     wp_enqueue_style('vendor', get_stylesheet_directory_uri() . '/css/vendor.css', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/vendor.css'), 'all');
     wp_enqueue_style('memoria', get_stylesheet_directory_uri() . '/css/memoria.css', array('vendor'), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/css/memoria.css'), 'all');
 
