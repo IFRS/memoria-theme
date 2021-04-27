@@ -2,6 +2,8 @@
     margin-bottom: 1rem;
 
     &__link:not(.is-style-outline) {
+        background-image: none;
+
         @extend .btn;
         @extend .btn-primary;
 
