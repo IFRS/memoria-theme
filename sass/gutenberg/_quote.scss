@@ -1,32 +1,26 @@
-.wp-block-quote {
-    background: #ffffff;
-    border-left: 10px solid $link-color;
-    margin: 1rem 0;
-    padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
+.wp-block-quote,
+.wp-block-pullquote {
+    background: #ffffff !important;
+    border-color: $link-color;
+    padding-left: 2em;
+    position: relative;
 
     &::before {
-        color: $gray-400;
+        color: $gray-100;
         content: open-quote;
-        font-size: 3em;
-        line-height: 0.05em;
-        margin-right: 0.1em;
-        vertical-align: -0.4em;
+        font-size: 150px;
+        line-height: 1;
+        position: absolute;
+        top: 0; left: 0;
+        z-index: 0;
     }
 
-    &::after {
-        color: $gray-400;
-        content: close-quote;
-        font-size: 3em;
-        line-height: 0.05em;
-        margin-left: 0.1em;
-        text-align: right;
-        vertical-align: -0.4em;
+    > * {
+        position: relative;
     }
 
     p {
-        display: inline;
-        margin: 0;
+        margin-bottom: 0.5rem;
     }
 
     cite {
