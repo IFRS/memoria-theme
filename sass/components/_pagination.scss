@@ -1,0 +1,13 @@
+.pagination {
+    justify-content: center !important;
+}
+
+.post-page-numbers {
+    @extend .page-link;
+    background-image: none;
+
+    &.current {
+        color: $body-color;
+        font-weight: 400;
+    }
+}
