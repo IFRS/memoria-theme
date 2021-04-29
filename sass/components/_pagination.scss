@@ -8,6 +8,7 @@
 
     &.current {
         color: $body-color;
+        cursor: default;
         font-weight: 400;
     }
 }
