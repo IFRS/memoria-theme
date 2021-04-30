@@ -31,7 +31,7 @@
             ?>
             <article class="dado">
                 <p class="dado__numero"><?php echo $total; ?></p>
-                <p class="dado__texto"><?php echo _n('Item', 'Itens', $total, 'ifrs-memoria-theme'); ?> no Acervo</p>
+                <p class="dado__texto"><?php echo _n('Item', 'Itens', $total, 'ifrs-memoria-theme'); ?> inseridos nas Cole&ccedil;&otilde;es</p>
             </article>
         </div>
     </div>
