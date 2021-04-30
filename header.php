@@ -9,8 +9,6 @@
     <meta name="author" content="Diretoria de Comunicação do IFRS">
     <meta name="keywords" content="ifrs, memória, história, acervo">
     <?php echo get_template_part('partials/favicons'); ?>
-    <!-- Contexto Barra Brasil -->
-    <meta property="creator.productor" content="http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/100918">
     <!-- OpenGraph -->
     <meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
     <meta property="og:url" content="<?php echo esc_attr( wp_get_canonical_url() ); ?>">
@@ -41,8 +39,6 @@
     <a href="#inicio-conteudo" class="sr-only sr-only-focusable">Pular para o conte&uacute;do</a>
 
     <?php wp_body_open(); ?>
-
-    <?php echo get_template_part('partials/barrabrasil'); ?>
 
     <header class="header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?><?php echo (has_header_image()) ? ' header--has-image' : ''; ?>" style="<?php echo (is_front_page() && has_header_image()) ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
         <div class="container">
