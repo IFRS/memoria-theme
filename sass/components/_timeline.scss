@@ -81,6 +81,13 @@
         margin-left: -15px;
     }
 
+    a {
+        background:
+        linear-gradient(currentColor 0 0)
+        0 100% / var(--d, 0) 1px
+        no-repeat;
+    }
+
     .card {
         width: 45%;
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
