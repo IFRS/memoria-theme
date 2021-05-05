@@ -43,6 +43,21 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modal-img" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-caption mb-0 font-italic"></p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center"></div>
+            </div>
+        </div>
+    </div>
+
     <?php wp_footer(); ?>
 
 </body>

@@ -1,3 +1,3 @@
 require('bootstrap');
 
-require('./modules/fancybox');
+require('./modules/modal');
