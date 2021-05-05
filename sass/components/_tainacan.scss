@@ -1,0 +1,30 @@
+.tainacan-metadata {
+    @include clearfix;
+}
+
+.tainacan-documents {
+    margin-top: 2rem;
+
+    > * {
+        display: block;
+    }
+
+    a {
+        background-image: none;
+    }
+}
+
+.tainacan-attachments {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    > h3 {
+        flex-basis: 100%;
+    }
+
+    &__item {
+        flex-basis: 50%;
+    }
+}
