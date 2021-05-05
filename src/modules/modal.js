@@ -1,7 +1,9 @@
 $(function() {
     $("a[href$='.jpg'],a[href$='.jpeg'],a[href$='.png'],a[href$='.gif'],a[href$='.webp']").each(function() {
-        $(this).attr('data-toggle', 'modal');
-        $(this).attr('data-target', '#modal-img');
+        if ($(this).children('img').length > 0) {
+            $(this).attr('data-toggle', 'modal');
+            $(this).attr('data-target', '#modal-img');
+        }
     });
 
     $('#modal-img').on('show.bs.modal', function (event) {
