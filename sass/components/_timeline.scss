@@ -117,7 +117,7 @@
             border-style: solid;
             width: 0;
             height: 0;
-            top: 30px;
+            top: 28px;
             right: -15px;
             border-width: 10px 0 10px 15px;
             border-color: transparent transparent transparent #ffffff;
@@ -134,6 +134,7 @@
 
     &__date {
         background: $cor-marrom-escuro;
+        border-top-right-radius: $border-radius;
         display: inline-block;
         color: #ffffff;
         font-size: 0.9rem;
