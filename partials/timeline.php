@@ -17,7 +17,7 @@
     <?php $delay = 0; ?>
     <?php foreach ($posts_by_year as $year => $posts) : ?>
         <li class="ano-list__item nav-item animate__animated animate__backInDown" style="animation-delay: <?php echo $delay; ?>ms">
-            <a class="ano-list__link nav-link<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#tab-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab">
+            <a class="ano-list__link nav-link<?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#ano-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab">
                 <?php echo $year; ?>
             </a>
         </li>
@@ -26,7 +26,7 @@
 </ul>
 <div class="tab-content">
     <?php foreach ($posts_by_year as $year => $posts) : ?>
-        <div class="tab-pane <?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="tab-<?php echo $year; ?>" role="tabpanel">
+        <div class="tab-pane <?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="ano-<?php echo $year; ?>" role="tabpanel">
             <div class="timeline">
                 <?php
                     uasort($posts, function ($a, $b) {
@@ -65,10 +65,12 @@
                                 <h3 class="registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
                                 <div class="registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
                                 <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
-                                <?php if (!empty($unidades)) : ?>
-                                    <?php foreach ($unidades as $unidade) : ?>
-                                        <a class="registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                                    <?php endforeach; ?>
+                                <?php if (!is_tax('unidade')) : ?>
+                                    <?php if (!empty($unidades)) : ?>
+                                        <?php foreach ($unidades as $unidade) : ?>
+                                            <a class="registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>
