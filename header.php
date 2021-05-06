@@ -40,7 +40,7 @@
 
     <?php wp_body_open(); ?>
 
-    <header class="header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?><?php echo (has_header_image()) ? ' header--has-image' : ''; ?>" style="<?php echo (is_front_page() && has_header_image()) ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
+    <header class="header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?><?php echo (is_front_page() && has_header_image()) ? ' header--has-image' : ''; ?>" style="<?php echo (is_front_page() && has_header_image()) ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
         <div class="container">
             <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
