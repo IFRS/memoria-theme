@@ -60,7 +60,7 @@
                                     $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
                                 ?>
                                 <?php if (!empty($diames)) : ?>
-                                    <span class="registro__date"><?php echo $diames; ?></span>
+                                    <span class="registro__date" data-toggle="tooltip" data-placement="top" title="<?php echo $diamesano; ?>"><?php echo $diames; ?></span>
                                 <?php endif; ?>
                                 <h3 class="registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
                                 <div class="registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
