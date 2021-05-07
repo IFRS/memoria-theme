@@ -48,7 +48,27 @@
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-ifrs.png" alt="" class="header__marca header__marca--ifrs" width="570" height="150" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-ifrs.png')[3]; ?>/>
                 <span class="sr-only">Página Inicial - <?php bloginfo('name'); ?></span>
             </a>
+
             <?php echo get_template_part('partials/menu'); ?>
+
+            <?php if (is_front_page() && has_header_image() && isset(get_custom_header()->attachment_id)) : ?>
+                <p class="header__text">
+                    <?php
+                        $id = get_custom_header()->attachment_id;
+                        $title = get_the_title($id);
+                        $caption = wp_get_attachment_caption($id);
+
+                        if (!empty($title)) {
+                            printf('<strong>%s</strong><br>', $title);
+                        }
+
+                        if (!empty($caption)) {
+                            echo $caption;
+                        }
+                    ?>
+                </p>
+            <?php endif; ?>
+        </div>
     </header>
 
     <?php ifrs_memoria_breadcrumb(); ?>
