@@ -1,27 +1,27 @@
 .footer {
-    background-color: #ffffff;
-    padding: 25px 0 10px 0;
+    // background-color: #ffffff;
+    // padding: 25px 0 10px 0;
 
-    &__numem {
-        display: inline-block;
-        margin-bottom: 30px;
+    // &__numem {
+    //     display: inline-block;
+    //     margin-bottom: 30px;
 
-        @include media-breakpoint-up(lg) {
-            margin-bottom: 0;
-            margin-right: 15px;
-            max-width: 45%;
-        }
-    }
+    //     @include from($desktop) {
+    //         margin-bottom: 0;
+    //         margin-right: 15px;
+    //         max-width: 45%;
+    //     }
+    // }
 
-    &__ifrs-link {
-        display: inline-block;
-        margin-bottom: 30px;
+    // &__ifrs-link {
+    //     display: inline-block;
+    //     margin-bottom: 30px;
 
-        @include media-breakpoint-up(lg) {
-            margin-bottom: 0;
-            max-width: 45%;
-        }
-    }
+    //     @include from($desktop) {
+    //         margin-bottom: 0;
+    //         max-width: 45%;
+    //     }
+    // }
 
     &__titulo {
         font-size: 1rem;
@@ -31,7 +31,7 @@
     &__widget {
         font-size: 0.9rem;
 
-        @include media-breakpoint-up(sm) {
+        @include from($tablet) {
             text-align: right;
         }
 

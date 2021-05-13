@@ -1,26 +1,26 @@
-    <a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
-
+            <a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
+        </section>
     </main>
 
     <?php if (is_front_page()) get_template_part('partials/home-dados'); ?>
 
     <footer class="footer">
         <div class="container">
-            <div class="row align-items-center mb-3">
-                <div class="col-12 col-sm-6 col-lg-8">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-numem.png" alt="<?php bloginfo('name'); ?>" class="img-fluid footer__numem"/>
-                    <a href="https://ifrs.edu.br/" class="footer__ifrs-link" data-toggle="tooltip" data-placement="top" title="Portal do IFRS">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-ifrs.png" alt="Portal do IFRS" class="img-fluid"/>
+            <div class="columns is-align-items-center">
+                <div class="column has-text-centered">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-numem.png" alt="<?php bloginfo('name'); ?>" class="mr-3 mb-3"/>
+                    <a href="https://ifrs.edu.br/" class="is-inline-block" data-toggle="tooltip" data-placement="top" title="Portal do IFRS">
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-ifrs.png" alt="Portal do IFRS"/>
                     </a>
                 </div>
                 <?php if (is_active_sidebar('sidebar-rodape')) : ?>
-                <div class="col-12 col-sm-6 col-lg-4">
+                <div class="column is-4-tablet is-3-widescreen">
                     <?php dynamic_sidebar('sidebar-rodape'); ?>
                 </div>
                 <?php endif; ?>
             </div>
-            <div class="row">
-                <div class="col-12 creditos">
+            <div class="columns is-align-items-center">
+                <div class="column creditos">
                     <!-- Wordpress -->
                     <a href="http://br.wordpress.org/" target="_blank" rel="noopener" data-toggle="tooltip" data-placement="top" title="Desenvolvido com Wordpress">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/creditos-wordpress.png" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"/>
