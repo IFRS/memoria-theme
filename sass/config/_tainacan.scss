@@ -1,6 +1,6 @@
 .theme-items-list {
     --tainacan-input-color: #{$input-color};
-    --tainacan-input-background-color: #{$input-bg};
+    --tainacan-input-background-color: #{$input-background-color};
     --tainacan-input-border-color: #{$input-border-color};
     --tainacan-label-color: var(--tainacan-gray5);
     --tainacan-info-color: var(--tainacan-gray4);
@@ -14,8 +14,8 @@
     --tainacan-success: var(--success);
     --tainacan-danger: var(--danger);
     --tainacan-warning: var(--warning);
-    --tainacan-background-color: #{$body-bg};
-    --tainacan-font-family: #{$font-family-base};
+    --tainacan-background-color: #{$background};
+    --tainacan-font-family: #{$family-sans-serif};
     --tainacan-base-font-size: 1rem;
     --tainacan-filter-menu-width-theme: 20%;
     --tainacan-one-column: 4.16667%;
