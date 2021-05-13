@@ -8,9 +8,12 @@
 }
 
 .ano-list {
-    justify-content: center;
+    display: flex;
     align-items: stretch;
     align-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
 
     position: relative;
 
@@ -41,7 +44,12 @@
 
 
 .timeline {
+    display: none;
     position: relative;
+
+    &.active {
+        display: block;
+    }
 
     &::before {
         content: '';
@@ -54,7 +62,7 @@
         transform: translateX(-50%);
     }
 
-    @include media-breakpoint-down(sm) {
+    @include until($tablet) {
         &::before {
             left: 20px;
         }
@@ -68,6 +76,12 @@
     margin-bottom: 30px;
 
     @include clearfix;
+
+    &--without-thumbnail {
+        #{$root}__date + #{$root}__title {
+            margin-top: 1rem;
+        }
+    }
 
     &::before {
         content: '';
@@ -92,23 +106,10 @@
         width: 45%;
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
 
-        @include media-breakpoint-down(sm) {
+        @include until($tablet) {
             max-width: 100%;
             width: auto;
             margin-left: 70px;
-        }
-
-        > .card-body {
-            padding-top: 40px;
-        }
-
-        .embed-responsive + .card-body {
-            padding: 1.25rem;
-        }
-
-        > .card-img-overlay {
-            background-color: rgba(#ffffff, 0.8);
-            text-shadow: 0 0 1px rgba(#000000, 0.5);
         }
 
         &::after {
@@ -134,7 +135,7 @@
 
     &__date {
         background: $cor-marrom-escuro;
-        border-top-right-radius: $border-radius;
+        border-top-right-radius: $radius;
         display: inline-block;
         color: #ffffff;
         cursor: help;
@@ -145,7 +146,7 @@
         top: 0;
         right: 0;
 
-        @include media-breakpoint-down(sm) {
+        @include until($tablet) {
             right: auto;
             left: 0
         }
@@ -173,7 +174,7 @@
         .card {
             float: right;
 
-            @include media-breakpoint-down(sm) {
+            @include until($tablet) {
                 float: none;
             }
 
@@ -197,7 +198,7 @@
         }
     }
 
-    @include media-breakpoint-down(sm) {
+    @include until($tablet) {
         &::before {
             left: 20px;
         }
