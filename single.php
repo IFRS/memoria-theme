@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php the_post(); ?>
-<article class="post">
+<article class="content post">
     <h2 class="post__title"><?php the_title(); ?></h2>
     <div class="post__content">
         <?php
