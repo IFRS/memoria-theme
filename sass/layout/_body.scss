@@ -1,9 +1,6 @@
 body {
+    background-color: $background;
     &.home {
         background-color: #ffffff;
-    }
-
-    &.page {
-        overflow-x: hidden;
     }
 }

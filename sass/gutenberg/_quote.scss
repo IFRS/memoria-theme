@@ -1,12 +1,12 @@
 .wp-block-quote,
 .wp-block-pullquote {
     background: #ffffff !important;
-    border-color: $link-color;
+    border-color: $link;
     padding-left: 2em;
     position: relative;
 
     &::before {
-        color: $gray-100;
+        color: $grey-lighter;
         content: open-quote;
         font-size: 150px;
         line-height: 1;

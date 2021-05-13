@@ -8,20 +8,20 @@ img,
     }
 
     &.aligncenter {
-        @extend .mx-auto;
+        margin: 0 auto;
         margin-bottom: 20px;
         margin-top: 5px;
         max-width: 90%;
     }
 
     &.alignright {
-        @extend .float-right;
+        float: right;
         margin: 5px 0 20px 20px;
         max-width: 40%;
     }
 
     &.alignleft {
-        @extend .float-left;
+        float: left;
         margin: 5px 20px 20px 0;
         max-width: 40%;
     }
@@ -42,7 +42,7 @@ img,
 
     p {
         &.wp-caption-text {
-            color: $link-color;
+            color: $link;
             font-size: 0.85rem;
             font-style: italic;
             margin: 0;
@@ -53,7 +53,7 @@ img,
 
 /* Text meant only for screen readers. */
 .screen-reader-text {
-    @include sr-only;
+    @extend .is-sr-only;
 }
 
 /* Content gallery */
@@ -84,7 +84,7 @@ img,
 }
 
 .gallery-caption {
-    color: $link-color;
+    color: $link;
     font-size: 0.8rem;
 }
 

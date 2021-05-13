@@ -4,12 +4,12 @@
     &__link:not(.is-style-outline) {
         background-image: none;
 
-        @extend .btn;
-        @extend .btn-primary;
+        @extend .button;
+        // @extend .primary;
 
         &.is-style-outline {
-            @extend .btn;
-            @extend .btn-outline-primary;
+            @extend .button;
+            // @extend .btn-outline-primary;
         }
     }
 }

@@ -1,15 +1,15 @@
 .wp-block-categories-list {
-    @include media-breakpoint-up(sm) {
+    +from tablet {
         column-count: 2;
     }
 
-    @include media-breakpoint-up(lg) {
+    +from desktop {
         column-count: 3;
     }
 }
 
 .wp-block-categories-dropdown {
-    @include media-breakpoint-up(sm) {
+    +from tablet {
         text-align: center;
     }
 }
