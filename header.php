@@ -36,20 +36,28 @@
 </head>
 
 <body <?php body_class(); ?>>
-    <a href="#inicio-conteudo" class="sr-only sr-only-focusable">Pular para o conte&uacute;do</a>
+    <a href="#inicio-conteudo" class="is-sr-only">Pular para o conte&uacute;do</a>
 
     <?php wp_body_open(); ?>
 
-    <header class="header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?><?php echo (is_front_page() && has_header_image()) ? ' header--has-image' : ''; ?>" style="<?php echo (is_front_page() && has_header_image()) ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
+    <header class="section header<?php echo (is_front_page()) ? ' header--front-page' : ''; ?><?php echo (is_front_page() && has_header_image()) ? ' header--has-image' : ''; ?>" style="<?php echo (is_front_page() && has_header_image()) ? 'background-image: url(\''.get_header_image().'\')' : ''; ?>">
         <div class="container">
-            <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-numem.png" alt="" class="header__marca" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-numem.png')[3]; ?>/>
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-ifrs.png" alt="" class="header__marca header__marca--ifrs" width="570" height="150" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-ifrs.png')[3]; ?>/>
-                <span class="sr-only">Página Inicial - <?php bloginfo('name'); ?></span>
-            </a>
+            <div class="columns">
+                <div class="column">
+                    <h1 class="is-sr-only"><?php bloginfo('name'); ?></h1>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-numem.png" alt="" class="header__marca" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-numem.png')[3]; ?>/>
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/marca-ifrs.png" alt="" class="header__marca header__marca--ifrs" width="570" height="150" aria-hidden="true" <?php echo getimagesize(get_stylesheet_directory() . '/img/marca-ifrs.png')[3]; ?>/>
+                        <span class="is-sr-only">Página Inicial - <?php bloginfo('name'); ?></span>
+                    </a>
+                </div>
+            </div>
 
-            <?php echo get_template_part('partials/menu'); ?>
+            <div class="columns">
+                <div class="column">
+                    <?php echo get_template_part('partials/menu'); ?>
+                </div>
+            </div>
 
             <?php if (is_front_page() && has_header_image() && isset(get_custom_header()->attachment_id)) : ?>
                 <p class="header__text">
@@ -73,5 +81,6 @@
 
     <?php ifrs_memoria_breadcrumb(); ?>
 
-    <main class="<?php echo (get_query_var('tainacan_repository_archive', false)) ? 'container-fluid' : 'container'; ?>">
-        <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
+    <main role="main" class="section">
+        <section class="<?php echo (get_query_var('tainacan_repository_archive', false)) ? 'container.is-fullhd' : 'container'; ?>">
+            <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
