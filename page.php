@@ -15,9 +15,9 @@
     <nav aria-label="Paginação do Conteúdo" class="text-center">
         <?php
             wp_link_pages(array(
-                'before' => '<ul class="pagination"><li class="page-item">',
-                'separator' => '</li><li class="page-item">',
-                'after'  => '</li></ul>',
+                'before' => '<nav class="pagination"><ul class="pagination-list"><li>',
+                'separator' => '</li><li>',
+                'after'  => '</li></ul></nav>',
             ));
         ?>
     </nav>

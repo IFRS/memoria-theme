@@ -3,12 +3,13 @@
 }
 
 .post-page-numbers {
-    @extend .page-link;
+    @extend .pagination-link;
+
     background-image: none;
 
     &.current {
-        color: $body-color;
-        cursor: default;
+        @extend .is-current;
+
         font-weight: 400;
     }
 }
