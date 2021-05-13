@@ -39,7 +39,8 @@ gulp.task('sass', function() {
 
 gulp.task('vendor-css', function() {
     return gulp.src([
-        'node_modules/animate.css/animate.css'
+        'node_modules/animate.css/animate.css',
+        'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css',
     ])
     .pipe(concat('vendor.css'))
     .pipe(postcss(postCSSplugins))

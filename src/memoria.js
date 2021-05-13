@@ -1,2 +1,2 @@
 require('./modules/menu');
-require('./modules/modal');
+require('./modules/fancybox');
