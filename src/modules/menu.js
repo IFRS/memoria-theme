@@ -7,15 +7,20 @@ $(function() {
         $(menu).find('.menu-item-has-children').each(function(k, dropdown) {
             if ($(dropdown).children('.sub-menu').length > 0) {
                 $(dropdown).addClass('menu-item has-dropdown');
+                $(dropdown).children('.sub-menu').addClass('navbar-dropdown');
                 $(dropdown)
                     .children('a')
                     .addClass('navbar-link')
-                    .on('click', function(a) {
-                        a.preventDefault();
+                    .on('click', function(e) {
+                        e.preventDefault();
                         $(menu).find('.has-dropdown').not($(this).parent()).removeClass('is-active');
                         $(this).parent().toggleClass('is-active');
+                    })
+                    .on('blur', function(e) {
+                        setTimeout(() => {
+                            $(this).parent().removeClass('is-active');
+                        }, 100);
                     });
-                $(dropdown).children('.sub-menu').addClass('navbar-dropdown');
             }
         });
     });

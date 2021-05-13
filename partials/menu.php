@@ -1,23 +1,29 @@
 <?php $navbar_id = uniqid('navbar-'); ?>
-<a href="#inicio-menu" id="inicio-menu" class="sr-only">In&iacute;cio do menu</a>
+<a href="#inicio-menu" id="inicio-menu" class="is-sr-only">In&iacute;cio do menu</a>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#<?php echo $navbar_id; ?>" aria-controls="<?php echo $navbar_id; ?>" aria-expanded="false" aria-label="Navegação Principal">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar is-transparent menu-principal" role="navigation" aria-label="Menu Principal">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="Menu" aria-expanded="false" data-target="<?php echo $navbar_id; ?>">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
     <?php
         wp_nav_menu( array(
+            'fallback_cb'     => false,
             'theme_location'  => 'main',
             'depth'           => 2,
             'container'       => 'div',
-            'container_class' => 'navbar-collapse collapse',
+            'container_class' => 'navbar-menu',
             'container_id'    => $navbar_id,
-            'menu_class'      => 'navbar-nav mr-auto',
-            'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
-            'walker'          => new WP_Bootstrap_Navwalker(),
+            'menu_class'      => 'navbar-start',
+            'items_wrap'      => '%3$s',
         ));
-        get_search_form();
     ?>
+    <div class="navbar-end is-align-items-center">
+        <?php get_search_form(); ?>
+    </div>
 </nav>
 
-<a href="#fim-menu" id="fim-menu" class="sr-only">Fim do menu</a>
+<a href="#fim-menu" id="fim-menu" class="is-sr-only">Fim do menu</a>
