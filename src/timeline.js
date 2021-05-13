@@ -78,7 +78,7 @@ document.querySelectorAll('button.modal-close').forEach(function(close) {
         e.preventDefault();
 
         e.target.parentElement.classList.remove('is-active');
-        document.classList.remove('is-clipped');
+        document.documentElement.classList.remove('is-clipped');
 
         return false;
     });
