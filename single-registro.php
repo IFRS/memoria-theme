@@ -9,31 +9,35 @@
     $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
 ?>
 
-<h2><?php the_title(); ?></h2>
+<h2 class="title"><?php the_title(); ?></h2>
 
-<div class="row">
-    <div class="col-12 col-md-6">
+<div class="columns">
+    <div class="column is-6-desktop">
         <p>
         <?php foreach ($unidades as $unidade) : ?>
             <a class="registro__link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
         <?php endforeach; ?>
         </p>
     </div>
-    <div class="col-12 col-md-6"><p class="text-right"><strong><?php echo $diamesano; ?></strong></p></div>
-</div>
-<?php if (has_post_thumbnail(get_the_ID())) : ?>
-    <div class="registro-detalhe__image">
-        <a href="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full') ?>"><?php echo get_the_post_thumbnail(get_the_ID(), 'full', array('class' => 'img-fluid')); ?></a>
-        <p class="registro-detalhe__caption"><?php echo get_the_post_thumbnail_caption(get_the_ID()); ?></p>
+    <div class="column is-6-desktop">
+        <p class="has-text-right"><strong><?php echo $diamesano; ?></strong></p>
     </div>
+</div>
+
+<?php if (has_post_thumbnail(get_the_ID())) : ?>
+    <figure class="image is-pulled-left mr-3 mb-3">
+        <a href="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full') ?>"><?php echo get_the_post_thumbnail(get_the_ID(), 'full'); ?></a>
+        <figcaption class="has-text-centered is-italic">
+            <?php echo get_the_post_thumbnail_caption(get_the_ID()); ?>
+        </figcaption>
+    </figure>
 <?php endif; ?>
 
-<?php the_content(); ?>
-
-<div class="row">
-    <div class="col-12">
+<div class="content">
+    <?php the_content(); ?>
+    <p>
         <small><strong>Atualizado em: </strong><?php echo get_the_modified_date('', get_the_ID()); ?> &agrave;s <?php echo get_the_modified_time('', get_the_ID()); ?></small>
-    </div>
+    </p>
 </div>
 
 <?php get_footer(); ?>
