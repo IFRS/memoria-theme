@@ -22,7 +22,7 @@ let observer = new IntersectionObserver((entries) => {
                 entry.target.querySelector('.card').classList.add('animate__fadeInRight');
             }
         } else {
-            /* Para sconder novamente os cards assim que saem do viewport. */
+            /* Para esconder novamente os cards assim que saem do viewport. */
             // entry.target.querySelector('.card').classList.remove('animate__animated', 'animate__fadeInLeft', 'animate__fadeInRight');
         }
     });
@@ -84,12 +84,13 @@ document.querySelectorAll('button.modal-close').forEach(function(close) {
     });
 });
 
-// document.querySelectorAll('modal-background').forEach(function(background) {
-//     background.addEventListener('click', function(e) {
-//         e.preventDefault();
-//         e.target.parentElement.classList.remove('is-active');
-//         document.classList.remove('is-clipped');
+document.querySelectorAll('.modal-background').forEach(function(background) {
+    background.addEventListener('click', function(e) {
+        e.preventDefault();
 
-//         return false;
-//     });
-// });
+        e.target.parentElement.classList.remove('is-active');
+        document.documentElement.classList.remove('is-clipped');
+
+        return false;
+    });
+});
