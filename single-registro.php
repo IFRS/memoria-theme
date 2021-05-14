@@ -26,7 +26,9 @@
 
 <?php if (has_post_thumbnail(get_the_ID())) : ?>
     <figure class="image is-pulled-left mr-3 mb-3">
-        <a href="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full') ?>"><?php echo get_the_post_thumbnail(get_the_ID(), 'full'); ?></a>
+        <a href="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full') ?>">
+            <?php echo get_the_post_thumbnail(get_the_ID(), 'full'); ?>
+        </a>
         <figcaption class="has-text-centered is-italic">
             <?php echo get_the_post_thumbnail_caption(get_the_ID()); ?>
         </figcaption>

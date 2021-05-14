@@ -82,7 +82,7 @@
                         <div class="modal-background"></div>
                         <div class="modal-card">
                             <div class="modal-card-head">
-                                <h4 class="modal-card-title" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h4>
+                                <h4 class="modal-card-title is-flex-shrink-1" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h4>
                             </div>
                             <div class="modal-card-body">
                                 <div class="columns">
@@ -94,16 +94,18 @@
                                         </p>
                                     </div>
                                     <div class="column">
-                                        <p class="text-right"><strong><?php echo $diamesano; ?></strong></p>
+                                        <p class="has-text-right"><strong><?php echo $diamesano; ?></strong></p>
                                     </div>
                                 </div>
                                 <?php if (has_post_thumbnail($post->ID)) : ?>
 
-                                        <figure class="image">
+                                        <figure class="image mb-3">
                                             <a href="<?php echo get_the_post_thumbnail_url($post->ID, 'full') ?>">
-                                                <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'img-fluid')); ?>
+                                                <?php echo get_the_post_thumbnail($post->ID, 'full'); ?>
                                             </a>
-                                            <figcaption><?php echo get_the_post_thumbnail_caption($post->ID); ?></figcaption>
+                                            <figcaption class="has-text-centered is-italic">
+                                                <?php echo get_the_post_thumbnail_caption($post->ID); ?>
+                                            </figcaption>
                                         </figure>
                                 <?php endif; ?>
                                 <?php echo apply_filters('the_content', $post->post_content); ?>
