@@ -3,7 +3,7 @@
 <?php the_post(); ?>
 <article class="content post">
     <h2 class="post__title"><?php the_title(); ?></h2>
-    <div class="post__content">
+    <div class="post__content content">
         <?php
             if (has_post_thumbnail()) {
                 the_post_thumbnail('full', array('class' => 'post__thumb'));
@@ -11,11 +11,11 @@
         ?>
         <?php the_content(); ?>
         <hr>
-        <div class="row post__meta">
-            <div class="col col-md-6">
+        <div class="columns post__meta">
+            <div class="column is-6-desktop">
                 <p class="post__date"><small>Publicado em <?php the_date('d/m/Y'); ?></small></p>
             </div>
-            <div class="col col-md-6">
+            <div class="column is-6-desktop">
                 <?php $cats = get_the_category(); ?>
                 <?php if (!empty($cats)) : ?>
                     <ul class="post__categories">
