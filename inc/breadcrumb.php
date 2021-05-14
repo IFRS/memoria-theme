@@ -53,15 +53,6 @@ function ifrs_memoria_breadcrumb() {
                 echo $before_item . get_category_parents($cat, true, '') . $after_item;
                 echo $before_active . get_the_title() . $after_active;
             }
-        } elseif (get_query_var('tainacan_repository_archive', false)) {
-            echo $before_active . __('Acervo', 'ifrs-memoria-theme') . $after_active;
-        } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
-            if (is_tax('unidade')) {
-                echo $before_item . '<a href="' . get_post_type_archive_link( 'registro' ) . '">' . __('Linha do Tempo', 'ifrs-memoria-theme') . '</a>' . $after_item;
-                echo $before_active . single_term_title('', false) . $after_active;
-            } else {
-                echo $before_active . post_type_archive_title('', false) . $after_active;
-            }
         } elseif (is_attachment()) {
             $parent = get_post($post->post_parent);
             $cat    = get_the_category($parent->ID);
@@ -86,15 +77,24 @@ function ifrs_memoria_breadcrumb() {
             }
             echo $before_active . get_the_title() . $after_active;
         } elseif (is_search()) {
-            echo $before_active . 'Resultado da pesquisa por "' . get_search_query() . '"' . $after_active;
+            echo $before_active . '"' . get_search_query() . '"' . $after_active;
         } elseif (is_tag()) {
-            echo $before_active . 'Posts tagged "' . single_tag_title('', false) . '"' . $after_active;
+            echo $before_active . 'Tag "' . single_tag_title('', false) . '"' . $after_active;
         } elseif (is_author()) {
             global $author;
             $userdata = get_userdata($author);
             echo $before_active . ' ' . $userdata->display_name . $after_active;
         } elseif (is_404()) {
             echo $before_active . 'Erro 404' . $after_active;
+        } elseif (get_query_var('tainacan_repository_archive', false)) {
+            echo $before_active . __('Acervo', 'ifrs-memoria-theme') . $after_active;
+        } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
+            if (is_tax('unidade')) {
+                echo $before_item . '<a href="' . get_post_type_archive_link( 'registro' ) . '">' . __('Linha do Tempo', 'ifrs-memoria-theme') . '</a>' . $after_item;
+                echo $before_active . single_term_title('', false) . $after_active;
+            } else {
+                echo $before_active . post_type_archive_title('', false) . $after_active;
+            }
         }
 
         echo '</ol>';

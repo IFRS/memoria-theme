@@ -1,34 +1,31 @@
 <?php get_header(); ?>
 
 <?php if (!have_posts()) : ?>
-    <div class="row">
-        <div class="col-12">
-            <h2 class="search__title"><?php printf('Busca por &quot;%s&quot;', get_search_query()); ?></h2>
-        </div>
-    </div>
-    <div class="alert alert-warning">
-        <p><?php _e('Nenhum resultado encontrado.', 'ifrs-memoria-theme'); ?></p>
-    </div>
-<?php else : ?>
-    <div class="row">
-        <div class="col-12">
-            <h2 class="search__title"><?php printf('Resultados da busca por &quot;%s&quot;', get_search_query()); ?></h2>
-        </div>
-    </div>
-    <?php while (have_posts()) : the_post(); ?>
-    <article class="search-result">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="search-result__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-            </div>
-            <div class="col-12">
-                <p class="search-result__link"><?php the_permalink(); ?></p>
-            </div>
-            <div class="col-12">
-                <?php the_excerpt(); ?>
-            </div>
+    <h2 class="title"><?php printf('Busca por &quot;%s&quot;', get_search_query()); ?></h2>
+    <article class="message is-warning">
+        <div class="message-body">
+            <p><?php _e('Nenhum resultado encontrado.', 'ifrs-memoria-theme'); ?></p>
         </div>
     </article>
+<?php else : ?>
+    <h2 class="title"><?php printf('Resultados da busca por &quot;%s&quot;', get_search_query()); ?></h2>
+    <?php while (have_posts()) : the_post(); ?>
+        <article class="media">
+            <div class="media-left">
+                <figure class="image is-64x64">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('post-thumbnail'); ?>
+                    <?php else : ?>
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/placeholder.jpg" alt="" aria-hidden="true">
+                    <?php endif; ?>
+                </figure>
+            </div>
+            <div class="media-content">
+                <small class="is-size-7 has-text-success-dark"><?php echo get_the_permalink(); ?></small>
+                <h3 class="mb-0 is-size-5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                <?php the_excerpt(); ?>
+            </div>
+        </article>
     <?php endwhile; ?>
 <?php endif; ?>
 
