@@ -2,16 +2,17 @@
 
 <?php the_post(); ?>
 
-<article class="content post">
-    <h2 class="post__title"><?php the_title(); ?></h2>
-    <div class="post__content">
-        <?php
-            if (has_post_thumbnail()) {
-                the_post_thumbnail('full', array('class' => 'post__thumb'));
-            }
-        ?>
-        <?php the_content(); ?>
-    </div>
+<article class="content">
+    <h2><?php the_title(); ?></h2>
+
+    <?php if (has_post_thumbnail()) : ?>
+        <figure class="image">
+            <?php the_post_thumbnail('full'); ?>
+        </figure>
+    <?php endif; ?>
+
+    <?php the_content(); ?>
+
     <nav aria-label="Paginação do Conteúdo" class="text-center">
         <?php
             wp_link_pages(array(
