@@ -1,9 +1,12 @@
 .front-page {
     &__title {
-        border-color: #000000;
+        border-bottom: 1px solid #000000;
+        color: #000000;
         display: inline-block;
-        padding-left: 1em;
-        padding-right: 1em;
-        text-align: center;
+        padding: {
+            bottom: 10px;
+            left: 1em;
+            right: 1em;
+        };
     }
 }
