@@ -1,10 +1,12 @@
 <?php get_header(); ?>
 
-<main class="content">
-    <h2 class="sr-only">P&aacute;gina n&atilde;o encontrada</h2>
-    <div class="alert alert-danger" role="alert">
-        <p class="m-0 text-center"><strong>Ops!&nbsp;</strong>A p&aacute;gina que voc&ecirc; procura n&atilde;o foi encontrada. Tente voltar para a <a href="<?php echo esc_url(home_url()); ?>">p&aacute;gina inicial</a>.</p>
+<article class="message is-danger">
+    <div class="message-header">
+        <p>P&aacute;gina n&atilde;o encontrada</p>
     </div>
-</main>
+    <div class="message-body">
+        <strong>Ops!&nbsp;</strong>A p&aacute;gina que voc&ecirc; procura n&atilde;o foi encontrada. Tente voltar para a <a href="<?php echo esc_url(home_url()); ?>">p&aacute;gina inicial</a>.
+    </div>
+</article>
 
 <?php get_footer(); ?>

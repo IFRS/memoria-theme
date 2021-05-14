@@ -4,21 +4,23 @@ main {
 
     @include clearfix;
 
-    h2 {
-        border-bottom: 1px solid rgba($primary, 0.5);
-        padding-bottom: 10px;
-    }
+    .content {
+        h2 {
+            border-bottom: 1px solid rgba($primary, 0.5);
+            padding-bottom: 10px;
+        }
 
-    a {
-        background:
-            linear-gradient(currentColor 0 0)
-            bottom / var(--d, 0) 1px
-            no-repeat;
-        transition: 0.5s;
+        a {
+            background:
+                linear-gradient(currentColor 0 0)
+                bottom / var(--d, 0) 1px
+                no-repeat;
+            transition: 0.5s;
 
-        &:hover {
-            --d: 100%;
-            text-decoration: none;
+            &:hover {
+                --d: 100%;
+                text-decoration: none;
+            }
         }
     }
 }

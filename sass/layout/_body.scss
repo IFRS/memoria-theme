@@ -1,6 +1,11 @@
 body {
     background-color: $background;
+
     &.home {
+        background-color: #ffffff;
+    }
+
+    &.error404 {
         background-color: #ffffff;
     }
 }
