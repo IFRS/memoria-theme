@@ -10,7 +10,7 @@ main {
             padding-bottom: 10px;
         }
 
-        a {
+        a:not(figure a) {
             background:
                 linear-gradient(currentColor 0 0)
                 bottom / var(--d, 0) 1px
