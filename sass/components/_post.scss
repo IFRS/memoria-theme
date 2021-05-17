@@ -1,0 +1,31 @@
+.post {
+    &__thumb {
+        margin-bottom: $gap / 2;
+
+        @include from($desktop) {
+            float: left;
+            margin-right: $gap / 2;
+            max-width: 40%;
+        }
+    }
+
+    &__meta {
+        clear: both;
+    }
+
+    &__categories {
+        list-style: none !important;
+
+        @include from($desktop) {
+            text-align: right;
+        }
+
+        li {
+            display: inline-block;
+
+            &:not(:last-child)::after {
+                content: ',\00a0';
+            }
+        }
+    }
+}
