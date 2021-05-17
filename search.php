@@ -16,13 +16,13 @@
                     <?php if (has_post_thumbnail()) : ?>
                         <?php the_post_thumbnail('post-thumbnail'); ?>
                     <?php else : ?>
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/placeholder.jpg" alt="" aria-hidden="true">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/placeholder.svg" alt="" aria-hidden="true">
                     <?php endif; ?>
                 </figure>
             </div>
             <div class="media-content">
-                <small class="is-size-7 has-text-success-dark"><?php echo get_the_permalink(); ?></small>
                 <h3 class="mb-0 is-size-5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                <small class="is-size-7 has-text-success-dark"><?php echo get_the_permalink(); ?></small>
                 <?php the_excerpt(); ?>
             </div>
         </article>
