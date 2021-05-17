@@ -8,14 +8,15 @@ $(function() {
                         e.preventDefault();
                         $(menu).find('.has-dropdown').not($(this).parent()).removeClass('is-active');
                         $(this).parent().toggleClass('is-active');
-                    })
-                    .on('blur', function() {
-                        setTimeout(() => {
-                            $(this).parent().removeClass('is-active');
-                        }, 100);
                     });
             }
         });
+    });
+
+    $(window).on('click', function(e) {
+        if (!$(e.target).is('.navbar-link') && !$(e.target).is('.navbar-dropdown') && $(e.target).parents('.navbar-dropdown').length === 0) {
+            $('.has-dropdown').removeClass('is-active');
+        }
     });
 
     $(".navbar-burger").on('click', function() {
