@@ -21,6 +21,9 @@ add_action( 'wp_enqueue_scripts', function() {
     }
 
     if (!WP_DEBUG) {
-        wp_enqueue_script( 'barra-brasil', '//barra.brasil.gov.br/barra_2.0.js', array(), null, true );
+        wp_enqueue_script( 'vlibras', 'https://vlibras.gov.br/app/vlibras-plugin.js', array(), null, true );
+        wp_add_inline_script( 'vlibras', "
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        " );
     }
 }, 1 );

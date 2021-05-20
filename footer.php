@@ -43,6 +43,8 @@
         </div>
     </footer>
 
+    <?php get_template_part('partials/vlibras'); ?>
+
     <?php wp_footer(); ?>
 </body>
 </html>
