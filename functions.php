@@ -1,5 +1,8 @@
 <?php
-// Post Thumbnail
+// Youtube API Options
+require_once('inc/config-youtube.php');
+
+// Theme Config
 require_once('inc/theme-support.php');
 
 // Largura do conteúdo
