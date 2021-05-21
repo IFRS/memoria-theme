@@ -1,34 +1,58 @@
-const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.01,
-}
+const getRealOffsetTop = function(element) {
+    if (!element) return 0;
+    return getRealOffsetTop(element.offsetParent) + element.offsetTop;
+};
 
-let observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            let num = 0;
-            let siblings = Array.from(entry.target.parentElement.children);
+let list = document.querySelector('ul.ano-list');
+let main = document.querySelector('body');
+let sticky = getRealOffsetTop(list);
+let wpadminbar = document.querySelector('#wpadminbar');
 
-            siblings.forEach((sib, i) => {
-                if (sib === entry.target) num = i;
-            });
+window.addEventListener('scroll', function() {
+    if (window.innerWidth > 768 && window.pageYOffset > sticky) {
+        list.classList.add('ano-list--sticky');
 
-            entry.target.querySelector('.card').classList.add('animate__animated');
-
-            if (num % 2 === 0) {
-                entry.target.querySelector('.card').classList.add('animate__fadeInLeft');
-            } else {
-                entry.target.querySelector('.card').classList.add('animate__fadeInRight');
-            }
-        } else {
-            /* Para esconder novamente os cards assim que saem do viewport. */
-            // entry.target.querySelector('.card').classList.remove('animate__animated', 'animate__fadeInLeft', 'animate__fadeInRight');
+        if (wpadminbar) {
+            list.style = 'top: ' + wpadminbar.offsetHeight + 'px;';
         }
-    });
-}, options);
+    } else {
+        list.classList.remove('ano-list--sticky');
+        list.removeAttribute('style');
+    }
+})
 
-document.addEventListener("DOMContentLoaded", function() {
+let observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                let num = 0;
+                let siblings = Array.from(entry.target.parentElement.children);
+
+                siblings.forEach((sib, i) => {
+                    if (sib === entry.target) num = i;
+                });
+
+                entry.target.querySelector('.card').classList.add('animate__animated');
+
+                if (num % 2 === 0) {
+                    entry.target.querySelector('.card').classList.add('animate__fadeInLeft');
+                } else {
+                    entry.target.querySelector('.card').classList.add('animate__fadeInRight');
+                }
+            } else {
+                /* Para esconder novamente os cards assim que saem do viewport. */
+                // entry.target.querySelector('.card').classList.remove('animate__animated', 'animate__fadeInLeft', 'animate__fadeInRight');
+            }
+        });
+    },
+    {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.01,
+    }
+);
+
+document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.timeline .registro')
         .forEach(registro => { observer.observe(registro) }
     );
