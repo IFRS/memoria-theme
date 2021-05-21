@@ -12,17 +12,21 @@
     }
 ?>
 
-<h2 class="sr-only">Linha do Tempo</h2>
+<h2 class="title has-text-centered">
+    Linha do Tempo
+    <?php if (is_tax('unidade')) echo single_term_title(' - '); ?>
+</h2>
 <ul class="ano-list" role="tablist">
     <?php $delay = 0; ?>
     <?php foreach ($posts_by_year as $year => $posts) : ?>
         <li class="ano-list__item animate__animated animate__backInDown" style="animation-delay: <?php echo $delay; ?>ms">
-            <a class="ano-list__link <?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#ano-<?php echo $year; ?>" role="tab" aria-selected="false" data-toggle="tab">
+            <a class="ano-list__link <?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" href="#ano-<?php echo $year; ?>" role="tab" aria-selected="<?php echo (reset($posts_by_year) === $posts) ? 'true' : 'false'; ?>" data-posts="<?php echo count($posts); ?>">
                 <?php echo $year; ?>
             </a>
         </li>
         <?php $delay += 20; ?>
     <?php endforeach; ?>
+    <small class="timeline-info" aria-live="polite"></small>
 </ul>
 <div class="timeline-list">
     <?php foreach ($posts_by_year as $year => $posts) : ?>
