@@ -3,6 +3,10 @@ body {
 
     &.home {
         background-color: #ffffff;
+
+        main {
+            font-size: 1.1rem;
+        }
     }
 
     &.error404 {
