@@ -1,15 +1,15 @@
 .wp-block-categories-list {
-    +from tablet {
+    @include from($tablet) {
         column-count: 2;
     }
 
-    +from desktop {
+    @include from($desktop) {
         column-count: 3;
     }
 }
 
 .wp-block-categories-dropdown {
-    +from tablet {
+    @include from($tablet) {
         text-align: center;
     }
 }
