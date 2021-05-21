@@ -12,16 +12,16 @@
     <?php endif; ?>
 
     <?php the_content(); ?>
-
-    <nav aria-label="Paginação do Conteúdo" class="text-center">
-        <?php
-            wp_link_pages(array(
-                'before' => '<nav class="pagination"><ul class="pagination-list"><li>',
-                'separator' => '</li><li>',
-                'after'  => '</li></ul></nav>',
-            ));
-        ?>
-    </nav>
 </article>
+
+<nav aria-label="Paginação do Conteúdo">
+    <?php
+        wp_link_pages(array(
+            'before' => '<nav class="pagination is-centered"><ul class="pagination-list"><li>',
+            'separator' => '</li><li>',
+            'after'  => '</li></ul></nav>',
+        ));
+    ?>
+</nav>
 
 <?php get_footer(); ?>
