@@ -1,15 +1,19 @@
 .wp-block-button {
+    $root: &;
     margin-bottom: 1rem;
 
     &__link:not(.is-style-outline) {
         background-image: none;
 
         @extend .button;
-        // @extend .primary;
+        @extend .is-primary;
+    }
 
-        &.is-style-outline {
+    &.is-style-outline {
+        #{$root}__link {
             @extend .button;
-            // @extend .btn-outline-primary;
+            @extend .is-primary;
+            @extend .is-outlined;
         }
     }
 }
