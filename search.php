@@ -12,7 +12,7 @@
     <?php while (have_posts()) : the_post(); ?>
         <article class="media">
             <div class="media-left">
-                <figure class="image is-64x64">
+                <figure class="image is-64x64 is-clipped">
                     <?php if (has_post_thumbnail()) : ?>
                         <?php the_post_thumbnail('post-thumbnail'); ?>
                     <?php else : ?>
