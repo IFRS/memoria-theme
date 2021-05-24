@@ -13,6 +13,14 @@
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/rodape-ifrs.png" alt="Portal do IFRS"/>
                     </a>
                 </div>
+                <?php if (is_active_sidebar('sidebar-social')) : ?>
+                <div class="column is-offset-1 has-text-centered">
+                    <h2><?php
+                        printf('%s %s', get_bloginfo('name'), __('na Web', 'ifrs-memoria-theme'));
+                    ?></h2>
+                    <?php dynamic_sidebar('sidebar-social'); ?>
+                </div>
+                <?php endif; ?>
                 <?php if (is_active_sidebar('sidebar-rodape')) : ?>
                 <div class="column is-4-tablet is-3-widescreen has-text-right-tablet">
                     <?php dynamic_sidebar('sidebar-rodape'); ?>
