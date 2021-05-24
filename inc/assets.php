@@ -11,9 +11,6 @@ add_action( 'wp_enqueue_scripts', function() {
     /* wp_register_script( $handle, $src, $deps, $ver, $in_footer ); */
     /* wp_enqueue_script( $handle[, $src, $deps, $ver, $in_footer] ); */
 
-    wp_enqueue_script('ie', get_stylesheet_directory_uri() . '/js/ie.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ie.js'), false);
-    wp_script_add_data('ie', 'conditional', 'lt IE 9');
-
     wp_enqueue_script('memoria', get_stylesheet_directory_uri() . '/js/memoria.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/memoria.js'), true);
 
     if (is_post_type_archive('registro') || is_tax('unidade')) {
