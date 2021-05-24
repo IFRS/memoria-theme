@@ -155,10 +155,10 @@
         border-top-right-radius: $radius;
         display: inline-block;
         color: #ffffff;
-        cursor: help;
+        cursor: help !important;
         font-size: 0.9rem;
         padding: 3px 10px;
-        position: absolute;
+        position: absolute !important;
         text-transform: uppercase;
         top: 0;
         right: 0;

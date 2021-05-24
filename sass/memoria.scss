@@ -6,6 +6,10 @@
 @import 'bulma/bulma';
 @import 'config/bulma-override';
 
+/* Bulma Tooltip */
+@import 'config/bulma-tooltip';
+@import '@creativebulma/bulma-tooltip/src/sass/index';
+
 /* Tainacan */
 @import 'config/tainacan';
 
@@ -29,6 +33,7 @@
 @import 'components/post';
 @import 'components/pagination';
 @import 'components/footer';
+@import 'components/widget-social';
 @import 'components/creditos';
 
 /* Gutenberg */
