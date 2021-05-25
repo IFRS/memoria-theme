@@ -32,15 +32,18 @@
     </div>
 
     <div class="content">
-        <h2><?php the_title(); ?></h2>
+        <h2>
+            <?php the_title(); ?>
+            <small class="is-size-6 my-2 is-pulled-right"><?php tainacan_the_item_edit_link(); ?></small>
+        </h2>
 
-        <?php if (has_post_thumbnail()) : ?>
-            <figure class="image is-pulled-left m-0 mr-3 mb-3">
-                <?php the_post_thumbnail('medium'); ?>
-            </figure>
-        <?php endif; ?>
-
-        <section class="tainacan-metadata">
+        <section class="columns is-multiline tainacan-metadata">
+            <?php if (has_post_thumbnail()) : ?>
+                <div>
+                    <h3><?php _e('Miniatura', 'ifrs-memoria-theme'); ?></h3>
+                    <?php the_post_thumbnail('post-thumbnail', array('class' => 'tainacan-metadata__thumb')); ?>
+                </div>
+            <?php endif; ?>
             <?php
                 tainacan_the_metadata( array(
                     'before_title'  => '<h3 class="tainacan-metadata__title">',
@@ -52,23 +55,28 @@
             ?>
         </section>
 
+        <hr>
+
         <?php if ( tainacan_has_document() ) : ?>
-            <section class="tainacan-documents">
-                <h3>Documentos</h3>
-                <?php
-                    tainacan_the_document();
-                    if ( function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) {
-                        echo tainacan_the_item_document_download_link();
-                    }
-                ?>
+            <section class="tainacan-document has-text-centered">
+                <h3><?php _e('Documento', 'ifrs-memoria-theme'); ?></h3>
+                <div class="tainacan-document__item">
+                    <?php tainacan_the_document(); ?>
+                    <?php if ( function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) : ?>
+                        <span class="tainacan-document__download">
+                            <?php echo tainacan_the_item_document_download_link(); ?>
+                        </span>
+                    <?php endif; ?>
+                </div>
             </section>
         <?php endif; ?>
+
+        <hr>
 
         <?php
             if (function_exists('tainacan_get_the_attachments')) {
                 $attachments = tainacan_get_the_attachments();
             } else {
-                // compatibility with pre 0.11 tainacan plugin
                 $attachments = array_values(
                     get_children(
                         array(
@@ -83,10 +91,12 @@
             }
         ?>
         <?php if ( !empty( $attachments ) || tainacan_has_document() ) : ?>
-            <section class="tainacan-attachments">
-                <h3>Anexos</h3>
+            <section class="columns is-multiline has-text-centered">
+                <div class="column is-full">
+                    <h3><?php _e('Anexos', 'ifrs-memoria-theme'); ?></h3>
+                </div>
                 <?php foreach ( $attachments as $attachment ) : ?>
-                    <div class="tainacan-attachments__item">
+                    <div class="column is-4 is-3-desktop is-2-widescreen has-text-centered">
                         <?php
                         if ( function_exists('tainacan_get_attachment_html_url') ) {
                             $href = tainacan_get_attachment_html_url($attachment->ID);
@@ -95,7 +105,7 @@
                         }
                         ?>
                         <a
-                            class="<?php if (!wp_get_attachment_image( $attachment->ID, 'tainacan-interface-item-attachments')) echo 'attachment-without-image'; ?>"
+                            class="tainacan-attachment__link<?php if (!wp_get_attachment_image( $attachment->ID, 'post-thumbnail')) echo ' attachment-without-image'; ?>"
                             href="<?php echo $href; ?>">
                             <?php
                                 echo wp_get_attachment_image( $attachment->ID, 'post-thumbnail', true, array('class' => 'float-left mr-1') );
