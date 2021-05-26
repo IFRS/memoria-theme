@@ -2,7 +2,7 @@
 
 <?php the_post(); ?>
 
-<article id="post-<?php the_ID()?>" <?php post_class()?>>
+<article id="post-<?php the_ID()?>" <?php post_class(array('theme-item'))?>>
     <div class="media is-align-items-center mb-3">
         <div class="media-left">
             <?php if ( has_post_thumbnail( tainacan_get_collection_id() ) ) :
@@ -69,9 +69,9 @@
                     <?php endif; ?>
                 </div>
             </section>
-        <?php endif; ?>
 
-        <hr>
+            <hr>
+        <?php endif; ?>
 
         <?php
             if (function_exists('tainacan_get_the_attachments')) {
@@ -90,7 +90,7 @@
                 );
             }
         ?>
-        <?php if ( !empty( $attachments ) || tainacan_has_document() ) : ?>
+        <?php if ( !empty( $attachments ) ) : ?>
             <section class="columns is-multiline has-text-centered">
                 <div class="column is-full">
                     <h3><?php _e('Anexos', 'ifrs-memoria-theme'); ?></h3>
@@ -116,8 +116,44 @@
                     </div>
                 <?php endforeach; ?>
             </section>
+
+            <hr>
         <?php endif; ?>
     </div>
+
+    <?php
+        $pagination = tainacan_get_adjacent_items();
+        $previous = $pagination['previous'];
+        $next = $pagination['next'];
+    ?>
+    <nav class="pagination is-small is-centered" role="navigation" aria-label="Navegação entre Itens">
+        <?php if (!empty($previous)) : ?>
+            <a class="pagination-previous" rel="prev" href="<?php echo $previous['url']; ?>">&leftarrow;&nbsp;<?php echo $previous['title']; ?></a>
+        <?php endif; ?>
+        <?php if (!empty($next)) : ?>
+            <a class="pagination-next" rel="next" href="<?php echo $next['url']; ?>"><?php echo $next['title']; ?>&nbsp;&rightarrow;</a>
+        <?php endif; ?>
+    </nav>
+
+    <?php
+        $url = null;
+        $args = $_GET;
+        if (isset($args['ref'])) {
+            $ref = $_GET['ref'];
+            unset($args['pos']);
+            unset($args['ref']);
+            unset($args['source_list']);
+            $url = $ref . '?' . http_build_query(array_merge($args));
+        } else {
+            unset($args['pos']);
+            unset($args['ref']);
+            unset($args['source_list']);
+            $url = tainacan_the_collection_url() . '?' . http_build_query(array_merge($args));
+        }
+    ?>
+    <?php if ($url) : ?>
+        <a href="<?php echo $url; ?>"><?php _e('Voltar para a lista de itens', 'ifrs-memoria-theme'); ?></a>
+    <?php endif; ?>
 </article>
 
 <?php get_footer(); ?>
