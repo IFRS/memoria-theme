@@ -126,12 +126,22 @@
         $previous = $pagination['previous'];
         $next = $pagination['next'];
     ?>
-    <nav class="pagination is-small is-centered" role="navigation" aria-label="Navegação entre Itens">
+    <nav class="pagination is-centered" role="navigation" aria-label="Navegação entre Itens">
         <?php if (!empty($previous)) : ?>
-            <a class="pagination-previous" rel="prev" href="<?php echo $previous['url']; ?>">&leftarrow;&nbsp;<?php echo $previous['title']; ?></a>
+            <a class="pagination-previous" rel="prev" href="<?php echo $previous['url']; ?>">
+                &leftarrow;&nbsp;<?php echo $previous['title']; ?>
+                <?php if ($previous['thumbnail']['tainacan-small']) : ?>
+                    <img src="<?php echo $previous['thumbnail']['tainacan-small'][0]; ?>" alt="" width="20" height="20" class="mr-1">
+                <?php endif; ?>
+            </a>
         <?php endif; ?>
         <?php if (!empty($next)) : ?>
-            <a class="pagination-next" rel="next" href="<?php echo $next['url']; ?>"><?php echo $next['title']; ?>&nbsp;&rightarrow;</a>
+            <a class="pagination-next" rel="next" href="<?php echo $next['url']; ?>">
+                <?php if ($next['thumbnail']['tainacan-small']) : ?>
+                    <img src="<?php echo $next['thumbnail']['tainacan-small'][0]; ?>" alt="" width="20" height="20" class="mr-1">
+                <?php endif; ?>
+                <?php echo $next['title']; ?>&nbsp;&rightarrow;
+            </a>
         <?php endif; ?>
     </nav>
 
