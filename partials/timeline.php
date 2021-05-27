@@ -86,7 +86,7 @@
                         <div class="modal-background"></div>
                         <div class="modal-card">
                             <div class="modal-card-head">
-                                <h4 class="modal-card-title is-flex-shrink-1" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h4>
+                                <h4 class="modal-card-title is-flex-shrink-1 mb-0" id="modal-<?php echo $post->ID; ?>-title"><?php echo $post->post_title; ?></h4>
                             </div>
                             <div class="modal-card-body">
                                 <div class="columns">
