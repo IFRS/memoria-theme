@@ -131,7 +131,7 @@
             <a class="pagination-previous" rel="prev" href="<?php echo $previous['url']; ?>">
                 &leftarrow;&nbsp;<?php echo $previous['title']; ?>
                 <?php if ($previous['thumbnail']['tainacan-small']) : ?>
-                    <img src="<?php echo $previous['thumbnail']['tainacan-small'][0]; ?>" alt="" width="20" height="20" class="mr-1">
+                    <img src="<?php echo $previous['thumbnail']['tainacan-small'][0]; ?>" alt="" width="20" height="20" class="ml-1">
                 <?php endif; ?>
             </a>
         <?php endif; ?>
