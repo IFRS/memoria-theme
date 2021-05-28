@@ -1,15 +1,5 @@
 .tainacan-metadata {
     @include clearfix;
-
-    > * {
-        @extend .column;
-        @extend .is-6;
-        @extend .is-4-widescreen;
-    }
-
-    &__thumb {
-        max-width: 300px;
-    }
 }
 
 .tainacan-document {

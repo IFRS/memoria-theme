@@ -4,7 +4,7 @@
 
 <article id="post-<?php the_ID()?>" <?php post_class(array('theme-item'))?>>
     <div class="media is-align-items-center mb-3">
-        <div class="media-left">
+        <div class="media-left mr-2">
             <?php if ( has_post_thumbnail( tainacan_get_collection_id() ) ) :
                 $thumbnail_id = get_post_thumbnail_id( tainacan_get_collection_id() );
                 $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>
@@ -39,18 +39,23 @@
 
         <section class="columns is-multiline tainacan-metadata">
             <?php if (has_post_thumbnail()) : ?>
-                <div>
+                <div class="column is-6 is-4-desktop is-3-widescreen">
                     <h3><?php _e('Miniatura', 'ifrs-memoria-theme'); ?></h3>
-                    <?php the_post_thumbnail('post-thumbnail', array('class' => 'tainacan-metadata__thumb')); ?>
+                    <figure class="image is-128x128 m-0">
+                    <a href="<?php the_post_thumbnail_url( 'full' ); ?>">
+                        <?php the_post_thumbnail('post-thumbnail', array('class' => 'tainacan-metadata__thumb')); ?>
+                    </a>
+                    </figure>
                 </div>
             <?php endif; ?>
             <?php
                 tainacan_the_metadata( array(
+                    'before'        => '<div class="column is-6 is-4-desktop is-3-widescreen metadata-type-$type $id">',
+                    'after'         => '</div>',
                     'before_title'  => '<h3 class="tainacan-metadata__title">',
                     'after_title'   => '</h3>',
                     'before_value'  => '<p class="tainacan-metadata__value">',
                     'after_value'   => '</p>',
-                    'exclude_title' => false,
                 ) );
             ?>
         </section>
