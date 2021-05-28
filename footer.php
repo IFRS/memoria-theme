@@ -9,7 +9,7 @@
             <div class="columns is-align-items-center">
                 <div class="column is-3-widescreen has-text-centered">
                     <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/rodape-numem.png" alt="<?php bloginfo('name'); ?>" class="mr-3 mb-4"/>
-                    <a href="https://ifrs.edu.br/" class="is-inline-block has-tooltip-arrow" data-tooltip="Portal do IFRS">
+                    <a href="https://ifrs.edu.br/" class="footer__portal is-inline-block has-tooltip-arrow" data-tooltip="Portal do IFRS">
                         <img src="<?php echo esc_url(get_stylesheet_directory_uri()); ?>/img/rodape-ifrs.png" alt="Portal do IFRS"/>
                     </a>
                 </div>
