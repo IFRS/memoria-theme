@@ -76,7 +76,7 @@ add_action( 'init', function() {
 		'capability_type'       => array('registro', 'registros'),
 		'map_meta_cap'          => true,
 		'capabilities'          => $capabilities,
-		'show_in_rest'          => false,
+		'show_in_rest'          => true,
 		'rewrite'               => array('slug' => 'timeline','with_front' => false),
 	);
 

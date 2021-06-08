@@ -39,7 +39,7 @@ add_action( 'init', function() {
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
 		'capabilities'               => $capabilities,
-		'show_in_rest'               => false,
+		'show_in_rest'               => true,
 		'rewrite'                    => array('slug' => 'timeline/unidade', 'with_front' => false),
     );
 
