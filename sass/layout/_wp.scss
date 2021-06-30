@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* WordPress Legacy */
 img,
 .wp-caption {
@@ -85,7 +87,7 @@ img,
 @for $i from 1 through 9 {
 	.gallery-columns-#{$i} {
 		.gallery-item {
-			flex-basis: calc(#{percentage(1/$i)} - 5px);
+			flex-basis: calc(#{percentage(math.div(1,$i))} - 5px);
 		}
 	}
 }
