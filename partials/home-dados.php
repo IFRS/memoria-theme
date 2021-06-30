@@ -8,7 +8,7 @@
         if ($youtube_statistics === false) {
             $response = wp_remote_get('https://www.googleapis.com/youtube/v3/channels?key='.$youtube_key.'&id='.$youtube_channel.'&part=statistics');
 
-            if ( ! is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+            if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
                 $data = wp_remote_retrieve_body($response);
                 $youtube = json_decode($data);
                 $youtube_statistics = $youtube->items[0]->statistics;
@@ -16,7 +16,7 @@
             }
         }
 
-        $videos = $youtube_statistics->videoCount;
+        $videos = $youtube_statistics->videoCount ?? null;
     }
 ?>
 
