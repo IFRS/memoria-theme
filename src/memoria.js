@@ -1,3 +1,3 @@
 require('./modules/menu');
-require('./modules/fancybox');
+require('./modules/lightgallery');
 require('./modules/widget-social');

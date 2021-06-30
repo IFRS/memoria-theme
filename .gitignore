@@ -13,5 +13,8 @@
 # JS
 /js/
 
+# Vendor
+/vendor/
+
 # Build
 /dist/
