@@ -1,5 +1,3 @@
 @import 'animate.css/animate';
 
-$lg-path-fonts: '../vendor/fonts';
-$lg-path-images: '../vendor/images';
-@import 'lightgallery/scss/lightgallery-bundle';
+@import 'node_modules/simplelightbox/src/simple-lightbox';
