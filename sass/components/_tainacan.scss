@@ -61,8 +61,7 @@
     }
 }
 
-.tainacan-attachment {
-    &__link {
-        background-image: none !important;
-    }
+.tainacan-item-file-download {
+    display: inline-block;
+    margin-top: 0.5rem;
 }

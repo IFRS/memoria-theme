@@ -39,8 +39,7 @@
 
         <section class="columns is-multiline tainacan-metadata">
             <?php if (has_post_thumbnail()) : ?>
-                <div class="column is-6 is-4-desktop is-3-widescreen">
-                    <h3><?php _e('Miniatura', 'ifrs-memoria-theme'); ?></h3>
+                <div class="column is-narrow">
                     <figure class="image is-128x128 m-0">
                     <a href="<?php the_post_thumbnail_url( 'full' ); ?>">
                         <?php the_post_thumbnail('post-thumbnail', array('class' => 'tainacan-metadata__thumb')); ?>
@@ -61,70 +60,118 @@
         </section>
 
         <hr>
+    </div>
 
-        <?php if ( tainacan_has_document() ) : ?>
-            <section class="tainacan-document has-text-centered">
-                <h3><?php _e('Documento', 'ifrs-memoria-theme'); ?></h3>
-                <div class="tainacan-document__item">
-                    <?php tainacan_the_document(); ?>
-                    <?php if ( function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) : ?>
-                        <span class="tainacan-document__download">
-                            <?php echo tainacan_the_item_document_download_link(); ?>
-                        </span>
-                    <?php endif; ?>
-                </div>
-            </section>
+    <?php $attachments = tainacan_get_the_attachments(); ?>
 
-            <hr>
-        <?php endif; ?>
+    <?php if ( tainacan_has_document() && empty( $attachments ) ) : ?>
+        <section class="tainacan-document has-text-centered mb-5">
+            <h3 class="title is-4"><?php _e('Documento', 'ifrs-memoria-theme'); ?></h3>
+            <div class="tainacan-document__item">
+                <?php tainacan_the_document(); ?>
+                <?php if ( function_exists('tainacan_the_item_document_download_link') && tainacan_the_item_document_download_link() != '' ) : ?>
+                    <span class="tainacan-document__download">
+                        <?php echo tainacan_the_item_document_download_link(); ?>
+                    </span>
+                <?php endif; ?>
+            </div>
+        </section>
+    <?php elseif ( ! empty( $attachments ) ) : ?>
+        <section class="tainacan-gallery has-text-centered mb-3">
+            <h3 class="title is-4"><?php _e('Documento e Anexos', 'ifrs-memoria-theme'); ?></h3>
+                <?php
+                $media_items_thumbs = array();
+                $media_items_main = array();
 
-        <?php
-            if (function_exists('tainacan_get_the_attachments')) {
-                $attachments = tainacan_get_the_attachments();
-            } else {
-                $attachments = array_values(
-                    get_children(
-                        array(
-                            'post_parent'    => $post->ID,
-                            'post_type'      => 'attachment',
-                            'post_mime_type' => 'image',
-                            'order'          => 'ASC',
-                            'numberposts'    => -1,
+                if ( tainacan_has_document() ) {
+                    $is_document_type_attachment = tainacan_get_the_document_type() === 'attachment';
+                    $media_items_main[] =
+                        tainacan_get_the_media_component_slide(array(
+                            'after_slide_metadata' => (
+                                ( tainacan_the_item_document_download_link() != '' ) ?
+                                    ('<span class="tainacan-item-file-download">' . tainacan_the_item_document_download_link() . '</span>')
+                                    : ''
+                            ),
+                            'media_content' => tainacan_get_the_document(),
+                            'media_content_full' => $is_document_type_attachment ? tainacan_get_the_document(0, 'full') : ('<div class="attachment-without-image">' . tainacan_get_the_document(0, 'full') . '</div>'),
+                            'media_title' => $is_document_type_attachment ? get_the_title(tainacan_get_the_document_raw()) : '',
+                            'media_description' => $is_document_type_attachment ? get_the_content(tainacan_get_the_document_raw()) : '',
+                            'media_caption' => $is_document_type_attachment ? wp_get_attachment_caption(tainacan_get_the_document_raw()) : '',
+                            'media_type' => tainacan_get_the_document_type(),
+                            'class_slide_metadata' => ''
+                        ));
+                }
+
+                foreach ( $attachments as $attachment ) {
+                    $media_items_main[] =
+                        tainacan_get_the_media_component_slide(array(
+                            'after_slide_metadata' => (( tainacan_the_item_attachment_download_link($attachment->ID) != '' ) ?
+                                                            '<span class="tainacan-item-file-download">' . tainacan_the_item_attachment_download_link($attachment->ID) . '</span>'
+                                                    : ''),
+                            'media_content' => tainacan_get_attachment_as_html($attachment->ID, 0),
+                            'media_content_full' => wp_attachment_is('image', $attachment->ID) ? wp_get_attachment_image( $attachment->ID, 'full', false) : ('<div class="attachment-without-image tainacan-embed-container"><iframe id="tainacan-attachment-iframe" src="' . tainacan_get_attachment_html_url($attachment->ID) . '"></iframe></div>'),
+                            'media_title' => $attachment->post_title,
+                            'media_description' => $attachment->post_content,
+                            'media_caption' => $attachment->post_excerpt,
+                            'media_type' => $attachment->post_mime_type,
+                            'class_slide_metadata' => ''
+                        ));
+                }
+                if (
+                    (tainacan_has_document() && $attachments && sizeof($attachments) > 0 ) ||
+                    (!tainacan_has_document() && $attachments && sizeof($attachments) > 1 )
+                ) {
+                    if ( tainacan_has_document() ) {
+                        $is_document_type_attachment = tainacan_get_the_document_type() === 'attachment';
+                        $media_items_thumbs[] =
+                            tainacan_get_the_media_component_slide(array(
+                                'media_content' => get_the_post_thumbnail(null, 'tainacan-medium'),
+                                'media_content_full' => $is_document_type_attachment ? tainacan_get_the_document(0, 'full') : ('<div class="attachment-without-image">' . tainacan_get_the_document(0, 'full') . '</div>'),
+                                'media_title' => $is_document_type_attachment ? get_the_title(tainacan_get_the_document_raw()) : '',
+                                // 'media_description' => $is_document_type_attachment ? get_the_content(tainacan_get_the_document_raw()) : '',
+                                // 'media_caption' => $is_document_type_attachment ? wp_get_attachment_caption(tainacan_get_the_document_raw()) : '',
+                                'media_type' => tainacan_get_the_document_type(),
+                                'class_slide_metadata' => ''
+                            ));
+
+                    }
+                    foreach ( $attachments as $attachment ) {
+                        $media_items_thumbs[] =
+                            tainacan_get_the_media_component_slide(array(
+                                'media_content' => wp_get_attachment_image( $attachment->ID, 'tainacan-medium', false ),
+                                'media_content_full' => wp_attachment_is('image', $attachment->ID) ? wp_get_attachment_image( $attachment->ID, 'full', false) : ('<div class="attachment-without-image tainacan-embed-container"><iframe id="tainacan-attachment-iframe" src="' . tainacan_get_attachment_html_url($attachment->ID) . '"></iframe></div>'),
+                                'media_title' => $attachment->post_title,
+                                // 'media_description' => $attachment->post_content,
+                                // 'media_caption' => $attachment->post_excerpt,
+                                'media_type' => $attachment->post_mime_type,
+                                'class_slide_metadata' => ''
+                            ));
+                    }
+                }
+                tainacan_the_media_component(
+                    'tainacan-item-attachments_id-' . $post->ID,
+                    $media_items_thumbs,
+                    $media_items_main,
+                    array(
+                        'class_main_div' => '',
+                        'class_thumbs_div' => '',
+                        'swiper_thumbs_options' => array(
+                            'navigation' => array(
+                                'nextEl' => '.swiper-navigation-next_' . 'tainacan-item-attachments_id-' . $post->ID . '-thumbs',
+                                'prevEl' => '.swiper-navigation-prev_' . 'tainacan-item-attachments_id-' . $post->ID . '-thumbs',
+                            )
+                        ),
+                        'swiper_main_options' => array(
+                            'navigation' => array(
+                                'nextEl' => '.swiper-navigation-next_' . 'tainacan-item-attachments_id-' . $post->ID . '-main',
+                                'prevEl' => '.swiper-navigation-prev_' . 'tainacan-item-attachments_id-' . $post->ID . '-main',
+                            )
                         )
                     )
                 );
-            }
-        ?>
-        <?php if ( !empty( $attachments ) ) : ?>
-            <section class="columns is-multiline has-text-centered">
-                <div class="column is-full">
-                    <h3><?php _e('Anexos', 'ifrs-memoria-theme'); ?></h3>
-                </div>
-                <?php foreach ( $attachments as $attachment ) : ?>
-                    <div class="column is-4 is-3-desktop is-2-widescreen has-text-centered">
-                        <?php
-                        if ( function_exists('tainacan_get_attachment_html_url') ) {
-                            $href = tainacan_get_attachment_html_url($attachment->ID);
-                        } else {
-                            $href = wp_get_attachment_url($attachment->ID, 'large');
-                        }
-                        ?>
-                        <a
-                            class="tainacan-attachment__link<?php if (!wp_get_attachment_image( $attachment->ID, 'post-thumbnail')) echo ' attachment-without-image'; ?>"
-                            href="<?php echo $href; ?>">
-                            <?php
-                                echo wp_get_attachment_image( $attachment->ID, 'post-thumbnail', true, array('class' => 'float-left mr-1') );
-                                echo '<br>';
-                            ?>
-                            <span><?php echo get_the_title( $attachment->ID ); ?></span>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
-            </section>
-
-            <hr>
-        <?php endif; ?>
-    </div>
+            ?>
+        </section>
+    <?php endif; ?>
 
     <?php
         $pagination = tainacan_get_adjacent_items();
