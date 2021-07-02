@@ -25,12 +25,12 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.5.1",
+    "lightbox2": "^2.11.3",
     "minimist": "^1.2.5",
     "pixrem": "^5.0.0",
     "plugin-error": "^1.0.1",
     "postcss": "^8.3.5",
     "sass": "^1.35.1",
-    "simplelightbox": "^2.8.0",
-    "webpack": "^5.41.1"
+    "webpack": "^5.42.0"
   }
 }

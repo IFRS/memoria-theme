@@ -1,3 +1,11 @@
 @import 'animate.css/animate';
 
-@import 'node_modules/simplelightbox/src/simple-lightbox';
+@import 'node_modules/lightbox2/dist/css/lightbox';
+
+.lightbox {
+    z-index: 99993 !important;
+}
+
+.lightboxOverlay {
+    z-index: 99993 !important;
+}

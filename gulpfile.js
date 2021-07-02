@@ -14,7 +14,7 @@ const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
 
 gulp.task('clean', async function() {
-    return await del(['css/', 'js/', 'dist/']);
+    return await del(['css/', 'js/', 'images/', 'vendor/', 'dist/']);
 });
 
 gulp.task('sass', function() {
@@ -118,12 +118,8 @@ gulp.task('scripts', gulp.series('webpack', function js() {
 gulp.task('vendor', function(done) {
     [
         {
-            src: 'node_modules/lightgallery/fonts/*',
-            dest: 'vendor/fonts/',
-        },
-        {
-            src: 'node_modules/lightgallery/images/*',
-            dest: 'vendor/images/',
+            src: 'node_modules/lightbox2/dist/images/*',
+            dest: 'images/',
         },
     ].map(function(file) {
         return gulp.src(file.src)

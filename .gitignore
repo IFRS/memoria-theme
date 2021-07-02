@@ -13,6 +13,9 @@
 # JS
 /js/
 
+# Images from Vendor
+/images/
+
 # Vendor
 /vendor/
 
