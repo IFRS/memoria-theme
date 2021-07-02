@@ -138,4 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         });
     });
+
+    document.addEventListener('keyup', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                modal.classList.remove('is-active');
+            });
+            document.documentElement.classList.remove('is-clipped');
+        }
+    })
 });

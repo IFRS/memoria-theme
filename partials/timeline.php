@@ -102,7 +102,6 @@
                                     </div>
                                 </div>
                                 <?php if (has_post_thumbnail($post->ID)) : ?>
-
                                         <figure class="image mb-3">
                                             <a href="<?php echo get_the_post_thumbnail_url($post->ID, 'full') ?>">
                                                 <?php echo get_the_post_thumbnail($post->ID, 'full'); ?>
