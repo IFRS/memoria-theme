@@ -1,20 +1,14 @@
-# dotenv
-.env
+# SASS
+.sass-cache/
 
 # NPM
 /node_modules/
-
-# SASS
-.sass-cache/
 
 # CSS
 /css/
 
 # JS
 /js/
-
-# Images from Vendor
-/images/
 
 # Vendor
 /vendor/

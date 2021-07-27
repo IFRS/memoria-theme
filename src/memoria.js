@@ -1,3 +1,3 @@
 require('./modules/menu');
-require('./modules/lightbox');
+require('./modules/lightgalley');
 require('./modules/widget-social');

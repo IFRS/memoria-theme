@@ -1,11 +1,5 @@
 @import 'animate.css/animate';
 
-@import 'node_modules/lightbox2/dist/css/lightbox';
-
-.lightbox {
-    z-index: 99993 !important;
-}
-
-.lightboxOverlay {
-    z-index: 99993 !important;
-}
+$lg-path-fonts: '../vendor/fonts';
+$lg-path-images: '../vendor/images';
+@import 'lightgallery/scss/lightgallery-bundle';
