@@ -1,4 +1,4 @@
-            <a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
+            <a href="#fim-conteudo" id="fim-conteudo" class="is-sr-only">Fim do conte&uacute;do</a>
         </section>
     </main>
 
