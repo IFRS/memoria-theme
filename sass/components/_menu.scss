@@ -4,13 +4,33 @@
     border-bottom: 1px solid rgba(#ffffff, 0.5);
     padding: 0.5rem;
 
-    a {
+    .navbar-burger {
         color: #ffffff;
 
         &:hover,
         &:active,
         &:focus {
-            color: $grey-lighter;
+            color: #ffffff;
+        }
+    }
+
+    a {
+        color: #000000;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $link;
+        }
+
+        @include from($desktop) {
+            color: #ffffff;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: $grey-lighter;
+            }
         }
     }
 
