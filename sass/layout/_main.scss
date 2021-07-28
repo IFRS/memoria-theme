@@ -10,7 +10,13 @@ main {
             padding-bottom: 10px;
         }
 
-        a:not([href$=".jpg"]):not([href$=".jpeg"]):not([href$=".png"]):not([href$=".gif"]):not([href$=".webp"]) {
+        a
+        :not([href$=".jpg"])
+        :not([href$=".jpeg"])
+        :not([href$=".png"])
+        :not([href$=".gif"])
+        :not([href$=".webp"])
+        :not(.wp-block-button__link) {
             background:
                 linear-gradient(currentColor 0 0)
                 bottom / var(--d, 0) 1px
