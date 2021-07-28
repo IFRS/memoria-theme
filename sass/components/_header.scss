@@ -85,11 +85,16 @@
 
     &__text {
         font-weight: 400;
-        margin-bottom: 0;
-        max-width: 50%;
         opacity: 0.8;
-        position: absolute;
-        bottom: 0;
+
+        @include from($tablet) {
+            max-width: 50%;
+        }
+
+        @include from($desktop) {
+            position: absolute;
+            bottom: 0;
+        }
 
         strong {
             color: $grey-light;
