@@ -15,9 +15,6 @@
 
     &__item {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         min-height: 10vh;
 
         a:hover + #{$root}__download {
