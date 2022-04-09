@@ -26,7 +26,7 @@
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.5.1",
     "lightgallery": "^2.4.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "pixrem": "^5.0.0",
     "plugin-error": "^1.0.1",
     "postcss": "^8.4.6",
