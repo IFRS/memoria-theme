@@ -28,7 +28,7 @@
     "lightgallery": "^2.4.0",
     "minimist": "^1.2.5",
     "pixrem": "^5.0.0",
-    "plugin-error": "^1.0.1",
+    "plugin-error": "^2.0.0",
     "postcss": "^8.4.6",
     "sass": "^1.49.7",
     "webpack": "^5.68.0"
