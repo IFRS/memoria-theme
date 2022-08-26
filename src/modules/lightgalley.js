@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let images = document.querySelectorAll('a[href$=".jpg"],a[href$=".jpeg"],a[href$=".png"],a[href$=".gif"],a[href$=".webp"],a[href$=".svg"]');
     images.forEach(function(imageLink) {
         if (!imageLink.closest('.wp-block-gallery') && !imageLink.closest('.tainacan-media-component')) {
-            lightGallery(image, {
+            lightGallery(imageLink, {
                 selector: 'this',
             });
         }
