@@ -1,5 +1,11 @@
 .tainacan-metadata {
-    @include clearfix;
+    &__thumb {
+        margin-right: 0.5rem;
+    }
+
+    &__title {
+        margin-bottom: 0.3em;
+    }
 }
 
 .tainacan-document {

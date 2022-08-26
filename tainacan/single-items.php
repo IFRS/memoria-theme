@@ -7,9 +7,10 @@
         <div class="media-left mr-2">
             <?php if ( has_post_thumbnail( tainacan_get_collection_id() ) ) :
                 $thumbnail_id = get_post_thumbnail_id( tainacan_get_collection_id() );
+                $thumbnail_metadata = wp_get_attachment_metadata( $thumbnail_id );
                 $alt = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true); ?>
                 <picture class="image is-24x24">
-                    <img src="<?php echo get_the_post_thumbnail_url( tainacan_get_collection_id() ); ?>" width="24" height="24" alt="<?php echo esc_attr($alt); ?>">
+                    <img src="<?php echo get_the_post_thumbnail_url( tainacan_get_collection_id() ); ?>" width="<?php echo $thumbnail_metadata['width']; ?>" height="<?php echo $thumbnail_metadata['height']; ?>" alt="<?php echo esc_attr($alt); ?>">
                 </picture>
             <?php else : ?>
                 <div class="has-text-centered has-background-white p-1" aria-hidden="true">
@@ -32,34 +33,40 @@
     </div>
 
     <div class="content">
-        <h2>
+        <?php if (has_post_thumbnail()) : ?>
+            <figure class="image is-48x48 m-0 mr-3 is-pulled-left">
+                <a href="<?php the_post_thumbnail_url( 'full' ); ?>">
+                    <?php the_post_thumbnail('post-thumbnail', array('class' => 'tainacan-metadata__thumb')); ?>
+                </a>
+            </figure>
+        <?php endif; ?>
+        <h2 class="mt-0">
             <?php the_title(); ?>
             <small class="is-size-6 my-2 is-pulled-right"><?php tainacan_the_item_edit_link(); ?></small>
         </h2>
 
-        <section class="columns is-multiline tainacan-metadata">
-            <?php if (has_post_thumbnail()) : ?>
-                <div class="column is-narrow">
-                    <figure class="image is-128x128 m-0">
-                    <a href="<?php the_post_thumbnail_url( 'full' ); ?>">
-                        <?php the_post_thumbnail('post-thumbnail', array('class' => 'tainacan-metadata__thumb')); ?>
-                    </a>
-                    </figure>
-                </div>
-            <?php endif; ?>
-            <?php
-                tainacan_the_metadata( array(
-                    'before'        => '<div class="column is-6 is-4-desktop is-3-widescreen metadata-type-$type $id">',
+        <section class="tainacan-metadata">
+        <?php
+            tainacan_the_metadata_sections( array(
+                'before' => '<div class="card has-background-white-bis mb-6">',
+                'after' => '</div>',
+                'before_name' => '<h3 class="card-header-title">',
+                'after_name' => '</h3>',
+                'before_metadata_list' => do_action( 'tainacan-interface-single-item-metadata-begin' ) . '<div class="card-content columns is-multiline">',
+                'after_metadata_list' => '</div>' . do_action( 'tainacan-interface-single-item-metadata-end' ),
+                'metadata_list_args' => array(
+                    'display_slug_as_class' => false,
+                    'before'        => '<div class="column is-6 is-4-desktop is-3-widescreen metadata-type-$type">',
                     'after'         => '</div>',
-                    'before_title'  => '<h3 class="tainacan-metadata__title">',
-                    'after_title'   => '</h3>',
+                    'before_title'  => '<h4 class="tainacan-metadata__title">',
+                    'after_title'   => '</h4>',
                     'before_value'  => '<p class="tainacan-metadata__value">',
                     'after_value'   => '</p>',
-                ) );
-            ?>
+                    'exclude_title' => true,
+                ),
+            ) );
+        ?>
         </section>
-
-        <hr>
     </div>
 
     <?php $attachments = tainacan_get_the_attachments(); ?>
