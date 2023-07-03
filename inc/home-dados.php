@@ -21,62 +21,56 @@
     }
 ?>
 
-<section class="section home-dados">
-    <div class="container">
-        <h2 class="home-dados__titulo"><?php bloginfo('name'); ?> em n&uacute;meros</h2>
-        <div class="columns">
-            <article class="column">
-                <?php $registros = wp_count_posts( 'registro' )->publish ?? 0; ?>
-                <p class="dado__numero"><?php echo $registros; ?></p>
-                <p class="dado__texto"><?php echo _n('Data registrada', 'Datas registradas', $registros, 'ifrs-memoria-theme'); ?> na Linha do Tempo</p>
+<section class="home-dados">
+    <h2 class="home-dados__titulo"><?php bloginfo('name'); ?> em n&uacute;meros</h2>
+    <div class="home-dados__lista">
+        <article class="dado">
+            <?php $registros = wp_count_posts( 'registro' )->publish ?? 0; ?>
+            <p class="dado__numero"><?php echo $registros; ?></p>
+            <p class="dado__texto"><?php echo _n('Data registrada', 'Datas registradas', $registros, 'ifrs-memoria-theme'); ?> na Linha do Tempo</p>
+        </article>
+
+        <article class="dado">
+            <?php $colecoes = wp_count_posts( 'tainacan-collection' )->publish ?? 0; ?>
+            <p class="dado__numero"><?php echo $colecoes; ?></p>
+            <p class="dado__texto"><?php echo _n('Coleção', 'Coleções', $colecoes, 'ifrs-memoria-theme'); ?> no Acervo</p>
+        </article>
+
+        <?php
+            $collections = new WP_Query(array(
+                'post_type'      => 'tainacan-collection',
+                'nopaging'       => true,
+                'posts_per_page' => -1,
+                'fields'         => 'ids',
+            ));
+
+            $total = 0;
+
+            while ($collections->have_posts()) {
+                $collections->the_post();
+                $posts = wp_count_posts( 'tnc_col_' . get_the_ID() . '_item' );
+                $total += $posts->publish ?? 0;
+            }
+
+            wp_reset_postdata();
+        ?>
+        <article class="dado">
+            <p class="dado__numero"><?php echo $total; ?></p>
+            <p class="dado__texto"><?php echo _n('Item', 'Itens', $total, 'ifrs-memoria-theme'); ?> inseridos nas Cole&ccedil;&otilde;es</p>
+        </article>
+
+        <?php if (!empty($videos)) : ?>
+            <article class="dado">
+                <p class="dado__numero"><?php echo $videos; ?></p>
+                <p class="dado__texto"><?php echo _n('Vídeo', 'Vídeos', $videos, 'ifrs-memoria-theme'); ?> publicados no YouTube</p>
             </article>
-
-            <article class="column">
-                <?php $colecoes = wp_count_posts( 'tainacan-collection' )->publish ?? 0; ?>
-                <p class="dado__numero"><?php echo $colecoes; ?></p>
-                <p class="dado__texto"><?php echo _n('Coleção', 'Coleções', $colecoes, 'ifrs-memoria-theme'); ?> no Acervo</p>
-            </article>
-
-            <?php
-                $collections = new WP_Query(array(
-                    'post_type'      => 'tainacan-collection',
-                    'nopaging'       => true,
-                    'posts_per_page' => -1,
-                    'fields'         => 'ids',
-                ));
-
-                $total = 0;
-
-                while ($collections->have_posts()) {
-                    $collections->the_post();
-                    $posts = wp_count_posts( 'tnc_col_' . get_the_ID() . '_item' );
-                    $total += $posts->publish ?? 0;
-                }
-
-                wp_reset_postdata();
-            ?>
-            <article class="column">
-                <p class="dado__numero"><?php echo $total; ?></p>
-                <p class="dado__texto"><?php echo _n('Item', 'Itens', $total, 'ifrs-memoria-theme'); ?> inseridos nas Cole&ccedil;&otilde;es</p>
-            </article>
-
-            <?php if (!empty($videos)) : ?>
-                <article class="column">
-                    <p class="dado__numero"><?php echo $videos; ?></p>
-                    <p class="dado__texto"><?php echo _n('Vídeo', 'Vídeos', $videos, 'ifrs-memoria-theme'); ?> publicados no YouTube</p>
-                </article>
-            <?php endif; ?>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
 
 <?php
 $html = ob_get_clean();
 
-add_filter( 'the_content', function($content) use ($html) {
-if (is_front_page()) {
-    $content = $content . $html;
-}
-
-return $content;
+add_action('blocksy:single:container:bottom', function() use ($html) {
+    if (is_front_page()) echo $html;
 });
