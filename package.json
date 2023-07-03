@@ -10,6 +10,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.2",
     "@babel/preset-env": "^7.16.11",
+    "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.2",
     "browser-sync": "^2.27.7",
     "del": "^6.0.0",
