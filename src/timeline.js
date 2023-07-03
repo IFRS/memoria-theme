@@ -1,3 +1,5 @@
+import Swal from "sweetalert2/src/sweetalert2.js";
+
 document.addEventListener('DOMContentLoaded', function() {
     const getRealOffsetTop = function(element) {
         if (!element) return 0;
@@ -102,49 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
         mu.observe(link, {attributes: true});
     });
 
-    document.querySelectorAll('[data-toggle=modal]').forEach(function(modal_toggle) {
+    document.querySelectorAll('[data-swal-template]').forEach(function(modal_toggle) {
         modal_toggle.addEventListener('click', function(e) {
             e.preventDefault();
-
-            let modal = e.target.dataset.target;
-
-            if (modal) {
-                document.querySelector(modal).classList.add('is-active');
-                document.documentElement.classList.add('is-clipped');
-            }
-
-            return false;
         });
     });
 
-    document.querySelectorAll('button.modal-close').forEach(function(close) {
-        close.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            e.target.parentElement.classList.remove('is-active');
-            document.documentElement.classList.remove('is-clipped');
-
-            return false;
-        });
-    });
-
-    document.querySelectorAll('.modal-background').forEach(function(background) {
-        background.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            e.target.parentElement.classList.remove('is-active');
-            document.documentElement.classList.remove('is-clipped');
-
-            return false;
-        });
-    });
-
-    document.addEventListener('keyup', function(e) {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal').forEach(function(modal) {
-                modal.classList.remove('is-active');
-            });
-            document.documentElement.classList.remove('is-clipped');
-        }
-    })
+    Swal.bindClickHandler();
 });

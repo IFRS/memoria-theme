@@ -1,0 +1,14 @@
+%blocksy-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--block-width, var(--container-width));
+  max-width: var(--block-max-width, var(--normal-container-max-width));
+}
+
+%clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

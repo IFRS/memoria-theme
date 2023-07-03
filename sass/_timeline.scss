@@ -7,7 +7,18 @@
     }
 }
 
+.timeline-title {
+    @extend %blocksy-container;
+
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: var(--content-spacing, 1rem);
+    text-align: center;
+}
+
 .ano-list {
+    @extend %blocksy-container;
+
     display: flex;
     align-items: stretch;
     align-content: space-around;
@@ -24,13 +35,12 @@
     padding: 10px 30px;
 
     &--sticky {
-        // @extend .container;
-
         position: fixed;
         top: 0;
         width: 100%;
+        max-width: 100%;
 
-        background-color: inherit;
+        background-color: var(--background-color, inherit);
         box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.5);
         z-index: 1;
     }
@@ -44,11 +54,11 @@
         margin: 0 10px 5px 0;
 
         &:hover {
-            color: $cor-marrom-claro;
+            color: var(--linkInitialColor, $cor-marrom-claro);
         }
 
         &.active {
-            background-color: $cor-marrom-escuro;
+            background-color: var(--buttonHoverColor, $cor-marrom-escuro);
             color: #ffffff;
         }
     }
@@ -58,6 +68,10 @@
     margin-top: 0.5rem;
     text-align: center;
     width: 100%;
+}
+
+.timeline-list {
+    @extend %blocksy-container;
 }
 
 .timeline {
@@ -70,7 +84,7 @@
 
     &::before {
         content: '';
-        background: $cor-marrom-claro;
+        background: var(--linkInitialColor, $cor-marrom-claro);
         width: 5px;
         height: 98%;
         height: calc(100% - 50px);
@@ -79,11 +93,11 @@
         transform: translateX(-50%);
     }
 
-    // @include until($tablet) {
-    //     &::before {
-    //         left: 20px;
-    //     }
-    // }
+    @include media-breakpoint-down('md') {
+        &::before {
+            left: 20px;
+        }
+    }
 }
 
 .registro {
@@ -92,7 +106,7 @@
     width: 100%;
     margin-bottom: 30px;
 
-    // @include clearfix;
+    @extend %clearfix;
 
     &--without-thumbnail {
         #{$root}__date + #{$root}__title {
@@ -104,7 +118,7 @@
         content: '';
         width: 30px;
         height: 30px;
-        background: inherit;
+        background: var(--linkHoverColor, $cor-marrom-escuro);
         border-radius: 50%;
         position: absolute;
         left: 50%;
@@ -120,14 +134,16 @@
     }
 
     .card {
+        background-color: var(--wp--preset--color--white, #ffffff);
+        padding: var(--wp--preset--spacing--50, 1.5rem);
         width: 45%;
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
 
-        // @include until($tablet) {
-        //     max-width: 100%;
-        //     width: auto;
-        //     margin-left: 70px;
-        // }
+        @include media-breakpoint-down('md') {
+            max-width: 100%;
+            width: auto;
+            margin-left: 70px;
+        }
 
         &::after {
             content: '';
@@ -151,22 +167,23 @@
     }
 
     &__date {
-        background: $cor-marrom-escuro;
+        background: var(--buttonHoverColor, $cor-marrom-escuro);
         border-top-right-radius: 4px;
         display: inline-block;
         color: #ffffff;
         cursor: help !important;
         font-size: 0.9rem;
-        padding: 3px 10px;
+        margin: 0;
+        padding: var(--button-padding);
         position: absolute !important;
         text-transform: uppercase;
         top: 0;
         right: 0;
 
-        // @include until($tablet) {
-        //     right: auto;
-        //     left: 0
-        // }
+        @include media-breakpoint-down('md') {
+            right: auto;
+            left: 0
+        }
 
         &:empty {
             display: none;
@@ -174,13 +191,13 @@
     }
 
     &__title {
-        color: $cor-marrom-claro;
+        color: var(--headings-color, inherit);
         font-size: 1.25rem;
         margin-bottom: 10px;
     }
 
     &__text {
-        margin-bottom: 10px;
+        margin-bottom: var(--content-spacing, 1rem);
     }
 
     &__link {
@@ -191,9 +208,9 @@
         .card {
             float: right;
 
-            // @include until($tablet) {
-            //     float: none;
-            // }
+            @include media-breakpoint-down('md') {
+                float: none;
+            }
 
             &::after {
                 content: '';
@@ -215,25 +232,45 @@
         }
     }
 
-    // @include until($tablet) {
-    //     &::before {
-    //         left: 20px;
-    //     }
+    @include media-breakpoint-down('md') {
+        &::before {
+            left: 20px;
+        }
 
-    //     &:nth-child(odd) {
-    //         .card {
-    //             &::after {
-    //                 content: '';
-    //                 position: absolute;
-    //                 border-style: solid;
-    //                 width: 0;
-    //                 height: 0;
-    //                 top: 30px;
-    //                 left: -15px;
-    //                 border-width: 10px 15px 10px 0;
-    //                 border-color: transparent #ffffff transparent transparent;
-    //             }
-    //         }
-    //     }
-    // }
+        &:nth-child(odd) {
+            .card {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    border-style: solid;
+                    width: 0;
+                    height: 0;
+                    top: 30px;
+                    left: -15px;
+                    border-width: 10px 15px 10px 0;
+                    border-color: transparent #ffffff transparent transparent;
+                }
+            }
+        }
+    }
+}
+
+.modal-meta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &__item {
+        flex: 1 1 auto;
+
+        &--right {
+            text-align: right;
+        }
+
+        p {
+            margin-bottom: var(--content-spacing, 1rem);
+        }
+    }
 }

@@ -1,0 +1,56 @@
+[data-tooltip] {
+  $arrow-size: 10px;
+  $tooltip-margin: 1rem;
+
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+
+  /* Tooltip */
+  &::before {
+    content: attr(data-tooltip); /* here's the magic */
+    position: absolute;
+
+    /* vertically center */
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* move to right */
+    right: 100%;
+    margin-right: $tooltip-margin;
+
+    /* basic styles */
+    width: 200px;
+    padding: var(--button-padding, 0.5rem);
+    border-radius: var(--buttonBorderRadius);
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+
+    display: none; /* hide by default */
+  }
+
+  /* Arrow */
+  &::after {
+    content: "";
+    position: absolute;
+
+    /* position tooltip correctly */
+    right: 100%;
+    margin-right: calc(calc($arrow-size * -2) + $tooltip-margin);
+
+    /* vertically center */
+    top: 50%;
+    transform: translateY(-50%);
+
+    /* the arrow */
+    border: $arrow-size solid #000000;
+    border-color: transparent transparent transparent black;
+
+    display: none;
+  }
+
+  /* Display Tooltip */
+  &:hover::before,
+  &:hover::after {
+    display: block;
+  }
+}

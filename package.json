@@ -27,6 +27,7 @@
     "plugin-error": "^2.0.0",
     "postcss": "^8.4.6",
     "sass": "^1.49.7",
+    "sweetalert2": "^11.7.12",
     "webpack": "^5.68.0"
   }
 }
