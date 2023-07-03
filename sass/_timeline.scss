@@ -24,13 +24,13 @@
     padding: 10px 30px;
 
     &--sticky {
-        @extend .container;
+        // @extend .container;
 
         position: fixed;
         top: 0;
         width: 100%;
 
-        background-color: $background;
+        background-color: inherit;
         box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.5);
         z-index: 1;
     }
@@ -38,7 +38,7 @@
     &__link {
         background-image: none;
         border-radius: 4px;
-        color: $primary;
+        color: inherit;
         text-align: center;
         padding: 0 5px;
         margin: 0 10px 5px 0;
@@ -79,11 +79,11 @@
         transform: translateX(-50%);
     }
 
-    @include until($tablet) {
-        &::before {
-            left: 20px;
-        }
-    }
+    // @include until($tablet) {
+    //     &::before {
+    //         left: 20px;
+    //     }
+    // }
 }
 
 .registro {
@@ -92,7 +92,7 @@
     width: 100%;
     margin-bottom: 30px;
 
-    @include clearfix;
+    // @include clearfix;
 
     &--without-thumbnail {
         #{$root}__date + #{$root}__title {
@@ -104,7 +104,7 @@
         content: '';
         width: 30px;
         height: 30px;
-        background: $primary;
+        background: inherit;
         border-radius: 50%;
         position: absolute;
         left: 50%;
@@ -123,11 +123,11 @@
         width: 45%;
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
 
-        @include until($tablet) {
-            max-width: 100%;
-            width: auto;
-            margin-left: 70px;
-        }
+        // @include until($tablet) {
+        //     max-width: 100%;
+        //     width: auto;
+        //     margin-left: 70px;
+        // }
 
         &::after {
             content: '';
@@ -152,7 +152,7 @@
 
     &__date {
         background: $cor-marrom-escuro;
-        border-top-right-radius: $radius;
+        border-top-right-radius: 4px;
         display: inline-block;
         color: #ffffff;
         cursor: help !important;
@@ -163,10 +163,10 @@
         top: 0;
         right: 0;
 
-        @include until($tablet) {
-            right: auto;
-            left: 0
-        }
+        // @include until($tablet) {
+        //     right: auto;
+        //     left: 0
+        // }
 
         &:empty {
             display: none;
@@ -191,9 +191,9 @@
         .card {
             float: right;
 
-            @include until($tablet) {
-                float: none;
-            }
+            // @include until($tablet) {
+            //     float: none;
+            // }
 
             &::after {
                 content: '';
@@ -215,25 +215,25 @@
         }
     }
 
-    @include until($tablet) {
-        &::before {
-            left: 20px;
-        }
+    // @include until($tablet) {
+    //     &::before {
+    //         left: 20px;
+    //     }
 
-        &:nth-child(odd) {
-            .card {
-                &::after {
-                    content: '';
-                    position: absolute;
-                    border-style: solid;
-                    width: 0;
-                    height: 0;
-                    top: 30px;
-                    left: -15px;
-                    border-width: 10px 15px 10px 0;
-                    border-color: transparent #ffffff transparent transparent;
-                }
-            }
-        }
-    }
+    //     &:nth-child(odd) {
+    //         .card {
+    //             &::after {
+    //                 content: '';
+    //                 position: absolute;
+    //                 border-style: solid;
+    //                 width: 0;
+    //                 height: 0;
+    //                 top: 30px;
+    //                 left: -15px;
+    //                 border-width: 10px 15px 10px 0;
+    //                 border-color: transparent #ffffff transparent transparent;
+    //             }
+    //         }
+    //     }
+    // }
 }

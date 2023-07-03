@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     $youtube_key = get_option('ifrs_memoria_options-youtube_key', false);
     $youtube_channel = get_option('ifrs_memoria_options-youtube_channel', false);
 
@@ -68,3 +69,14 @@
         </div>
     </div>
 </section>
+
+<?php
+$html = ob_get_clean();
+
+add_filter( 'the_content', function($content) use ($html) {
+if (is_front_page()) {
+    $content = $content . $html;
+}
+
+return $content;
+});

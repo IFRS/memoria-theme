@@ -1,53 +1,9 @@
 /* Config */
-@import 'config/vars';
-@import 'config/bulma';
-
-/* Bulma */
-@import 'bulma/bulma';
-@import 'config/bulma-override';
-
-/* Bulma Tooltip */
-@import 'config/bulma-tooltip';
-@import '@creativebulma/bulma-tooltip/src/sass/index';
+@import 'vars';
 
 /* Tainacan */
-@import 'config/tainacan';
-
-/* Layout */
-@import 'layout/body';
-@import 'layout/focus-fix';
-@import 'layout/wp';
-@import 'layout/headings';
-@import 'layout/table';
-@import 'layout/main';
+// @import 'tainacan';
 
 /* Blocks */
-@import 'components/header';
-@import 'components/menu';
-@import 'components/searchform';
-@import 'components/breadcrumb';
-@import 'components/front-page';
-@import 'components/home-dados';
-@import 'components/timeline';
-@import 'components/tainacan';
-@import 'components/post';
-@import 'components/pagination';
-@import 'components/footer';
-@import 'components/widget-social';
-@import 'components/creditos';
-
-/* Gutenberg */
-@import 'gutenberg/align';
-@import 'gutenberg/audio';
-@import 'gutenberg/button';
-@import 'gutenberg/categories';
-@import 'gutenberg/code';
-@import 'gutenberg/cover';
-@import 'gutenberg/file';
-@import 'gutenberg/image';
-@import 'gutenberg/latest-posts';
-@import 'gutenberg/quote';
-@import 'gutenberg/separator';
-@import 'gutenberg/style-destaque';
-@import 'gutenberg/tainacan-item-submission-form';
-@import 'gutenberg/twitter';
+@import 'home-dados';
+@import 'timeline';
