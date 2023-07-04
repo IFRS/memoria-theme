@@ -3,14 +3,14 @@
     background-image: url('../img/bg-home-dados.png');
     color: #ffffff;
     margin-top: 3rem;
-    padding: 1rem 0;
+    padding: var(--content-vertical-spacing, 2rem) 0;
     text-align: center;
 
     &__titulo,
     &__lista {
-        max-width: var(--container-width);
-        margin-left: auto;
-        margin-right: auto;
+        @extend %blocksy-container;
+
+        width: auto;
     }
 
     &__titulo {
@@ -19,7 +19,7 @@
         display: inline-block;
         font-size: 1.75rem;
         font-weight: 600;
-        margin-bottom: 3rem;
+        margin-bottom: var(--content-vertical-spacing, 2em);
         padding: 0 30px 10px 30px;
     }
 
