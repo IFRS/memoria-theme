@@ -11,14 +11,12 @@
 
 <div class="registro-meta">
   <div class="registro-meta__item">
-    <p>
     <?php foreach ($unidades as $unidade) : ?>
       <a href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
     <?php endforeach; ?>
-    </p>
   </div>
   <div class="registro-meta__item">
-    <p><strong><?php echo $diamesano; ?></strong></p>
+    <strong><?php echo $diamesano; ?></strong>
   </div>
 </div>
 
