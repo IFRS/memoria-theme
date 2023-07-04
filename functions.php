@@ -17,6 +17,7 @@ require_once('inc/gutenberg-custom.php');
 // Linha do Tempo
 require_once('inc/taxonomies/unidade.php');
 require_once('inc/post-types/registro.php');
+require_once('inc/registro-meta.php');
 require_once('inc/roles.php');
 
 // Tainacan Config

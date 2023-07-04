@@ -50,12 +50,12 @@
           });
         ?>
         <?php foreach ($posts as $post) : ?>
-          <div class="registro<?php echo (has_post_thumbnail()) ? '' : ' registro--without-thumbnail' ?>">
+          <div class="timeline-registro<?php echo (has_post_thumbnail()) ? '' : ' timeline-registro--without-thumbnail' ?>">
             <div class="card">
               <?php if (has_post_thumbnail($post->ID)) : ?>
                 <div class="card-image">
                   <figure class="image is-16by9">
-                    <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'registro__image animate__animated animate__fadeIn animate__delay-1s')); ?>
+                    <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'timeline-registro__image animate__animated animate__fadeIn animate__delay-1s')); ?>
                   </figure>
                 </div>
               <?php endif; ?>
@@ -66,15 +66,15 @@
                   $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
                 ?>
                 <?php if (!empty($diames)) : ?>
-                  <p class="registro__date" data-tooltip="<?php echo $diamesano; ?>"><?php echo $diames; ?></p>
+                  <p class="timeline-registro__date" data-tooltip="<?php echo $diamesano; ?>"><?php echo $diames; ?></p>
                 <?php endif; ?>
-                <h3 class="registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-swal-template="#modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
-                <div class="registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
+                <h3 class="timeline-registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-swal-template="#modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
+                <div class="timeline-registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
                 <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
                 <?php if (!is_tax('unidade')) : ?>
                   <?php if (!empty($unidades)) : ?>
                     <?php foreach ($unidades as $unidade) : ?>
-                      <a class="registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                      <a class="timeline-registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
                     <?php endforeach; ?>
                   <?php endif; ?>
                 <?php endif; ?>
@@ -92,7 +92,7 @@
                   <div class="modal-meta__item">
                     <p>
                     <?php foreach ($unidades as $unidade) : ?>
-                      <a class="registro__link align-self-start" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                      <a href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
                     <?php endforeach; ?>
                     </p>
                   </div>

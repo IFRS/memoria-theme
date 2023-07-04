@@ -1,0 +1,11 @@
+.registro-meta {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    flex: 0 0 auto;
+  }
+}
