@@ -2,7 +2,6 @@ const argv         = require('minimist')(process.argv.slice(2));
 const babel        = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
 const csso         = require('gulp-csso');
-const concat       = require('gulp-concat');
 const del          = require('del');
 const gulp         = require('gulp');
 const path         = require('path');
