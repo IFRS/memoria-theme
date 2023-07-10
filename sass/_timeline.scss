@@ -161,6 +161,10 @@
             object-fit: cover;
             object-position: center;
         }
+
+        @supports (aspect-ratio: auto) {
+            aspect-ratio: 16 / 9;
+        }
     }
 
     &__date {
