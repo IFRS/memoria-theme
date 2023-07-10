@@ -131,7 +131,6 @@
 
     .card {
         background-color: var(--wp--preset--color--white, #ffffff);
-        padding: var(--wp--preset--spacing--50, 1.5rem);
         width: 45%;
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
         position: relative;
@@ -190,6 +189,10 @@
         &:empty {
             display: none;
         }
+    }
+
+    &__content {
+        padding: var(--wp--preset--spacing--50, 1.5rem);
     }
 
     &__title {
