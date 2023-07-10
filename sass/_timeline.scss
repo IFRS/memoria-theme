@@ -134,6 +134,7 @@
         padding: var(--wp--preset--spacing--50, 1.5rem);
         width: 45%;
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
+        position: relative;
 
         @include media-breakpoint-down('md') {
             max-width: 100%;
@@ -169,6 +170,7 @@
         color: #ffffff;
         cursor: help !important;
         font-size: 0.9rem;
+        font-weight: 500;
         margin: 0;
         padding: var(--button-padding);
         position: absolute !important;

@@ -53,32 +53,28 @@
           <div class="timeline-registro<?php echo (has_post_thumbnail()) ? '' : ' timeline-registro--without-thumbnail' ?>">
             <div class="card">
               <?php if (has_post_thumbnail($post->ID)) : ?>
-                <div class="card-image">
-                  <figure class="image is-16by9">
-                    <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'timeline-registro__image animate__animated animate__fadeIn animate__delay-1s')); ?>
-                  </figure>
-                </div>
+                <figure class="timeline-registro__date">
+                  <?php echo get_the_post_thumbnail($post->ID, 'full', array('class' => 'timeline-registro__image animate__animated animate__fadeIn animate__delay-1s')); ?>
+                </figure>
               <?php endif; ?>
-              <div class="card-content">
-                <?php
-                  $data = get_post_meta( $post->ID, '_registro_data', true );
-                  $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
-                  $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
-                ?>
-                <?php if (!empty($diames)) : ?>
-                  <p class="timeline-registro__date" data-tooltip="<?php echo $diamesano; ?>"><?php echo $diames; ?></p>
+              <?php
+                $data = get_post_meta( $post->ID, '_registro_data', true );
+                $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
+                $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
+              ?>
+              <?php if (!empty($diames)) : ?>
+                <p class="timeline-registro__date" data-tooltip="<?php echo $diamesano; ?>"><?php echo $diames; ?></p>
+              <?php endif; ?>
+              <h3 class="timeline-registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-swal-template="#modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
+              <div class="timeline-registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
+              <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
+              <?php if (!is_tax('unidade')) : ?>
+                <?php if (!empty($unidades)) : ?>
+                  <?php foreach ($unidades as $unidade) : ?>
+                    <a class="timeline-registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                  <?php endforeach; ?>
                 <?php endif; ?>
-                <h3 class="timeline-registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-swal-template="#modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
-                <div class="timeline-registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
-                <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
-                <?php if (!is_tax('unidade')) : ?>
-                  <?php if (!empty($unidades)) : ?>
-                    <?php foreach ($unidades as $unidade) : ?>
-                      <a class="timeline-registro__link" href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                    <?php endforeach; ?>
-                  <?php endif; ?>
-                <?php endif; ?>
-              </div>
+              <?php endif; ?>
             </div>
           </div>
           <?php add_action('wp_footer', function() use ($post, $unidades, $diamesano) { ?>
