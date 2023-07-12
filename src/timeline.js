@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let wpadminbar = document.querySelector('#wpadminbar');
 
     window.addEventListener('scroll', function() {
-        if (window.innerWidth > 768 && window.pageYOffset > sticky) {
+        if (window.innerWidth > 768 && window.scrollY > sticky) {
             list.classList.add('ano-list--sticky');
 
             if (wpadminbar) {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     );
 
-    document.querySelectorAll('.timeline .registro').forEach(registro => {
+    document.querySelectorAll('.timeline-registro').forEach(registro => {
         observer.observe(registro);
     });
 
