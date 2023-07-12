@@ -81,6 +81,8 @@
     &::before {
         content: '';
         background: var(--linkInitialColor, $cor-marrom-claro);
+        background-image: linear-gradient(to bottom, var(--linkInitialColor, $cor-marrom-claro), color-mix(in srgb, var(--linkInitialColor, $cor-marrom-claro), #ffffff 10%));
+        border-radius: var(--buttonBorderRadius, 4px);
         width: 5px;
         height: 98%;
         height: calc(100% - 50px);
@@ -132,6 +134,7 @@
     .card {
         background-color: var(--wp--preset--color--white, #ffffff);
         width: 45%;
+        border-radius: var(--buttonBorderRadius, 4px);
         box-shadow: 0 20px 25px -15px rgba(0, 0, 0, .3);
         position: relative;
 
@@ -168,7 +171,7 @@
 
     &__date {
         background: var(--buttonHoverColor, $cor-marrom-escuro);
-        border-top-right-radius: 4px;
+        border-top-right-radius: var(--buttonBorderRadius, 4px);
         display: inline-block;
         color: #ffffff;
         cursor: help !important;
@@ -234,6 +237,8 @@
         #{$root}__date {
             right: auto;
             left: 0;
+            border-top-right-radius: 0;
+            border-top-left-radius: var(--buttonBorderRadius, 4px);
         }
     }
 
