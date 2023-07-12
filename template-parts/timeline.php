@@ -13,7 +13,7 @@
 ?>
 
 <div class="ct-container-full" data-content="normal" data-vertical-spacing="top:bottom">
-  <h2 class="timeline-title">
+  <h2 class="timeline-title page-title">
     Linha do Tempo
     <?php if (is_tax('unidade')) echo single_term_title(' - '); ?>
   </h2>
