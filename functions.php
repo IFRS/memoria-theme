@@ -3,8 +3,6 @@ if (! defined('WP_DEBUG')) {
 	die( 'Direct access forbidden.' );
 }
 
-wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-
 // Youtube API Options
 require_once('inc/config-youtube.php');
 
