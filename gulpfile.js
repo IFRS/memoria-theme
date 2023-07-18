@@ -12,6 +12,8 @@ const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
 
+const PRODUCTION = argv.production || argv.prod;
+
 gulp.task('clean', async function() {
     return await rimraf(['css/', 'js/', 'dist/']);
 });
@@ -43,7 +45,7 @@ gulp.task('styles', gulp.series('sass', function css() {
     .pipe(browserSync.stream());
 }));
 
-const webpackMode = argv.production ? 'production' : 'development';
+const webpackMode = PRODUCTION ? 'production' : 'development';
 let webpackPlugins = [];
 argv.bundleanalyzer ? webpackPlugins.push(new BundleAnalyzerPlugin()) : null;
 
@@ -121,7 +123,7 @@ gulp.task('dist', function() {
     .pipe(gulp.dest('dist/ifrs-memoria-theme'));
 });
 
-if (argv.production) {
+if (PRODUCTION) {
     gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts'), 'dist'));
 } else {
     gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'webpack')));
