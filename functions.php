@@ -19,9 +19,6 @@ require_once('inc/taxonomies/unidade.php');
 require_once('inc/post-types/registro.php');
 require_once('inc/roles.php');
 
-// Tainacan Config
-// require_once('inc/tainacan.php');
-
 // Partials
 require_once('inc/partials/vlibras.php');
 require_once('inc/partials/home-dados.php');
