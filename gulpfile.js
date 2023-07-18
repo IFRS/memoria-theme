@@ -2,18 +2,18 @@ const argv         = require('minimist')(process.argv.slice(2));
 const babel        = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
 const csso         = require('gulp-csso');
-const del          = require('del');
 const gulp         = require('gulp');
 const path         = require('path');
 const PluginError  = require('plugin-error');
 const postcss      = require('gulp-postcss');
+const { rimraf }   = require('rimraf');
 const sass         = require('gulp-sass')(require('sass'));
 const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
 
 gulp.task('clean', async function() {
-    return await del(['css/', 'js/', 'vendor/', 'dist/']);
+    return await rimraf(['css/', 'js/', 'dist/']);
 });
 
 gulp.task('sass', function() {
@@ -24,7 +24,7 @@ gulp.task('sass', function() {
 
     let sass_options = {
         includePaths: ['sass', 'node_modules'],
-        outputStyle: 'expanded'
+        outputStyle: 'expanded',
     };
 
     return gulp.src('sass/*.scss')
