@@ -21,14 +21,14 @@ add_action( 'init', function() {
 		'no_terms'                   => __( 'Sem Unidades', 'ifrs-memoria-theme' ),
 		'items_list'                 => __( 'Lista de Unidades', 'ifrs-memoria-theme' ),
 		'items_list_navigation'      => __( 'Lista de navegação de Unidades', 'ifrs-memoria-theme' ),
-    );
+	);
 
 	$capabilities = array(
 		'manage_terms'               => 'manage_unidades',
 		'edit_terms'                 => 'manage_unidades',
 		'delete_terms'               => 'manage_unidades',
 		'assign_terms'               => 'assign_unidades',
-    );
+	);
 
 	$args = array(
 		'labels'                     => $labels,
@@ -41,7 +41,7 @@ add_action( 'init', function() {
 		'capabilities'               => $capabilities,
 		'show_in_rest'               => true,
 		'rewrite'                    => array('slug' => 'timeline/unidade', 'with_front' => false),
-    );
+	);
 
 	register_taxonomy( 'unidade', array( 'registro' ), $args );
 }, 1 );
