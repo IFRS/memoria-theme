@@ -37,16 +37,19 @@
             $a_meta = get_post_meta( $a->ID, '_registro_data', true );
             $b_meta = get_post_meta( $b->ID, '_registro_data', true );
 
-            $a_date = new DateTime();
-            $a_date->setDate(($a_meta['year']) ? $a_meta['year'] : 0, ($a_meta['month']) ? $a_meta['month'] : 0, ($a_meta['day']) ? $a_meta['day'] : 0);
+            if (is_array($a_meta) && is_array($b_meta)) {
+              $a_date = new DateTime();
+              $a_date->setDate((int)$a_meta['year'] ?? 0, (int)$a_meta['month'] ?? 0, (int)$a_meta['day'] ?? 0);
 
-            $b_date = new DateTime();
-            $b_date->setDate(($b_meta['year']) ? $b_meta['year'] : 0, ($b_meta['month']) ? $b_meta['month'] : 0, ($b_meta['day']) ? $b_meta['day'] : 0);
+              $b_date = new DateTime();
+              $b_date->setDate((int)$b_meta['year'] ?? 0, (int)$b_meta['month'] ?? 0, (int)$b_meta['day'] ?? 0);
 
-            if ($a_date == $b_date) {
-              return 0;
+              if ($a_date == $b_date) {
+                return 0;
+              }
+              return ($a_date < $b_date) ? -1 : 1;
             }
-            return ($a_date < $b_date) ? -1 : 1;
+            return -1;
           });
         ?>
         <?php foreach ($posts as $post) : ?>
@@ -57,8 +60,12 @@
               <?php endif; ?>
               <?php
                 $data = get_post_meta( $post->ID, '_registro_data', true );
-                $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
-                $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
+                $diames = null;
+                $diamesano = null;
+                if (is_array($data)) {
+                  $diames = ($data['month']) ? (($data['day']) ? $data['day'] . ' de ' . date_i18n('F', mktime(0, 0, 0, $data['month'])) : date_i18n('F', mktime(0, 0, 0, $data['month']))) : '';
+                  $diamesano = ($diames) ? $diames . ' de ' . $data['year'] : $data['year'];
+                }
               ?>
               <div class="timeline-registro__content">
                 <?php if (!empty($diames)) : ?>
@@ -85,16 +92,20 @@
               </swal-title>
               <swal-html>
                 <div class="modal-meta">
-                  <div class="modal-meta__item">
-                    <p>
-                    <?php foreach ($unidades as $unidade) : ?>
-                      <a href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
-                    <?php endforeach; ?>
-                    </p>
-                  </div>
-                  <div class="modal-meta__item modal-meta__item--right">
-                    <p><strong><?php echo $diamesano; ?></strong></p>
-                  </div>
+                  <?php if (!empty($unidades)) : ?>
+                    <div class="modal-meta__item">
+                      <p>
+                      <?php foreach ($unidades as $unidade) : ?>
+                        <a href="<?php echo get_term_link($unidade); ?>"><?php echo $unidade->name; ?></a>
+                      <?php endforeach; ?>
+                      </p>
+                    </div>
+                  <?php endif; ?>
+                  <?php if (!empty($diamesano)) : ?>
+                    <div class="modal-meta__item modal-meta__item--right">
+                      <p><strong><?php echo $diamesano; ?></strong></p>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <?php if (has_post_thumbnail($post->ID)) : ?>
                     <figure class="modal-img">
