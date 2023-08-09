@@ -40,7 +40,7 @@ gulp.task('sass', function() {
 
 gulp.task('styles', gulp.series('sass', function css() {
     return gulp.src(['css/*.css'])
-    .pipe(csso())
+    .pipe(csso({ comments: false }))
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 }));
