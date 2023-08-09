@@ -29,7 +29,7 @@
     <?php endforeach; ?>
     <small class="timeline-info" aria-live="polite"></small>
   </ul>
-  <div class="timeline-list">
+  <div class="timeline-list animate__animated animate__fadeIn" style="animation-delay: <?php echo $delay; ?>ms">
     <?php foreach ($posts_by_year as $year => $posts) : ?>
       <div class="timeline <?php echo (reset($posts_by_year) === $posts) ? ' active' : ''; ?>" id="ano-<?php echo $year; ?>" role="tabpanel">
         <?php

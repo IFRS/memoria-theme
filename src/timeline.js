@@ -34,16 +34,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (sib === entry.target) num = i;
                     });
 
-                    entry.target.querySelector('.card').classList.add('animate__animated');
+                    let card = entry.target.querySelector('.card');
+
+                    card.classList.add('animate__animated');
+                    card.style.setProperty('--animate-delay', '500ms');
 
                     if (num % 2 === 0) {
-                        entry.target.querySelector('.card').classList.add('animate__fadeInLeft');
+                        card.classList.add('animate__fadeInLeft');
                     } else {
-                        entry.target.querySelector('.card').classList.add('animate__fadeInRight');
+                        card.classList.add('animate__fadeInRight');
                     }
                 } else {
                     /* Para esconder novamente os cards assim que saem do viewport. */
-                    // entry.target.querySelector('.card').classList.remove('animate__animated', 'animate__fadeInLeft', 'animate__fadeInRight');
+                    // card.classList.remove('animate__animated', 'animate__fadeInLeft', 'animate__fadeInRight');
                 }
             });
         },
