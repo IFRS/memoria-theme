@@ -71,7 +71,7 @@
                 <?php if (!empty($diames)) : ?>
                   <p class="timeline-registro__date" data-tooltip="<?php echo $diamesano; ?>"><?php echo $diames; ?></p>
                 <?php endif; ?>
-                <h3 class="timeline-registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-swal-template="#modal-<?php echo $post->ID; ?>" data-toggle="modal" data-target="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
+                <h3 class="timeline-registro__title"><a href="<?php echo get_the_permalink($post->ID); ?>" data-swal-template="#modal-<?php echo $post->ID; ?>"><?php echo $post->post_title; ?></a></h3>
                 <div class="timeline-registro__text"><?php echo get_the_excerpt($post->ID); ?></div>
                 <?php $unidades = get_the_terms($post->ID, 'unidade'); ?>
                 <?php if (!is_tax('unidade')) : ?>
