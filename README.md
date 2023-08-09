@@ -2,7 +2,8 @@
 
 Tema [Wordpress](https://wordpress.org/) para o site do [Núcleo de Memória](https://memoria.ifrs.edu.br/) do [Instituto Federal do Rio Grande do Sul](http://ifrs.edu.br/).
 
-Esse tema é um tema filho do [Blocksy](https://creativethemes.com/blocksy/).
+Esse tema é um tema filho do [Blocksy](https://creativethemes.com/blocksy/). Portanto, é necessário que o mesmo esteja instalado.
+Além disso, é recomendado instalar o plugin [Blocksy Companion](https://wordpress.org/plugins/blocksy-companion/).
 
 ## Licença
 
