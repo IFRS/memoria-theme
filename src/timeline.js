@@ -1,4 +1,4 @@
-import Swal from "sweetalert2/src/sweetalert2.js";
+import "bootstrap/js/dist/modal";
 
 document.addEventListener('DOMContentLoaded', function() {
     const getRealOffsetTop = function(element) {
@@ -106,12 +106,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
         mu.observe(link, {attributes: true});
     });
-
-    document.querySelectorAll('[data-swal-template]').forEach(function(modal_toggle) {
-        modal_toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-        });
-    });
-
-    Swal.bindClickHandler();
 });

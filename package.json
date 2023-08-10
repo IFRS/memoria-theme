@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.16.11",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.4.2",
+    "bootstrap": "^5.3.1",
     "browser-sync": "^2.27.7",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -14,13 +15,13 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
+    "lightgallery": "^2.7.1",
     "minimist": "^1.2.5",
     "pixrem": "^5.0.0",
     "plugin-error": "^2.0.0",
     "postcss": "^8.4.6",
     "rimraf": "^5.0.1",
     "sass": "^1.49.7",
-    "sweetalert2": "^11.7.12",
     "webpack": "^5.68.0"
   }
 }

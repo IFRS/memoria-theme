@@ -1,5 +1,19 @@
 /* Animate.css */
-@import '../node_modules/animate.css/animate';
+@import 'animate.css/animate';
+
+/* Lightgallery */
+$zindex-outer: 2050;
+$zindex-progressbar: 2083;
+$zindex-controls: 2084;
+$zindex-toolbar: 2082;
+$zindex-subhtml: 2080;
+$zindex-components: 2080;
+$zindex-pager: 2080;
+$zindex-playbutton: 2080;
+$zindex-item: 2060;
+$zindex-backdrop: 2040;
+@import '../node_modules/lightgallery/scss/lightgallery.scss';
+
 
 /* Blocksy */
 @import '../../blocksy/static/sass/frontend/1-helpers/functions';
@@ -21,3 +35,7 @@
 @import 'home-dados';
 @import 'timeline';
 @import 'registro';
+
+/* Bootstrap Single Componets */
+@import 'bootstrap/scss/bootstrap-utilities';
+@import 'bootstrap/scss/modal';

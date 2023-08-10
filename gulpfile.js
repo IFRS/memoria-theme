@@ -54,6 +54,7 @@ gulp.task('webpack', function(done) {
         mode: webpackMode,
         devtool: 'source-map',
         entry: {
+            memoria: './src/memoria.js',
             timeline: './src/timeline.js',
         },
         output: {
