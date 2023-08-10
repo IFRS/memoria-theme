@@ -3,15 +3,6 @@
     overflow-x: hidden;
 }
 
-.timeline-title {
-    @extend %blocksy-container;
-
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: var(--content-spacing, 1rem);
-    text-align: center;
-}
-
 .ano-list {
     @extend %blocksy-container;
 
